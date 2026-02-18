@@ -1,0 +1,144 @@
+// Portrait Modal functionality for index.html
+(() => {
+  const modal = document.getElementById('portraitModal');
+  if (!modal) return;
+
+  const backdrop = modal.querySelector('.modal-backdrop');
+  const closeBtn = modal.querySelector('.modal-close');
+  const titleEl = document.getElementById('portraitTitle');
+  const imgEl = document.getElementById('portraitImg');
+
+  const PORTRAITS = {
+    veldor: {
+      title: 'Veldor',
+      src: 'Veldor.PNG',
+      alt: 'Retrato de Veldor'
+    },
+    noah: {
+      title: 'Noah',
+      src: 'Noah.PNG',
+      alt: 'Retrato de Noah'
+    },
+    nalare: {
+      title: 'Nalare',
+      src: 'Nalare.PNG',
+      alt: 'Retrato de Nalare'
+    },
+    dalkyel: {
+      title: 'Dalkyel',
+      src: 'Dalkyel.png',
+      alt: 'Retrato de Dalkyel'
+    },
+    drakothar: {
+      title: 'Drakothar',
+      src: 'Drakothar.png',
+      alt: 'Retrato de Drakothar'
+    },
+    grandal: {
+      title: 'Grandal Glutonian',
+      src: 'Grandal.png',
+      alt: 'Retrato de Grandal Glutonian'
+    }
+  };
+
+  let lastFocus = null;
+
+  function openPortrait(key){
+    const p = PORTRAITS[key];
+    if (!p) return;
+
+    lastFocus = document.activeElement;
+
+    titleEl.textContent = p.title;
+    imgEl.src = p.src;
+    imgEl.alt = p.alt;
+
+    modal.showModal();
+    modal.classList.add('open');
+
+    closeBtn.focus({ preventScroll: true });
+  }
+
+  function closePortrait(){
+    modal.close();
+    modal.classList.remove('open');
+
+    imgEl.src = '';
+    imgEl.alt = '';
+
+    if (lastFocus && typeof lastFocus.focus === 'function') {
+      lastFocus.focus({ preventScroll: true });
+    }
+    lastFocus = null;
+  }
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.portrait-btn');
+    if (btn) {
+      const key = btn.getAttribute('data-portrait');
+      openPortrait(key);
+      return;
+    }
+    if (modal.classList.contains('open')) {
+      const wantsClose = e.target === backdrop || e.target.closest('[data-close="1"]') || e.target === closeBtn;
+      if (wantsClose) closePortrait();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closePortrait();
+    }
+  });
+
+  imgEl.addEventListener('error', () => {
+    titleEl.textContent = 'Retrato (no disponible)';
+  });
+
+})();
+
+// Session toggle functionality for events.html
+(() => {
+  const sessions = Array.from(document.querySelectorAll('.session[id]'));
+  const byId = new Map(sessions.map(s => [s.id, s]));
+
+  function setOpen(session, open) {
+    session.classList.toggle('open', open);
+    const btn = session.querySelector('button.session-toggle');
+    const scenes = session.querySelector('.scenes');
+    if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (scenes) {
+      if (open) scenes.removeAttribute('hidden');
+      else scenes.setAttribute('hidden', '');
+    }
+  }
+
+  function toggleSession(session) {
+    const isOpen = session.classList.contains('open');
+    setOpen(session, !isOpen);
+  }
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('button.session-toggle');
+    if (!btn) return;
+    const id = btn.getAttribute('data-target');
+    const session = id ? byId.get(id) : btn.closest('.session');
+    if (session) toggleSession(session);
+  });
+
+  function openFromHash() {
+    const id = (location.hash || '').replace('#', '');
+    if (!id) return;
+    const session = byId.get(id);
+    if (session) {
+      setOpen(session, true);
+      session.scrollIntoView({ block: 'start' });
+    }
+  }
+
+  sessions.forEach(s => setOpen(s, false));
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
+})();
