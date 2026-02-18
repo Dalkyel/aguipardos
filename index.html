@@ -379,129 +379,19 @@
 
 
   <!-- Portrait Modal (added) -->
-  <div class="modal" id="portraitModal" aria-hidden="true">
+  <dialog class="modal" id="portraitModal" aria-labelledby="portraitTitle">
     <div class="modal-backdrop" data-close="1"></div>
-    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="portraitTitle">
+    <div class="modal-dialog">
       <button type="button" class="modal-close" aria-label="Cerrar">&times;</button>
       <div id="portraitTitle" class="modal-title">Retrato</div>
       <img id="portraitImg" class="modal-img" src="" alt="">
       <p class="modal-hint">Presiona ESC o haz clic fuera del cuadro para cerrar.</p>
     </div>
-  </div>
+  </dialog>
 
 </main>
 
-<script>
-  (() => {
-    const modal = document.getElementById('portraitModal');
-    if (!modal) return;
-
-    const backdrop = modal.querySelector('.modal-backdrop');
-    const closeBtn = modal.querySelector('.modal-close');
-    const titleEl = document.getElementById('portraitTitle');
-    const imgEl = document.getElementById('portraitImg');
-
-    const PORTRAITS = {
-      veldor: {
-        title: 'Veldor',
-        src: 'Veldor.PNG',
-        alt: 'Retrato de Veldor'
-      },
-      noah: {
-        title: 'Noah',
-        src: 'Noah.PNG',
-        alt: 'Retrato de Noah'
-      },
-      nalare: {
-        title: 'Nalare',
-        src: 'Nalare.PNG',
-        alt: 'Retrato de Nalare'
-      },
-      dalkyel: {
-        title: 'Dalkyel',
-        src: 'Dalkyel.png',
-        alt: 'Retrato de Dalkyel'
-      },
-      drakothar: {
-        title: 'Drakothar',
-        src: 'Drakothar.png',
-        alt: 'Retrato de Drakothar'
-      },
-      grandal: {
-        title: 'Grandal Glutonian',
-        src: 'Grandal.png',
-        alt: 'Retrato de Grandal Glutonian'
-      }
-    };
-
-    let lastFocus = null;
-
-    function openPortrait(key){
-      const p = PORTRAITS[key];
-      if (!p) return;
-
-      lastFocus = document.activeElement;
-
-      titleEl.textContent = p.title;
-      imgEl.src = p.src;
-      imgEl.alt = p.alt;
-
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
-
-      // Prevent background scroll
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
-
-      closeBtn.focus({ preventScroll: true });
-    }
-
-    function closePortrait(){
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-
-      // Restore scroll
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
-
-      // Clear img to stop downloading / free memory
-      imgEl.src = '';
-      imgEl.alt = '';
-
-      if (lastFocus && typeof lastFocus.focus === 'function') {
-        lastFocus.focus({ preventScroll: true });
-      }
-      lastFocus = null;
-    }
-
-    document.addEventListener('click', (e) => {
-      const btn = e.target.closest('.portrait-btn');
-      if (btn) {
-        const key = btn.getAttribute('data-portrait');
-        openPortrait(key);
-        return;
-      }
-      if (modal.classList.contains('open')) {
-        const wantsClose = e.target === backdrop || e.target.closest('[data-close="1"]') || e.target === closeBtn;
-        if (wantsClose) closePortrait();
-      }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (!modal.classList.contains('open')) return;
-      if (e.key === 'Escape') {
-        e.preventDefault();
-        closePortrait();
-      }
-    });
-
-    // Extra safety: close if image fails to load
-    imgEl.addEventListener('error', () => {
-      titleEl.textContent = 'Retrato (no disponible)';
-    });
-
-  })();
-</script>
+<script src="scripts.js"></script>
 
 </body>
 </html>
