@@ -5,498 +5,98 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Aguipardos — Crónica de Sesiones</title>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&amp;family=Cinzel:wght@400;600;700&amp;family=IM+Fell+English:ital@0;1&amp;family=Crimson+Text:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"></noscript>
 <style>
-    :root {
-      --gold: #c9a84c;
-      --gold-light: #e8c97a;
-      --gold-dim: #7a6030;
-      --ink: #1a1408;
-      --parchment: #f5ead4;
-      --parchment-dark: #e8d8b0;
-      --parchment-shadow: #c9b88a;
-      --blood: #8b1a1a;
-      --blood-light: #b02222;
-      --shadow: #2a1f0e;
-      --teal: #1d5c5c;
-      --teal-light: #2a8080;
-      --purple: #3d1c6e;
-      --purple-light: #5a2fa0;
-      --arc1: #5a2a00;
-      --arc2: #1a3a5c;
-      --arc3: #2a1f4e;
-      --arc4: #3a0a0a;
-      --arc5: #1a4a2a;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box
-    }
-
-    body {
-      background: var(--shadow);
-      background-image: radial-gradient(ellipse at 20% 10%, rgba(90, 60, 10, .4) 0%, transparent 60%), radial-gradient(ellipse at 80% 90%, rgba(60, 20, 10, .4) 0%, transparent 60%);
-      font-family: 'Crimson Text', Georgia, serif;
-      color: var(--ink);
-      min-height: 100vh;
-      padding: 2rem 1rem
-    }
-
-    .page {
-      max-width: 960px;
-      margin: 0 auto;
-      background: var(--parchment);
-      border: 2px solid var(--gold-dim);
-      box-shadow: 0 0 0 8px var(--shadow), 0 0 0 10px var(--gold-dim), 0 0 60px rgba(0, 0, 0, .8), inset 0 0 80px rgba(180, 140, 60, .1);
-      position: relative;
-      overflow: hidden
-    }
-
-    .page::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(180, 140, 60, .06) 28px, rgba(180, 140, 60, .06) 29px);
-      pointer-events: none
-    }
-
-    /* HEADER */
-    .header {
-      text-align: center;
-      padding: 3rem 2rem 2rem;
-      border-bottom: 3px double var(--gold-dim);
-      position: relative
-    }
-
-    .header::before,
-    .header::after {
-      content: '⚔';
-      font-size: 1.8rem;
-      color: var(--gold-dim);
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%)
-    }
-
-    .header::before {
-      left: 2rem
-    }
-
-    .header::after {
-      right: 2rem
-    }
-
-    .header-eyebrow {
-      font-family: 'Cinzel', serif;
-      font-size: .8rem;
-      letter-spacing: .4em;
-      color: var(--blood);
-      text-transform: uppercase;
-      margin-bottom: .5rem
-    }
-
-    .header h1 {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(1.6rem, 4vw, 2.8rem);
-      color: var(--ink);
-      line-height: 1.1;
-      text-shadow: 2px 2px 0 var(--parchment-shadow), 4px 4px 6px rgba(0, 0, 0, .2)
-    }
-
-    .header h1 span {
-      color: var(--blood)
-    }
-
-    .header-sub {
-      font-family: 'IM Fell English', serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      color: var(--gold-dim);
-      margin-top: .5rem
-    }
-
-    .ornament {
-      font-size: 1.4rem;
-      color: var(--gold);
-      letter-spacing: .3em;
-      margin: .8rem 0;
-      display: block
-    }
-
-    .nav-link {
-      display: inline-block;
-      margin-top: .8rem;
-      font-family: 'Cinzel', serif;
-      font-size: .7rem;
-      letter-spacing: .15em;
-      color: var(--teal);
-      text-decoration: none;
-      border: 1px solid var(--teal);
-      padding: .3rem .9rem;
-      text-transform: uppercase;
-      transition: background .2s, color .2s
-    }
-
-    .nav-link:hover {
-      background: var(--teal);
-      color: var(--parchment)
-    }
-
-    /* CONTENT */
-    .content {
-      padding: 1.5rem 2rem 3rem
-    }
-
-    /* ARC SEPARATOR */
-    .arc-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin: 2.5rem 0 1rem;
-      padding: .7rem 1.2rem;
-      border-radius: 2px;
-      position: relative
-    }
-
-    .arc-header::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 5px;
-      border-radius: 2px 0 0 2px
-    }
-
-    .arc1 .arc-header,
-    .arc1.arc-header {
-      background: rgba(90, 42, 0, .12)
-    }
-
-    .arc1.arc-header::before,
-    .arc1 .arc-header::before {
-      background: var(--arc1)
-    }
-
-    .arc2 .arc-header,
-    .arc2.arc-header {
-      background: rgba(26, 58, 92, .12)
-    }
-
-    .arc2.arc-header::before,
-    .arc2 .arc-header::before {
-      background: var(--arc2)
-    }
-
-    .arc3 .arc-header,
-    .arc3.arc-header {
-      background: rgba(42, 31, 78, .12)
-    }
-
-    .arc3.arc-header::before,
-    .arc3 .arc-header::before {
-      background: var(--arc3)
-    }
-
-    .arc4 .arc-header,
-    .arc4.arc-header {
-      background: rgba(58, 10, 10, .12)
-    }
-
-    .arc4.arc-header::before,
-    .arc4 .arc-header::before {
-      background: var(--arc4)
-    }
-
-    .arc5 .arc-header,
-    .arc5.arc-header {
-      background: rgba(26, 74, 42, .12)
-    }
-
-    .arc5.arc-header::before,
-    .arc5 .arc-header::before {
-      background: var(--arc5)
-    }
-
-    .arc-title {
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      font-size: .85rem;
-      letter-spacing: .2em;
-      text-transform: uppercase
-    }
-
-    .arc-subtitle {
-      font-family: 'IM Fell English', serif;
-      font-style: italic;
-      font-size: .9rem;
-      color: var(--gold-dim)
-    }
-
-    .arc-sessions {
-      font-family: 'Cinzel', serif;
-      font-size: .65rem;
-      letter-spacing: .1em;
-      color: var(--blood);
-      margin-left: auto;
-      white-space: nowrap
-    }
-
-    /* SESSION CARD */
-    .session {
-      background: var(--parchment-dark);
-      border: 1px solid var(--parchment-shadow);
-      margin-bottom: 1rem;
-      border-radius: 2px;
-      overflow: hidden
-    }
-
-    .session-toggle {
-      width: 100%;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      text-align: left;
-      display: block
-    }
-
-    .session-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 1rem 1.2rem;
-      border-bottom: 1px solid transparent;
-      transition: background .15s
-    }
-
-    .session-header:hover {
-      background: rgba(180, 140, 60, .08)
-    }
-
-    .session-num {
-      font-family: 'Cinzel', serif;
-      font-size: .65rem;
-      letter-spacing: .1em;
-      color: var(--gold-dim);
-      min-width: 2.2rem;
-      padding-top: .15rem;
-      text-transform: uppercase
-    }
-
-    .session-main {
-      flex: 1
-    }
-
-    .session-name {
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--ink);
-      line-height: 1.2
-    }
-
-    .session-meta {
-      display: flex;
-      gap: .5rem;
-      flex-wrap: wrap;
-      margin-top: .3rem
-    }
-
-    .session-tag {
-      font-family: 'Cinzel', serif;
-      font-size: .6rem;
-      letter-spacing: .08em;
-      padding: .1rem .45rem;
-      border-radius: 2px;
-      text-transform: uppercase
-    }
-
-    .tag-place {
-      background: rgba(26, 58, 92, .15);
-      color: var(--arc2)
-    }
-
-    .tag-combat {
-      background: rgba(139, 26, 26, .15);
-      color: var(--blood)
-    }
-
-    .tag-mystery {
-      background: rgba(61, 28, 110, .15);
-      color: var(--purple)
-    }
-
-    .tag-lore {
-      background: rgba(29, 92, 92, .15);
-      color: var(--teal)
-    }
-
-    .tag-dramatic {
-      background: rgba(180, 140, 60, .2);
-      color: var(--gold-dim)
-    }
-
-    .session-arrow {
-      font-size: .8rem;
-      color: var(--gold-dim);
-      transition: transform .2s;
-      align-self: flex-start;
-      margin-top: .2rem
-    }
-
-    .session.open .session-arrow {
-      transform: rotate(90deg)
-    }
-
-    .session.open .session-header {
-      border-bottom-color: var(--parchment-shadow)
-    }
-
-    .scene {
-      margin-top: .9rem;
-      padding-left: 1rem;
-      border-left: 2px solid var(--parchment-shadow);
-      position: relative
-    }
-
-    .scene::before {
-      content: '';
-      position: absolute;
-      left: -4px;
-      top: .5rem;
-      width: 6px;
-      height: 6px;
-      background: var(--gold-dim);
-      border-radius: 50%
-    }
-
-    .scene-name {
-      font-family: 'Cinzel', serif;
-      font-size: .72rem;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--blood);
-      margin-bottom: .25rem
-    }
-
-    .scene-text {
-      font-size: .9rem;
-      line-height: 1.65;
-      color: var(--ink)
-    }
-
-    .scene-text p {
-      margin-bottom: .4rem
-    }
-
-    blockquote {
-      border-left: 3px solid var(--gold-dim);
-      background: rgba(180, 140, 60, .07);
-      padding: .5rem .8rem .5rem 1rem;
-      margin: .6rem 0;
-      font-family: 'IM Fell English', serif;
-      font-style: italic;
-      font-size: .92rem;
-      color: var(--shadow)
-    }
-
-    blockquote cite {
-      display: block;
-      font-style: normal;
-      font-family: 'Cinzel', serif;
-      font-size: .6rem;
-      letter-spacing: .1em;
-      color: var(--gold-dim);
-      margin-top: .3rem
-    }
-
-    .outcome {
-      background: var(--ink);
-      color: var(--gold-light);
-      padding: .5rem .9rem;
-      margin-top: .9rem;
-      font-family: 'Cinzel', serif;
-      font-size: .7rem;
-      letter-spacing: .08em;
-      border-left: 3px solid var(--gold)
-    }
-
-    .outcome strong {
-      color: var(--gold)
-    }
-
-    @media(max-width:600px) {
-
-      .header::before,
-      .header::after {
-        display: none
-      }
-
-      .content {
-        padding: 1rem
-      }
-
-      .arc-sessions {
-        display: none
-      }
-    }
-/* Accessibility + maintainability */
-    .arc1 .arc-title { color: var(--arc1); }
-    .arc2 .arc-title { color: var(--arc2); }
-    .arc3 .arc-title { color: var(--arc3); }
-    .arc4 .arc-title { color: var(--arc4); }
-    .arc5 .arc-title { color: var(--arc5); }
-    .arc-spaced { margin-top: 2.5rem; }
-
-    .session-toggle:focus-visible,
-    .nav-link:focus-visible {
-      outline: 2px solid var(--teal);
-      outline-offset: 2px;
-    }
-
-    /* Use the hidden attribute for collapse/expand */
-    .scenes { padding: 0 1.2rem 1.2rem; }
-    .scenes[hidden] { display: none; }
-
-    /* Reduce main-thread work on long pages (safe fallback) */
-    .session { content-visibility: auto; contain-intrinsic-size: 1px 420px; }
-    .arc-header { content-visibility: auto; contain-intrinsic-size: 1px 90px; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .nav-link, .session-header, .session-arrow { transition: none !important; }
-    }
-
-
-/* --- Mobile fixes (added) --- */
+:root{--gold:#c9a84c;--gold-light:#e8c97a;--gold-dim:#7a6030;--ink:#1a1408;--parchment:#f5ead4;--parchment-dark:#e8d8b0;--parchment-shadow:#c9b88a;--blood:#8b1a1a;--blood-light:#b02222;--shadow:#2a1f0e;--teal:#1d5c5c;--teal-light:#2a8080;--purple:#3d1c6e;--purple-light:#5a2fa0;--arc1:#5a2a00;--arc2:#1a3a5c;--arc3:#2a1f4e;--arc4:#3a0a0a;--arc5:#1a4a2a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--shadow);background-image:radial-gradient(ellipse at 20% 10%,rgba(90,60,10,.4) 0%,transparent 60%),radial-gradient(ellipse at 80% 90%,rgba(60,20,10,.4) 0%,transparent 60%);font-family:'Crimson Text',Georgia,serif;color:var(--ink);min-height:100vh;padding:2rem 1rem}
+.page{max-width:960px;margin:0 auto;background:var(--parchment);border:2px solid var(--gold-dim);box-shadow:0 0 0 8px var(--shadow),0 0 0 10px var(--gold-dim),0 0 60px rgba(0,0,0,.8),inset 0 0 80px rgba(180,140,60,.1);position:relative;overflow:hidden}
+.page::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 28px,rgba(180,140,60,.06) 28px,rgba(180,140,60,.06) 29px);pointer-events:none}
+.header{text-align:center;padding:3rem 2rem 2rem;border-bottom:3px double var(--gold-dim);position:relative}
+.header::before,.header::after{content:'⚔';font-size:1.8rem;color:var(--gold-dim);position:absolute;top:50%;transform:translateY(-50%)}
+.header::before{left:2rem}.header::after{right:2rem}
+.header-eyebrow{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.4em;color:var(--blood);text-transform:uppercase;margin-bottom:.5rem}
+.header h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.6rem,4vw,2.8rem);color:var(--ink);line-height:1.1;text-shadow:2px 2px 0 var(--parchment-shadow),4px 4px 6px rgba(0,0,0,.2)}
+.header h1 span{color:var(--blood)}
+.header-sub{font-family:'IM Fell English',serif;font-style:italic;font-size:1.05rem;color:var(--gold-dim);margin-top:.5rem}
+.ornament{font-size:1.4rem;color:var(--gold);letter-spacing:.3em;margin:.8rem 0;display:block}
+.nav-link{display:inline-block;margin-top:.8rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.15em;color:var(--teal);text-decoration:none;border:1px solid var(--teal);padding:.3rem .9rem;text-transform:uppercase;transition:background .2s,color .2s}
+.nav-link:hover{background:var(--teal);color:var(--parchment)}
+.content{padding:1.5rem 2rem 3rem}
+.arc-header{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 1rem;padding:.7rem 1.2rem;border-radius:2px;position:relative}
+.arc-header::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;border-radius:2px 0 0 2px}
+.arc1 .arc-header,.arc1.arc-header{background:rgba(90,42,0,.12)}
+.arc1.arc-header::before,.arc1 .arc-header::before{background:var(--arc1)}
+.arc2 .arc-header,.arc2.arc-header{background:rgba(26,58,92,.12)}
+.arc2.arc-header::before,.arc2 .arc-header::before{background:var(--arc2)}
+.arc3 .arc-header,.arc3.arc-header{background:rgba(42,31,78,.12)}
+.arc3.arc-header::before,.arc3 .arc-header::before{background:var(--arc3)}
+.arc4 .arc-header,.arc4.arc-header{background:rgba(58,10,10,.12)}
+.arc4.arc-header::before,.arc4 .arc-header::before{background:var(--arc4)}
+.arc5 .arc-header,.arc5.arc-header{background:rgba(26,74,42,.12)}
+.arc5.arc-header::before,.arc5 .arc-header::before{background:var(--arc5)}
+.arc-title{font-family:'Cinzel',serif;font-weight:700;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase}
+.arc-subtitle{font-family:'IM Fell English',serif;font-style:italic;font-size:.9rem;color:var(--gold-dim)}
+.arc-sessions{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.1em;color:var(--blood);margin-left:auto;white-space:nowrap}
+.session{background:var(--parchment-dark);border:1px solid var(--parchment-shadow);margin-bottom:1rem;border-radius:2px;overflow:hidden}
+.session-toggle{width:100%;background:none;border:none;cursor:pointer;padding:0;text-align:left;display:block}
+.session-header{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.2rem;border-bottom:1px solid transparent;transition:background .15s}
+.session-header:hover{background:rgba(180,140,60,.08)}
+.session-num{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.1em;color:var(--gold-dim);min-width:2.2rem;padding-top:.15rem;text-transform:uppercase}
+.session-main{flex:1}
+.session-name{font-family:'Cinzel',serif;font-weight:700;font-size:1rem;color:var(--ink);line-height:1.2}
+.session-meta{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.3rem}
+.session-tag{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.08em;padding:.1rem .45rem;border-radius:2px;text-transform:uppercase}
+.tag-place{background:rgba(26,58,92,.15);color:var(--arc2)}
+.tag-combat{background:rgba(139,26,26,.15);color:var(--blood)}
+.tag-mystery{background:rgba(61,28,110,.15);color:var(--purple)}
+.tag-lore{background:rgba(29,92,92,.15);color:var(--teal)}
+.tag-dramatic{background:rgba(180,140,60,.2);color:var(--gold-dim)}
+.session-arrow{font-size:.8rem;color:var(--gold-dim);transition:transform .2s;align-self:flex-start;margin-top:.2rem}
+.session.open .session-arrow{transform:rotate(90deg)}
+.session.open .session-header{border-bottom-color:var(--parchment-shadow)}
+.scene{margin-top:.9rem;padding-left:1rem;border-left:2px solid var(--parchment-shadow);position:relative}
+.scene::before{content:'';position:absolute;left:-4px;top:.5rem;width:6px;height:6px;background:var(--gold-dim);border-radius:50%}
+.scene-name{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--blood);margin-bottom:.25rem}
+.scene-text{font-size:.9rem;line-height:1.65;color:var(--ink)}
+.scene-text p{margin-bottom:.4rem}
+blockquote{border-left:3px solid var(--gold-dim);background:rgba(180,140,60,.07);padding:.5rem .8rem .5rem 1rem;margin:.6rem 0;font-family:'IM Fell English',serif;font-style:italic;font-size:.92rem;color:var(--shadow)}
+blockquote cite{display:block;font-style:normal;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.1em;color:var(--gold-dim);margin-top:.3rem}
+.outcome{background:var(--ink);color:var(--gold-light);padding:.5rem .9rem;margin-top:.9rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.08em;border-left:3px solid var(--gold)}
+.outcome strong{color:var(--gold)}
+.arc1 .arc-title{color:var(--arc1)}
+.arc2 .arc-title{color:var(--arc2)}
+.arc3 .arc-title{color:var(--arc3)}
+.arc4 .arc-title{color:var(--arc4)}
+.arc5 .arc-title{color:var(--arc5)}
+.arc-spaced{margin-top:2.5rem}
+.session-toggle:focus-visible,.nav-link:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.scenes{padding:0 1.2rem 1.2rem}
+.scenes[hidden]{display:none}
+.session{content-visibility:auto;contain-intrinsic-size:0 420px}
+.arc-header{content-visibility:auto;contain-intrinsic-size:0 90px}
+@media(prefers-reduced-motion:reduce){.nav-link,.session-header,.session-arrow{transition:none!important}}
 html{-webkit-text-size-adjust:100%}
 body{overflow-x:hidden}
 .session-toggle,.nav-link{touch-action:manipulation}
-
-/* Allow the header text column to shrink/wrap */
 .session-main{min-width:0}
 .session-name,.scene-name,.arc-title,.arc-subtitle{overflow-wrap:anywhere;word-break:break-word}
-
 @media(max-width:600px){
-  body{padding:1rem .75rem}
-  .header{padding:2.2rem 1rem 1.5rem}
-  .content{padding:1rem}
-  .session-header{flex-wrap:wrap}
-  .session-num{min-width:auto}
-  .scenes{padding:0 1rem 1rem}
-
-  /* Avoid mobile Safari quirks with content-visibility */
-  .session,.arc-header{content-visibility:visible;contain-intrinsic-size:auto}
+.header::before,.header::after{display:none}
+.content{padding:1rem}
+.arc-sessions{display:none}
+body{padding:1rem .75rem}
+.header{padding:2.2rem 1rem 1.5rem}
+.session-header{flex-wrap:wrap}
+.session-num{min-width:auto}
+.scenes{padding:0 1rem 1rem}
+.session,.arc-header{content-visibility:visible;contain-intrinsic-size:auto}
 }
-
-@media(max-width:420px){
-  .session-num{display:none}
-}
+@media(max-width:420px){.session-num{display:none}}
+@media print{body{background:white!important;padding:0}.page{box-shadow:none}.page::before{display:none}}
 
 </style>
 </head>
