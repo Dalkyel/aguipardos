@@ -56,7 +56,10 @@ body{background:var(--shadow);background-image:radial-gradient(ellipse at 20% 10
 .npc-desc{color:var(--shadow);font-style:italic;font-size:.82rem;margin-top:.15rem}
 .locations-list{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem}
 @media(max-width:900px){.locations-list{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.locations-list{grid-template-columns:1fr}}
+@media(max-width:600px){.locations-list{grid-template-columns:1fr}
+  /* Avoid mobile Safari quirks with content-visibility */
+  .char-card,.geo-region,.thread-card,.session{content-visibility:visible;contain-intrinsic-size:auto}
+}
 .loc-card{background:var(--parchment-dark);border:1px solid var(--parchment-shadow);padding:.8rem;font-size:.86rem;line-height:1.5}
 .loc-icon{font-size:1.4rem;float:right;margin-left:.5rem;opacity:.7}
 .loc-name{font-family:'Cinzel',serif;font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:.25rem}
@@ -130,6 +133,40 @@ strong{font-weight:600;color:var(--ink)}em{font-style:italic;color:var(--blood)}
   body{ background:white !important; padding:0; }
   .page{ box-shadow:none; }
   .page::before{ display:none; }
+}
+
+
+
+/* --- Mobile fixes (added) --- */
+html{-webkit-text-size-adjust:100%}
+body{overflow-x:hidden}
+
+/* Allow flex items to shrink and wrap on narrow screens */
+.thread-card>div{min-width:0}
+.char-header>div:last-child{min-width:0}
+.geo-header{min-width:0}
+
+/* Break long titles/strings instead of overflowing */
+.thread-title,.thread-desc,.char-name,.char-role,.loc-name,.loc-desc,.geo-title,.geo-subtitle,.session-header,.session-content,.section-header h2{overflow-wrap:anywhere;word-break:break-word}
+
+@media(max-width:600px){
+  body{padding:1rem .75rem}
+  .header{padding:2.2rem 1rem 1.5rem}
+  .header::before,.header::after{display:none}
+  .party-status{padding:1rem 1rem;gap:1rem}
+  .content{padding:1rem}
+  .section-header{display:block;text-align:center}
+  .section-header::before,.section-header::after{display:none}
+  .section-header h2{white-space:normal;padding:0;letter-spacing:.18em}
+  .thread-card{flex-direction:column;gap:.6rem}
+  .geo-header{flex-wrap:wrap}
+  .geo-subtitle{margin-left:0;width:100%}
+}
+
+@media(max-width:420px){
+  /* timeline numbers can crowd ultra-small screens */
+  .session::before{display:none}
+  .timeline{padding-left:1.1rem}
 }
 
 </style>
