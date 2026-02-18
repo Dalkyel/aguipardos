@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aguipardos — Crónica de Sesiones</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:#c9a84c; --gold-light:#e8c97a; --gold-dim:#7a6030;
+  --ink:#1a1408; --parchment:#f5ead4; --parchment-dark:#e8d8b0; --parchment-shadow:#c9b88a;
+  --blood:#8b1a1a; --blood-light:#b02222; --shadow:#2a1f0e;
+  --teal:#1d5c5c; --teal-light:#2a8080; --purple:#3d1c6e; --purple-light:#5a2fa0;
+  --arc1:#5a2a00; --arc2:#1a3a5c; --arc3:#2a1f4e; --arc4:#3a0a0a; --arc5:#1a4a2a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--shadow);background-image:radial-gradient(ellipse at 20% 10%,rgba(90,60,10,.4) 0%,transparent 60%),radial-gradient(ellipse at 80% 90%,rgba(60,20,10,.4) 0%,transparent 60%);font-family:'Crimson Text',Georgia,serif;color:var(--ink);min-height:100vh;padding:2rem 1rem}
+.page{max-width:960px;margin:0 auto;background:var(--parchment);border:2px solid var(--gold-dim);box-shadow:0 0 0 8px var(--shadow),0 0 0 10px var(--gold-dim),0 0 60px rgba(0,0,0,.8),inset 0 0 80px rgba(180,140,60,.1);position:relative;overflow:hidden}
+.page::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 28px,rgba(180,140,60,.06) 28px,rgba(180,140,60,.06) 29px);pointer-events:none}
+
+/* HEADER */
+.header{text-align:center;padding:3rem 2rem 2rem;border-bottom:3px double var(--gold-dim);position:relative}
+.header::before,.header::after{content:'⚔';font-size:1.8rem;color:var(--gold-dim);position:absolute;top:50%;transform:translateY(-50%)}
+.header::before{left:2rem}.header::after{right:2rem}
+.header-eyebrow{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.4em;color:var(--blood);text-transform:uppercase;margin-bottom:.5rem}
+.header h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.6rem,4vw,2.8rem);color:var(--ink);line-height:1.1;text-shadow:2px 2px 0 var(--parchment-shadow),4px 4px 6px rgba(0,0,0,.2)}
+.header h1 span{color:var(--blood)}
+.header-sub{font-family:'IM Fell English',serif;font-style:italic;font-size:1.05rem;color:var(--gold-dim);margin-top:.5rem}
+.ornament{font-size:1.4rem;color:var(--gold);letter-spacing:.3em;margin:.8rem 0;display:block}
+.nav-link{display:inline-block;margin-top:.8rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.15em;color:var(--teal);text-decoration:none;border:1px solid var(--teal);padding:.3rem .9rem;text-transform:uppercase;transition:background .2s,color .2s}
+.nav-link:hover{background:var(--teal);color:var(--parchment)}
+
+/* CONTENT */
+.content{padding:1.5rem 2rem 3rem}
+
+/* ARC SEPARATOR */
+.arc-header{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 1rem;padding:.7rem 1.2rem;border-radius:2px;position:relative}
+.arc-header::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;border-radius:2px 0 0 2px}
+.arc1 .arc-header,.arc1.arc-header{background:rgba(90,42,0,.12)}.arc1.arc-header::before,.arc1 .arc-header::before{background:var(--arc1)}
+.arc2 .arc-header,.arc2.arc-header{background:rgba(26,58,92,.12)}.arc2.arc-header::before,.arc2 .arc-header::before{background:var(--arc2)}
+.arc3 .arc-header,.arc3.arc-header{background:rgba(42,31,78,.12)}.arc3.arc-header::before,.arc3 .arc-header::before{background:var(--arc3)}
+.arc4 .arc-header,.arc4.arc-header{background:rgba(58,10,10,.12)}.arc4.arc-header::before,.arc4 .arc-header::before{background:var(--arc4)}
+.arc5 .arc-header,.arc5.arc-header{background:rgba(26,74,42,.12)}.arc5.arc-header::before,.arc5 .arc-header::before{background:var(--arc5)}
+.arc-title{font-family:'Cinzel',serif;font-weight:700;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase}
+.arc-subtitle{font-family:'IM Fell English',serif;font-style:italic;font-size:.9rem;color:var(--gold-dim)}
+.arc-sessions{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.1em;color:var(--blood);margin-left:auto;white-space:nowrap}
+
+/* SESSION CARD */
+.session{background:var(--parchment-dark);border:1px solid var(--parchment-shadow);margin-bottom:1rem;border-radius:2px;overflow:hidden}
+.session-toggle{width:100%;background:none;border:none;cursor:pointer;padding:0;text-align:left;display:block}
+.session-header{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.2rem;border-bottom:1px solid transparent;transition:background .15s}
+.session-header:hover{background:rgba(180,140,60,.08)}
+.session-num{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.1em;color:var(--gold-dim);min-width:2.2rem;padding-top:.15rem;text-transform:uppercase}
+.session-main{flex:1}
+.session-name{font-family:'Cinzel',serif;font-weight:700;font-size:1rem;color:var(--ink);line-height:1.2}
+.session-meta{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.3rem}
+.session-tag{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.08em;padding:.1rem .45rem;border-radius:2px;text-transform:uppercase}
+.tag-place{background:rgba(26,58,92,.15);color:var(--arc2)}
+.tag-combat{background:rgba(139,26,26,.15);color:var(--blood)}
+.tag-mystery{background:rgba(61,28,110,.15);color:var(--purple)}
+.tag-lore{background:rgba(29,92,92,.15);color:var(--teal)}
+.tag-dramatic{background:rgba(180,140,60,.2);color:var(--gold-dim)}
+.session-arrow{font-size:.8rem;color:var(--gold-dim);transition:transform .2s;align-self:flex-start;margin-top:.2rem}
+.session.open .session-arrow{transform:rotate(90deg)}
+.session.open .session-header{border-bottom-color:var(--parchment-shadow)}
+
+/* SCENES */
+.scenes{display:none;padding:0 1.2rem 1.2rem}
+.session.open .scenes{display:block}
+.scene{margin-top:.9rem;padding-left:1rem;border-left:2px solid var(--parchment-shadow);position:relative}
+.scene::before{content:'';position:absolute;left:-4px;top:.5rem;width:6px;height:6px;background:var(--gold-dim);border-radius:50%}
+.scene-name{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--blood);margin-bottom:.25rem}
+.scene-text{font-size:.9rem;line-height:1.65;color:var(--ink)}
+.scene-text p{margin-bottom:.4rem}
+blockquote{border-left:3px solid var(--gold-dim);background:rgba(180,140,60,.07);padding:.5rem .8rem .5rem 1rem;margin:.6rem 0;font-family:'IM Fell English',serif;font-style:italic;font-size:.92rem;color:var(--shadow)}
+blockquote cite{display:block;font-style:normal;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.1em;color:var(--gold-dim);margin-top:.3rem}
+.outcome{background:var(--ink);color:var(--gold-light);padding:.5rem .9rem;margin-top:.9rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.08em;border-left:3px solid var(--gold)}
+.outcome strong{color:var(--gold)}
+
+@media(max-width:600px){.header::before,.header::after{display:none}.content{padding:1rem}.arc-sessions{display:none}}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="header">
+  <div class="header-eyebrow">Registro Completo</div>
+  <span class="ornament">✦ ⚔ ✦</span>
+  <h1>Crónica de los <span>Aguipardos</span></h1>
+  <div class="header-sub">Sesiones I — XV &nbsp;·&nbsp; Del Anzuelo al Mar de la Espada</div>
+  <span class="ornament">✦ ✦ ✦</span>
+  <a class="nav-link" href="campaign_dossier.html">← Volver al Dossier</a>
+</div>
+
+<div class="content">
+
+<!-- ═══════════════════ ARC 1 ═══════════════════ -->
+<div class="arc-header arc1">
+  <div>
+    <div class="arc-title" style="color:var(--arc1)">⚓ Arco I — Sombras sobre Leilon</div>
+    <div class="arc-subtitle">Del pueblo costero a las puertas de Neverwinter</div>
+  </div>
+  <div class="arc-sessions">Sesiones 1–3</div>
+</div>
+
+<!-- S1 -->
+<div class="session" id="s1">
+  <button class="session-toggle" onclick="toggle('s1')">
+    <div class="session-header">
+      <span class="session-num">Ses. 1</span>
+      <div class="session-main">
+        <div class="session-name">🧭 Sombras sobre Leilon</div>
+        <div class="session-meta">
+          <span class="session-tag tag-place">Leilon</span>
+          <span class="session-tag tag-combat">Combate</span>
+          <span class="session-tag tag-mystery">Misterio</span>
+        </div>
+      </div>
+      <span class="session-arrow">▶</span>
+    </div>
+  </button>
+  <div class="scenes">
+    <div class="scene">
+      <div class="scene-name">Escena 1 — El Anzuelo y la Carnada</div>
+      <div class="scene-text"><p>Dalkyel toca su tambor a las afueras de Leilon cuando cree ver una sombra de su pasado. Persigue la silueta hasta la taberna <em>El Anzuelo y la Carnada</em>, pero el gigante que creyó reconocer era en realidad un Dragonborn desconocido. En el interior: un bárbaro gigante que bebe sin parar, Nalare esperando salir del lugar, Veldor el harengon atendiendo mesas bajo la supervisión de Dorgen. Drakothar conversa con Nalare; entra Noah observando con curiosidad.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 2 — Los Cuervos de Leilon</div>
+      <div class="scene-text"><p>Un funcionario irrumpe gritando «¡Llegaron los cuervos!». Aparece Dagger, vocero de la alcaldesa, con una oferta de recompensa de Lord Neverember: investigar la muerte de una familia local y la desaparición de guardias. Los aventureros aceptan. Nalare reconforta a Leslie, la hija superviviente.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 3 — La Casa y los No Muertos</div>
+      <div class="scene-text"><p>En la casa familiar descubren los ahorros destinados a la educación de Leslie. Veldor intenta robarlos, generando tensión, pero el conflicto se interrumpe por un ataque de no muertos. Caen heridos Veldor y Dalkyel, pero son socorridos. Veldor, arrepentido, devuelve el dinero.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 4 — La Recompensa y el Descanso</div>
+      <div class="scene-text"><p>Informan a Dagger, reciben recompensa y alojamiento en la mejor posada. Veldor rechaza el alojamiento. El descanso dura hasta que los gritos de «¡piratas!» los despiertan al amanecer.</p></div>
+    </div>
+    <div class="outcome">Resultado: El grupo se forma. Primera misión completada. <strong>Piratas anunciados.</strong></div>
+  </div>
+</div>
+
+<!-- S2 -->
+<div class="session" id="s2">
+  <button class="session-toggle" onclick="toggle('s2')">
+    <div class="session-header">
+      <span class="session-num">Ses. 2</span>
+      <div class="session-main">
+        <div class="session-name">🏴‍☠️ Piratas</div>
+        <div class="session-meta">
+          <span class="session-tag tag-place">Marejada de los Hombres Muertos</span>
+          <span class="session-tag tag-combat">Combate</span>
+          <span class="session-tag tag-mystery">Dragón de Sombras</span>
+        </div>
+      </div>
+      <span class="session-arrow">▶</span>
+    </div>
+  </button>
+  <div class="scenes">
+    <div class="scene">
+      <div class="scene-name">Escena 1 — El Muelle y la Emboscada</div>
+      <div class="scene-text"><p>Los aventureros van al muelle y sueltan un esquife, pero son emboscados. Drakothar cae al agua; Noah lo rescata. Nalare cae inconsciente tras una lluvia de flechas y es estabilizada en plena fuga. Dalkyel dirige el esquife usando su conocimiento marítimo.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 2 — Retirada y Descubrimientos</div>
+      <div class="scene-text"><p>Se repliegan a la costa. En la alforja de un pirata muerto hallan un muñeco extraño y una nota de SihlHa con órdenes de atacar y secuestrar. Dalkyel se queda el muñeco. Veldor y Noah consiguen pociones con Mafar, el comerciante turbio.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 3 — El Dragón sobre la Marejada</div>
+      <div class="scene-text"><p>Un dragón de sombras sobrevuela el esquife. El grupo se oculta entre algas y rocas. Drakothar cubre a Nalare con barro cuando ella asoma la cabeza sin darse cuenta. El dragón, confundido, se aleja. Primera aparición de un dragón de sombras.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 4 — El Barco Encallado y los Muertos</div>
+      <div class="scene-text"><p>Hallan un barco con montones de cadáveres pálidos y drenados. Dalkyel y Veldor encuentran el diario del capitán muerto hace semanas. Fuera, Dorgen —jefe de Veldor— agoniza en proceso de transformación. Antes de perder el control, entrega a Veldor una <strong>carta de libertad</strong>.</p>
+      <blockquote>Drakothar, con el consentimiento de Veldor, le corta la cabeza, dándole un fin honorable antes de que la maldición lo devore.</blockquote></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 5 — El Enfrentamiento con SihlHa</div>
+      <div class="scene-text"><p>SihlHa emerge de entre los cadáveres, herido por el dragón pero vivo. Culpa a los aventureros por su desgracia y ataca con fuego y veneno. Nalare desgarra su carne con conjuros, Veldor asesta cortes precisos, Drakothar lo remata. En el cuerpo hallan una carta dirigida a Dagger, revelando su implicación.</p></div>
+    </div>
+    <div class="outcome">Resultado: SihlHa muerto. Dagger implicado. <strong>Dorgen libre. Carta de libertad para Veldor.</strong></div>
+  </div>
+</div>
+
+<!-- S3 -->
+<div class="session" id="s3">
+  <button class="session-toggle" onclick="toggle('s3')">
+    <div class="session-header">
+      <span class="session-num">Ses. 3</span>
+      <div class="session-main">
+        <div class="session-name">🕯 El Culto de los Secretos</div>
+        <div class="session-meta">
+          <span class="session-tag tag-place">Leilon → Neverwinter</span>
+          <span class="session-tag tag-mystery">Conspiración</span>
+          <span class="session-tag tag-dramatic">Presagio</span>
+        </div>
+      </div>
+      <span class="session-arrow">▶</span>
+    </div>
+  </button>
+  <div class="scenes">
+    <div class="scene">
+      <div class="scene-name">Escena 1 — El Sueño Premonitorio</div>
+      <div class="scene-text"><p>De vuelta en la posada, Nalare tiene un sueño premonitorio: la posada explota consumiendo a todos sus compañeros. Despierta y corre a despertar a todos. Un sospechoso en la planta baja es interceptado. Nalare grita que su mochila explotará; la lanzan cerca de las ruinas del orfanato. Detona sin víctimas. El sospechoso muerde una cápsula envenenada y muere.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 2 — La Huida de Dagger</div>
+      <div class="scene-text"><p>Corren a la alcaldía. Dagger partió hace una hora. Su guardia personal también murió mordiendo veneno. La alcaldesa Grizzelda estaba viva; Veldor la despierta a gritos. Resulta que Dagger había manipulado a la alcaldesa desde el principio.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 3 — La Audiencia con Grizzelda</div>
+      <div class="scene-text"><p>Grizzelda entiende que Dagger orquestó los secuestros. Entrega una <strong>carta sellada para Lord Neverember</strong> y promete recompensa si capturan o exponen al traidor.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 4 — El Pasaje hacia Neverwinter</div>
+      <div class="scene-text"><p>En el muelle conocen a los hermanos Faernhart (Delvin y Kevori). Comparten los gastos del velero hacia el norte. Durante el viaje, Noah sugiere no rescatar a una niña náufraga. Al mirar atrás, todos ven a la <strong>niña de ojos rojos</strong> devolviéndoles la mirada desde la niebla. El barco es atacado por sahuagin; parte de la tripulación muere.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 5 — La Joya del Norte</div>
+      <div class="scene-text"><p>El barco llega a los muelles de Neverwinter. La ciudad los recibe con vapor de aguas termales y el sonido de artesanos. Bajo la sombra del Monte Hotenow, la ciudad se reconstruye bajo Neverember.</p></div>
+    </div>
+    <div class="outcome">Resultado: Grupo en Neverwinter. <strong>Niña de ojos rojos — omen desconocido. Hermanos Faernhart en la ciudad.</strong></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ ARC 2 ═══════════════════ -->
+<div class="arc-header arc2">
+  <div>
+    <div class="arc-title" style="color:var(--arc2)">🏛 Arco II — Bajo Neverwinter</div>
+    <div class="arc-subtitle">Las catacumbas del Culto de Vecna</div>
+  </div>
+  <div class="arc-sessions">Sesiones 4–7</div>
+</div>
+
+<!-- S4 -->
+<div class="session" id="s4">
+  <button class="session-toggle" onclick="toggle('s4')">
+    <div class="session-header">
+      <span class="session-num">Ses. 4</span>
+      <div class="session-main">
+        <div class="session-name">⚰️ Bajo Neverwinter</div>
+        <div class="session-meta">
+          <span class="session-tag tag-place">High Road · Neverwinter Bajo</span>
+          <span class="session-tag tag-combat">Emboscada</span>
+          <span class="session-tag tag-mystery">El Ojo que Busca</span>
+        </div>
+      </div>
+      <span class="session-arrow">▶</span>
+    </div>
+  </button>
+  <div class="scenes">
+    <div class="scene">
+      <div class="scene-name">Escena 1 — La Caza de Dagger</div>
+      <div class="scene-text"><p>Veldor, Drakothar y Nalare interceptan a Dagger en el High Road. De camino, se topan con <strong>Parthurnax</strong>, el hermano de Drakothar, que también seguía la pista del dragón Viligax. Drakothar le indica la posada y le pide que los espere. La emboscada es breve pero intensa; el gladiador cae. Dagger, acorralado, es abatido.</p>
+      <blockquote>«Los secretos… él los valora más que la vida misma…» <cite>— Últimas palabras de Dagger</cite></blockquote>
+      <p>Su cuerpo es llevado a la oficina del Lord Regente junto con la carta de Grizzelda. Los guardias aceptan el cadáver pero no los dejan pasar. Reciben solo una carta genérica de agradecimiento.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 2 — El Descanso Antes de la Tormenta</div>
+      <div class="scene-text"><p>En la posada del distrito inferior, Noah duerme y entra en comunión con <strong>Mystra</strong>, quien le muestra un fragmento de una silla de Spelljamming siendo transportada en secreto en Neverwinter. Veldor experimenta una conexión fugaz con el Feywild; una criatura peluda lo empuja de vuelta gritando «¡Ya viene!».</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 3 — La Tragedia de los Hermanos Faernhart</div>
+      <div class="scene-text"><p>Kevori despierta al grupo: su hermano Delvin salió al amanecer y no regresó. Lo encuentran muerto. En su mano, una pequeña esfera metálica —<strong>El Ojo que Busca</strong>— emite un pulso mágico. Los lanzadores sienten un ojo invisible observándolos. Kevori suplica justicia. Drakothar descubre que Parthurnax también llegó a la posada pero se fue con Delvin.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 4 — El Ojo que Guía</div>
+      <div class="scene-text"><p>Noah y Dalkyel analizan la esfera. Una voz incorpórea susurra <em>«Salve aquel que no muere»</em> y la esfera flota, guiándolos por callejones viejos hasta una entrada semienterrada cerca de la Cicatriz. Bajo ella: los túneles de Neverwinter Bajo.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escenas 5 — 6 — Los Túneles y el Altar Profanado</div>
+      <div class="scene-text"><p>En los túneles, una criatura acuática sin rostro los ataca y muere dejando un estremecimiento. El fantasma de <strong>Chanelle Hallwinter</strong> se materializa: Delvin fue perseguido por un hombre de capucha gris; cultistas han profanado las criptas de Oghma. Al liberar su alma, deja el <strong>Escudo Hallwinter +1</strong>. Nalare purifica el altar de Oghma y El Ojo encaja en una puerta circular.</p>
+      <blockquote>«La sabiduría florece en quien no teme descender.»</blockquote></div>
+    </div>
+    <div class="outcome">Resultado: Dagger muerto. Netherwinter Bajo accesible. <strong>El Ojo abre la puerta al corazón del culto.</strong></div>
+  </div>
+</div>
+
+<!-- S5/6 -->
+<div class="session" id="s56">
+  <button class="session-toggle" onclick="toggle('s56')">
+    <div class="session-header">
+      <span class="session-num">Ses. 5–6</span>
+      <div class="session-main">
+        <div class="session-name">🕸 Nido de Vecna (Partes I y II)</div>
+        <div class="session-meta">
+          <span class="session-tag tag-place">Neverwinter Bajo</span>
+          <span class="session-tag tag-combat">Zalyr</span>
+          <span class="session-tag tag-mystery">Marca de Vecna</span>
+          <span class="session-tag tag-lore">Biblioteca Eldritch</span>
+        </div>
+      </div>
+      <span class="session-arrow">▶</span>
+    </div>
+  </button>
+  <div class="scenes">
+    <div class="scene">
+      <div class="scene-name">Escena 1 — El Signo del Susurrante</div>
+      <div class="scene-text"><p>Las catacumbas se ensanchan con símbolos del Culto de Vecna. El grupo avanza con sigilo entre siete cultistas dormidos. Descubren: el líder se llama <strong>Zalyr</strong>, que extrae secretos del alma; el espía Delvin fue descubierto y asesinado por él. Hallan dos túnicas de culto, anillos y un Sombrero del Disfraz oculto.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 2 — La Biblioteca Eldritch</div>
+      <div class="scene-text"><p>Un salón circular de estanterías ennegrecidas y libros húmedos. Textos sobre necromancia, almas y rituales de extracción espiritual. Un manuscrito revela que este culto es solo una de muchas células activas. Dalkyel toma un libro de la biblioteca sobre robo de secretos y necromancia.</p>
+      <blockquote>«El alma, cuando se fuerza, canta sus secretos. Solo falta encontrar el ritmo correcto.»</blockquote></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 3 — El Ritual de Zalyr y la Marca</div>
+      <div class="scene-text"><p>En una cámara circular, Zalyr dirige un ritual bajo un círculo rúnico verde. Dos seguidores se transforman en sombras vivientes. El combate es feroz. Cuando Zalyr cae, una calavera etérea con un ojo verde se materializa.</p>
+      <blockquote>«Buenas noticias, Zalyr… aunque tus esfuerzos han sido mediocres, me has traído nuevos sujetos de interés. Sí… los veo. Su potencial… me pertenece.»<cite>— Vecna «El Susurrante»</cite></blockquote>
+      <p>Una explosión de energía sombría atraviesa a todos. Cada uno recibe una <strong>marca de Vecna</strong>: algunos el Encanto del Ojo Sobrenatural, otros el Encanto de la Mano que se Arrastra. Finalmente rescatan a <strong>Parthurnax</strong>, amnésico y aterrorizado.</p>
+      <blockquote>«Nos volveremos a ver… mortales del saber prohibido.»</blockquote></div>
+    </div>
+    <div class="outcome">Resultado: Zalyr muerto. <strong>Todos marcados por Vecna. Parthurnax rescatado pero amnésico.</strong></div>
+  </div>
+</div>
+
+<!-- S7 -->
+<div class="session" id="s7">
+  <button class="session-toggle" onclick="toggle('s7')">
+    <div class="session-header">
+      <span class="session-num">Ses. 7</span>
+      <div class="session-main">
+        <div class="session-name">🏛 El Gobierno del Cambio</div>
+        <div class="session-meta">
+          <span class="session-tag tag-place">Neverwinter · Bosque Sur</span>
+          <span class="session-tag tag-lore">Audiencia Neverember</span>
+          <span class="session-tag tag-mystery">Spelljammer</span>
+        </div>
+      </div>
+      <span class="session-arrow">▶</span>
+    </div>
+  </button>
+  <div class="scenes">
+    <div class="scene">
+      <div class="scene-name">Escenas 1–3 — El Sello, el Hermano y la Carta</div>
+      <div class="scene-text"><p>Tras la derrota de Zalyr, nuevas runas de fuego marcan a todos con el símbolo de Vecna: una mano con un ojo en su centro. Parthurnax es encontrado con vida pero su mente fue arrancada; cae en coma profundo. Neverember revela que era su informante secreto, rastreando sectas en el norte. Drakothar, impotente, lo deja bajo custodia prometiendo traerlo de vuelta. Kevori envía una carta amarga despidiéndose y partiendo hacia Elturel con el cuerpo de su hermano.</p>
+      <blockquote>«Si hallaron pistas de esas sectas, presenten la evidencia a Lord Neverember. Reclamen la recompensa, la merecen…» <cite>— Kevori Faernhart</cite></blockquote></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 4 — La Audiencia del Regente</div>
+      <div class="scene-text"><p>Neverember los nombra oficialmente <strong>Protectores de la Ciudad</strong> con sueldo de 500 po/semana. Presenta a <strong>Bastion de Luz</strong> (warforged) y <strong>Grandal Glutonian</strong> (bárbaro) como nuevos aliados. Revela: Parthurnax investigaba a <strong>Melaxir D'harán</strong>, comerciante de Chult; un barco Spelljammer cayó en el bosque sur; el profesor Gustaff Balkov fue capturado. Primera misión: investigar el impacto y rescatar al profesor.</p>
+      <blockquote>«Ahora solo falta un nombre para su grupo…» <cite>— Neverember · Drakothar sugiere: «Aguipardos»</cite></blockquote></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 5 — El Barco del Cielo</div>
+      <div class="scene-text"><p>En el bosque al sur, hallan restos calcinados de un Spelljammer. El núcleo de la silla fue extraído por alguien antes de su llegada. Un cadáver tiene la marca de Vecna grabada en la espalda. Las garras que destrozaron el casco son enormes. El Ojo de Noah vibra violentamente al acercar las marcas del dragón. El muñeco de Dalkyel ríe solo: <em>«Ja, ja, ja… ahora tu alma me pertenece.»</em> Los cadáveres se levantan con cuencas encendidas en rojo… y desciende un dragón de sombras.</p></div>
+    </div>
+    <div class="outcome">Resultado: Grupo nombrado Aguipardos. <strong>Misión: Spelljammer y Prof. Balkov. Dragón de sombras en el bosque.</strong></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ ARC 3 ═══════════════════ -->
+<div class="arc-header arc3">
+  <div>
+    <div class="arc-title" style="color:var(--arc3)">🌑 Arco III — Los Ojos de las Sombras y Sigil</div>
+    <div class="arc-subtitle">El primer dragón, las visiones del apocalipsis y la Ciudad de las Mil Puertas</div>
+  </div>
+  <div class="arc-sessions">Sesiones 8–9</div>
+</div>
+
+<!-- S8 -->
+<div class="session" id="s8">
+  <button class="session-toggle" onclick="toggle('s8')">
+    <div class="session-header">
+      <span class="session-num">Ses. 8</span>
+      <div class="session-main">
+        <div class="session-name">🌑 Los Ojos de las Sombras</div>
+        <div class="session-meta">
+          <span class="session-tag tag-place">Bosque Sur de Neverwinter</span>
+          <span class="session-tag tag-combat">Dragón Joven</span>
+          <span class="session-tag tag-lore">El don de Melaxir</span>
+        </div>
+      </div>
+      <span class="session-arrow">▶</span>
+    </div>
+  </button>
+  <div class="scenes">
+    <div class="scene">
+      <div class="scene-name">Escenas 1–2 — Combate contra el Dragón Joven</div>
+      <div class="scene-text"><p>Un dragón de sombras desciende del dosel: sus escamas absorben la luz, sus ojos son brasas ahogadas. <em>«Melaxir los vio venir… y me dio el don de la eternidad.»</em> El combate es brutal. Descubrimientos clave durante la batalla: destruir el sello en la frente de un cadáver disuelve su sombra; los rayos del sol filtrados debilitan al dragón. Noah conjura destellos, Nalare abre el follaje, Drakothar asesta el golpe final.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 3 — El Cuerpo entre las Sombras</div>
+      <div class="scene-text"><p>Donde había un dragón, ahora yace un hombre joven de piel pálida y cabellos blancos. Nalare lo estabiliza. Con voz quebrada confiesa:</p>
+      <blockquote>«Este poder… viene de la esencia de un dragón agonizante. Lo robó… lo robó de su alma…»</blockquote>
+      <p>Las palabras congelan a Drakothar: el nombre resuena en su mente — <strong>Viligax</strong>, el dragón que destruyó su hogar. Mientras Drakothar lucha contra su furia, Bastion y Grandal ejecutan al pupilo de Melaxir.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escenas 4–6 — El Portal y las Visiones del Fin</div>
+      <div class="scene-text"><p>Bastion inserta su piedra de obsidiana en el núcleo Spelljammer. Un pulso carmesí y violeta se expande; el suelo se abre. Flotando en la nada, cada uno ve su visión apocalíptica personal enviada por Vecna.</p>
+      <blockquote>«Esto es lo que sucederá… si fracasan.»</blockquote>
+      <p>Caen sobre el suelo de mármol de una torre circular. En el centro, un obelisco negro. Una mujer los mira arqueando una ceja:</p>
+      <blockquote>«¿Qué putas?»</blockquote></div>
+    </div>
+    <div class="outcome">Resultado: Primer dragón de sombras destruido. <strong>Debilidades reveladas: luz solar y sellos. Transportados a Sigil.</strong></div>
+  </div>
+</div>
+
+<!-- S9 -->
+<div class="session" id="s9">
+  <button class="session-toggle" onclick="toggle('s9')">
+    <div class="session-header">
+      <span class="session-num">Ses. 9</span>
+      <div class="session-main">
+        <div class="session-name">☁️ En Sigil</div>
+        <div class="session-meta">
+          <span class="session-tag tag-place">Sigil — Ciudad de las Mil Puertas</span>
+          <span class="session-tag tag-lore">Alustriel Silverhand</span>
+          <span class="session-tag tag-lore">Obelisco de Obsidiana</span>
+        </div>
+      </div>
+      <span class="session-arrow">▶</span>
+    </div>
+  </button>
+  <div class="scenes">
+    <div class="scene">
+      <div class="scene-name">Escenas 1–3 — La Torre del Obelisco y Alustriel</div>
+      <div class="scene-text"><p>Despiertan en la Torre de <strong>Alustriel Silverhand</strong>, hija de Mystra, en Sigil, el centro de los planos exteriores. Alustriel conjura sugestión masiva para calmar al grupo. El obelisco de obsidiana (cuarteado, ~3 metros) resuena con el fragmento que traen. Explica que fue parte de una red de artefactos que una criatura vil intentó usar para reformar la realidad; hay al menos dos piezas más dispersas. Confirma que Melaxir usa una piedra negra —otro fragmento— para sus rituales. Bastion ha vuelto a Eberron.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 4 — Encargos y Regalos</div>
+      <div class="scene-text"><p>El grupo coloca el fragmento en el obelisco. El cristal encaja con el sonido de un corazón latiendo. Alustriel entrega: <strong>Bolsa de Carga</strong>, <strong>Bloodwell Vial</strong> (para Nalare), libro de conjuros con Imagen Espejo / Invisibilidad / Paso Neblino / Inmovilizar Persona, y un fiambre exótico para Grandal. Son transportados de vuelta a Neverwinter; 4–5 días han pasado.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escenas 5–8 — De Vuelta en Neverwinter</div>
+      <div class="scene-text"><p>Las catacumbas están completamente saqueadas. En el muelle, <em>El Ojo Esmeralda</em> —barco de Orken— está atracado. Dalkyel lo detecta pero decide ignorarlo. Neverember los recibe con frialdad y los insta a investigar el cementerio Neverdeath: el profesor Balkov podría seguir vivo allí. Los ladrones de Veldor entregan un mensaje: Moscoff quiere hablar — Melaxir ha asomado la cabeza.</p></div>
+    </div>
+    <div class="outcome">Resultado: 1/3 fragmentos en el Obelisco. <strong>Misión: Mausoleo de Neverdeath. Balkov cautivo.</strong></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ ARC 4 ═══════════════════ -->
+<div class="arc-header arc4">
+  <div>
+    <div class="arc-title" style="color:var(--arc4)">⚰️ Arco IV — El Mausoleo de Neverdeath</div>
+    <div class="arc-subtitle">Dos fragmentos, un dragón caído y la traición de Orken</div>
+  </div>
+  <div class="arc-sessions">Sesiones 10–12</div>
+</div>
+
+<!-- S10 -->
+<div class="session" id="s10">
+  <button class="session-toggle" onclick="toggle('s10')">
+    <div class="session-header">
+      <span class="session-num">Ses. 10</span>
+      <div class="session-main">
+        <div class="session-name">⚰️ Bajo el Mausoleo</div>
+        <div class="session-meta">
+          <span class="session-tag tag-place">Cementerio Neverdeath</span>
+          <span class="session-tag tag-combat">Briosk · Asesinos</span>
+          <span class="session-tag tag-dramatic">El Gran Engaño</span>
+        </div>
+      </div>
+      <span class="session-arrow">▶</span>
+    </div>
+  </button>
+  <div class="scenes">
+    <div class="scene">
+      <div class="scene-name">Escenas 1–2 — Entrada y Engaño</div>
+      <div class="scene-text"><p>El grupo descubre la trampilla oculta en el mausoleo. Bajo ella: túneles iluminados por antorchas verdes, figuras encapuchadas con cadáveres y frascos. Dalkyel improvisa: finge ser un emisario de Briosk. Los demás se disfrazan con túnicas de guardias caídos y simulan escoltarlos.</p>
+      <blockquote>«Briosk no quiere ser interrumpido. Está en comunión con su maestro.» <cite>— Cultista tembloroso</cite></blockquote></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 3 — El Descubrimiento</div>
+      <div class="scene-text"><p>Hallan dos prisioneros: el académico <strong>Prof. Gustaff Balkov</strong> y el enano pirata <strong>Zourum Al-Saryak</strong>, que reconoce a Dalkyel como el pupilo de Orken. Un asesino descubre el engaño; combate estalla. Liberan a los prisioneros.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 4 — La Traición y la Huida</div>
+      <div class="scene-text"><p>Dalkyel guía a los prisioneros hacia la salida. Un puñal certero casi lo mata. Con su última fuerza se teletransporta y envía un mensaje de emergencia al gremio de ladrones: <em>«Asistencia inmediata. Punto negro.»</em> Mientras se arrastra, Briosk regresa.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 5 — La Emboscada de Briosk</div>
+      <div class="scene-text"><p>Las puertas se cierran de golpe. Briosk —el dragón de sombras— se materializa con ojos amarillos y escamas de sombra. Drakothar lo enfrenta de frente. Nalare canaliza luz sagrada. Veldor ataca gargantas desde las sombras. Noah lanza orbes cromáticas. Con un último golpe combinado, Briosk cae. Su cuerpo de sombra se desintegra, revelando a un hombre joven de cabello blanco.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escenas 6–7 — La Máscara del Dragón y el Silencio</div>
+      <div class="scene-text"><p>Veldor toma la <strong>segunda piedra de obsidiana</strong>. Noah, con el Sombrero del Disfraz, adopta la forma de Briosk. Ordena a los tenientes del dragón que huyan. Uno a uno, obedecen aterrados y abandonan el mausoleo.</p>
+      <blockquote>«Si salimos de esta vivos, necesitaremos algo más que suerte para lo que viene.»<cite>— Noah</cite></blockquote></div>
+    </div>
+    <div class="outcome">Resultado: Briosk muerto. <strong>2/3 fragmentos del Obelisco. Balkov y Zourum rescatados.</strong></div>
+  </div>
+</div>
+
+<!-- S11 -->
+<div class="session" id="s11">
+  <button class="session-toggle" onclick="toggle('s11')">
+    <div class="session-header">
+      <span class="session-num">Ses. 11</span>
+      <div class="session-main">
+        <div class="session-name">🪨 2 de 3 Piedras</div>
+        <div class="session-meta">
+          <span class="session-tag tag-place">Mausoleo · Muelles</span>
+          <span class="session-tag tag-dramatic">Traición de Orken</span>
+          <span class="session-tag tag-combat">Incendio del barco</span>
+        </div>
+      </div>
+      <span class="session-arrow">▶</span>
+    </div>
+  </button>
+  <div class="scenes">
+    <div class="scene">
+      <div class="scene-name">Escena 1 — Ecos bajo las Ruinas</div>
+      <div class="scene-text"><p>Registran el cubil. Hallan una <strong>Inmovable Rod</strong>, una gema arcana y un anillo de defensa. Veldor activa unas runas en un túnel apartado; una llamarada lo lanza inconsciente. El mausoleo comienza a explotar. Drakothar carga a Veldor mientras Nalare y Noah los cubren. El mausoleo se derrumba en lluvia de fuego detrás de ellos.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 2 — Aguas Turbias (Dalkyel y Orken)</div>
+      <div class="scene-text"><p>Dalkyel entregó a Balkov a Moscoff y se dirigió con Zourum a los muelles, al barco de su mentor Orken. El reencuentro fue aparentemente cálido. Dalkyel le devolvió el viejo diario. Pero el vino tenía sabor metálico.</p>
+      <p>Su cuerpo se paralizó. Lúcido, vio a Zourum entrar. Hablaban de entregar el libro de Dalkyel a Melaxir. Orken tenía la mirada vacía — estaba hechizado.</p>
+      <blockquote>«Lánzalo al mar.» <cite>— Zourum</cite></blockquote>
+      <p>El orco dudó. Como último acto de respeto, encerró a Dalkyel en un arcón en lugar de arrojarlo al mar.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escenas 3–5 — Asalto en los Muelles</div>
+      <div class="scene-text"><p>Padre Andrey cura al grupo. Orion, el gato de Dalkyel, desciende señalando los muelles. El barco de Zourum estaba zarpando. Nalare incendia las velas; Veldor y Grandal suben por las cuerdas. Dalkyel rompe el arcón desde dentro, se transporta al barco y encuentra a Orken. Dalkyel le clava la daga; Orken cae sin resistencia, liberado de su esclavitud. El barco arde y choca contra los muelles en un estruendo ensordecedor. Los Aguipardos emergen con Zourum inconsciente y el libro de Dalkyel.</p>
+      <blockquote>«Muy bien, pequeño aprendiz… el juego apenas comienza.»</blockquote></div>
+    </div>
+    <div class="outcome">Resultado: Orken muerto. Zourum capturado. <strong>El libro de Dalkyel recuperado. El «Ojo Esmeralda» hundido.</strong></div>
+  </div>
+</div>
+
+<!-- S12 -->
+<div class="session" id="s12">
+  <button class="session-toggle" onclick="toggle('s12')">
+    <div class="session-header">
+      <span class="session-num">Ses. 12</span>
+      <div class="session-main">
+        <div class="session-name">🍄 Viaje de Hongos</div>
+        <div class="session-meta">
+          <span class="session-tag tag-place">Neverwinter · Portal Feywild</span>
+          <span class="session-tag tag-dramatic">Trato con Moscoff</span>
+          <span class="session-tag tag-mystery">La Nuez de Veldor</span>
+        </div>
+      </div>
+      <span class="session-arrow">▶</span>
+    </div>
+  </button>
+  <div class="scenes">
+    <div class="scene">
+      <div class="scene-name">Escenas 1–2 — El Precio del Silencio y el Trato</div>
+      <div class="scene-text"><p>Zourum confiesa trabajar para Melaxir, que controlaba a Orken con hechizos. Ofrece guiarlos a la isla si le dejan vivir. Veldor le corta la nariz de todas formas. Luego lo llevan a Moscoff. En la guarida, Moscoff mata a un subordinado ante todos para demostrar su poder. Veldor, para ganarse su confianza, mata a Zourum frente a él.</p>
+      <blockquote>«Cumpliré mi palabra. Solo dame un barco y un lugar donde nadie nos encuentre.»<cite>— Veldor ante Moscoff</cite></blockquote>
+      <p>Moscoff acepta, les da una nueva guarida y les permite ver a Balkov con vida (pero agotado). Advierte que los muelles siguen cerrados.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 3 — La Guarida y los Secretos</div>
+      <div class="scene-text"><p>En el sótano proporcionado, Dalkyel erige un domo mágico de refugio. Después cose huesos en su túnica murmurando en lengua muerta; una presencia invisible limpia el aire a su alrededor. Glutonian rompe la tensión hablando a Drakothar en dracónico —una conexión inesperada entre guerreros.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escenas 4–7 — La Nuez y el Portal</div>
+      <div class="scene-text"><p>La nuez encantada de Veldor pulsa y lo llama. Lo guían hasta un árbol retorcido en los límites de la ciudad. Al tocar la corteza, se abre un portal vivo. Todos cruzan. El Feywild está en llamas: aldeas quemadas, refugiados en jaulas. Combaten durante horas rescatando treinta criaturas feéricas. Un anciano harengon, <strong>Astor</strong>, le revela que sus padres Isha y Teodore nunca lo abandonaron — fueron secuestrados por traficantes de criaturas.</p>
+      <blockquote>«Has crecido valiente, Veldor… No hay fuego que apague lo que eres.»<cite>— Astor</cite></blockquote>
+      <p>Mientras tanto, Dalkyel experimenta con magia necromántica en un callejón. Reanima brevemente a un vagabundo muerto para probar su poder.</p></div>
+    </div>
+    <div class="outcome">Resultado: Portal al Feywild. 30+ refugiados feéricos rescatados. <strong>Padres de Veldor cautivos del dragón sombrío.</strong></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ ARC 5 ═══════════════════ -->
+<div class="arc-header arc5">
+  <div>
+    <div class="arc-title" style="color:var(--arc5)">🌿 Arco V — El Feywild en Llamas</div>
+    <div class="arc-subtitle">El dragón Aghmed, la bruja del pantano y el ritual de Jerren</div>
+  </div>
+  <div class="arc-sessions">Sesiones 13–14</div>
+</div>
+
+<!-- S13 -->
+<div class="session" id="s13">
+  <button class="session-toggle" onclick="toggle('s13')">
+    <div class="session-header">
+      <span class="session-num">Ses. 13</span>
+      <div class="session-main">
+        <div class="session-name">🌫 Un Día Neblinoso</div>
+        <div class="session-meta">
+          <span class="session-tag tag-place">Feywild — Bosque de Niebla</span>
+          <span class="session-tag tag-combat">Elemental de Niebla</span>
+          <span class="session-tag tag-lore">Mensajero de Amaunator</span>
+        </div>
+      </div>
+      <span class="session-arrow">▶</span>
+    </div>
+  </button>
+  <div class="scenes">
+    <div class="scene">
+      <div class="scene-name">Escenas 1–4 — La Niebla Viva y el Corazón</div>
+      <div class="scene-text"><p>Una niebla espesa engulle a Veldor. La cuerda mágica se corta al tocarla. Raíces negras y retorcidas emergen del suelo con voluntad propia. Dalkyel agita el abanico mágico, revelando criaturas de madera y ramas. Espectros atacan desde todas direcciones. De la espalda de Nalare brotan <strong>alas de pura luz dorada</strong>; un estallido celestial ilumina el bosque. Dalkyel levita sobre la niebla y detecta que gira en espiral al norte. Nalare la disipa. En el centro: un nudo de brea negra pulsante. Noah y Grandal caen inconscientes. Dalkyel lo destruye con el poder de Vecna.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escenas 5–6 — Las Ruinas y la Roca de las Jaulas</div>
+      <div class="scene-text"><p>Encuentran un sátiro con pociones —<strong>Babaco</strong>— que les advirtió sobre la bruja y el dragón. Veldor explora y llega a un río seco con un islote. En el centro: una enorme roca con jaulas suspendidas. Entre los prisioneros feéricos, <strong>reconoce los rostros de sus padres: Isha y Teodore</strong>. El dragón sombrío desciende, devora a un prisionero y extrae su sombra. Veldor usa una ilusión para distraerlo y huye al campamento.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 7 — La Visita del Ángel</div>
+      <div class="scene-text"><p>Una figura angélica desciende al domo. El tiempo se detiene. Solo Nalare puede moverse. El <strong>Mensajero de Amaunator</strong> le habla:</p>
+      <blockquote>«Hija de la Luz, tu hilo se tensa demasiado. Amaunator te observa… y te elige.»</blockquote>
+      <p>Le entrega un fragmento astral. Elimina la marca de Vecna de Nalare (temporalmente). El tiempo vuelve a fluir.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 8 — Sombras, Promesas y Melodías</div>
+      <div class="scene-text"><p>Drakothar y Grandal confrontan a Dalkyel por usar la magia de Vecna.</p>
+      <blockquote>«Haré uso de todo el conocimiento disponible. Si algún día mi camino se desvía, los autorizo a matarme.»<cite>— Dalkyel</cite></blockquote>
+      <p>Drakothar asiente. Noah toca su flauta: una versión imperfecta del Himno a la Alegría. El dragón sombrío aletea sobre el domo al amanecer.</p></div>
+    </div>
+    <div class="outcome">Resultado: Elemental destruido. <strong>Padres de Veldor identificados. Nalare marcada como elegida de Amaunator.</strong></div>
+  </div>
+</div>
+
+<!-- S14 -->
+<div class="session" id="s14">
+  <button class="session-toggle" onclick="toggle('s14')">
+    <div class="session-header">
+      <span class="session-num">Ses. 14</span>
+      <div class="session-main">
+        <div class="session-name">⛓️ El Pantano de la Bruja y las Cadenas del Secreto</div>
+        <div class="session-meta">
+          <span class="session-tag tag-place">Feywild — Pantano y Roca</span>
+          <span class="session-tag tag-combat">Aghmed destruido</span>
+          <span class="session-tag tag-dramatic">Ritual de Jerren</span>
+        </div>
+      </div>
+      <span class="session-arrow">▶</span>
+    </div>
+  </button>
+  <div class="scenes">
+    <div class="scene">
+      <div class="scene-name">Escenas 1–2 — La Bruja del Fango</div>
+      <div class="scene-text"><p>Rescatan al sátiro Babaco de un pantano en expansión. Babaco revela que la bruja del pantano se alió con el dragón: caza a los que intentan huir con información. La vieja grotesca (Hag) ataca lanzando pociones de ácido y fuego, hundiéndose y reapareciendo. Nalare crea zonas purificadas; el grupo le conecta golpes reales. La bruja cae.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 3 — La Caída de Aghmed</div>
+      <div class="scene-text"><p>El dragón <strong>Aghmed</strong> desciende con sombras del pantano. Noah roza la muerte; en una visión, Mystra lo guía a comprender una nueva forma de magia. En un acto definitivo, Nalare desata una secuencia de hechizos devastadores canalizando todo lo que es. El dragón es destruido. Solo queda un hombre desnudo de cabello blanco con un diario. El diario confirma que Aghmed robaba secretos para sí mismo —actuaba fuera de las órdenes de Melaxir.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 4 — La Prisión de Piedra y el Botín</div>
+      <div class="scene-text"><p>Liberan la roca de las jaulas. Un anciano minotauro informa que dos cultistas huyeron. Noah identifica el botín: espada de llamas (para Drakothar), anillo almacena conjuros (Noah), bolsa de trucos (Veldor), cuentas de ónix (fondo común).</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 5 — Sangre Fría</div>
+      <div class="scene-text"><p>Veldor y Dalkyel siguen a dos cultistas que huyen hablando de sus familias. Uno menciona a su esposa Maritza.</p>
+      <blockquote>Veldor y Dalkyel asesinan al esposo a sangre fría. El segundo cultista, Jerren, es capturado.</blockquote></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escenas 6–7 — Veldor y sus Padres / El Ritual</div>
+      <div class="scene-text"><p>Veldor habla con Isha y Teodore. Le cuentan cómo lo buscaron durante años. Veldor los trata con frialdad. Nalare lo confronta. Él solo les pide que se vayan. Sus padres parten llorando. Jerren acepta el ritual de comunión para demostrar lealtad. Cada aventurero entrega un secreto — Drakothar pierde el recuerdo de su primera espada; Nalare olvida la despedida con su familia. Al volver, la marca de Vecna regresa a Nalare. Drakothar intenta matar a Jerren; Veldor lo detiene. El grupo debe dormir a Drakothar.</p></div>
+    </div>
+    <div class="outcome">Resultado: Aghmed y la bruja muertos. <strong>Padres de Veldor libres. Jerren capturado. Clan Glutonian en las puertas al regresar.</strong></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ ARC 6 ═══════════════════ -->
+<div class="arc-header arc2" style="margin-top:2.5rem">
+  <div>
+    <div class="arc-title" style="color:var(--arc2)">⚓ Arco VI — Regreso y Zarpe</div>
+    <div class="arc-subtitle">Sombras internas, Moscoff y el inicio de la travesía</div>
+  </div>
+  <div class="arc-sessions">Sesión 15</div>
+</div>
+
+<!-- S15 -->
+<div class="session" id="s15">
+  <button class="session-toggle" onclick="toggle('s15')">
+    <div class="session-header">
+      <span class="session-num">Ses. 15</span>
+      <div class="session-main">
+        <div class="session-name">🌑 Sombras en Neverwinter</div>
+        <div class="session-meta">
+          <span class="session-tag tag-place">Neverwinter · Puertas · Muelles</span>
+          <span class="session-tag tag-dramatic">Clan Glutonian</span>
+          <span class="session-tag tag-combat">Noah impersona a Vecna</span>
+          <span class="session-tag tag-mystery">Balkov mutilado · Barco zarpa</span>
+        </div>
+      </div>
+      <span class="session-arrow">▶</span>
+    </div>
+  </button>
+  <div class="scenes">
+    <div class="scene">
+      <div class="scene-name">Escenas 1–2 — Clan Glutonian en las Puertas</div>
+      <div class="scene-text"><p>Al llegar a Neverwinter, el Clan Glutonian acampa frente a las puertas con tambores de guerra — creían que Grandal había muerto. Grandal se separa; Veldor lo sigue en silencio. Rufus regresa insultando al heraldo Sir Van Gutten. Grandal se hace ver. Rufus, humillado, acepta cesar las hostilidades. Sir Rulf recuerda al grupo que llevan más de diez días desaparecidos.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena 3 — En la Ciudad (Divisiones)</div>
+      <div class="scene-text"><p>El grupo se divide: Veldor va solo a Moscoff; Dalkyel, Noah y Jerren a la casa segura; Nalare y Drakothar recuperan equipo. Noah, en un intento de «alinear» al grupo, usa ilusiones para hacerse pasar por Vecna. Dalkyel y Jerren creen que es real. La falsa visión deja una pregunta venenosa:</p>
+      <blockquote>«¿Seguirás con el grupo… o los abandonarás?»</blockquote>
+      <p>Dalkyel convence a Jerren de que Drakothar es un traidor y propone ir a buscar a Melaxir. Noah corre a detenerlos. La tensión escala. Dalkyel, acorralado, propone un ritual de comunión con Vecna.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena — El Ritual y sus Consecuencias</div>
+      <div class="scene-text"><p>Dalkyel realiza el ritual solo. Vecna se manifiesta y se burla de él por creerse inteligente. Le muestra cómo Noah lo engañó. Noah es también conectado —Vecna quema su mano casi hasta dejarla muerta. Esa noche, Dalkyel toma una decisión extrema: intenta capturar a Noah en un domo mágico con no muertos para eliminarlo.</p>
+      <p>Noah se teletransporta y grita. Drakothar y Nalare irrumpen. Dalkyel acusa a Noah; Noah no lo niega. Dalkyel se marcha sin palabras. Noah admite que manipuló a Dalkyel para probar su lealtad. El debate queda inconcluso.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escena — Veldor y Moscoff</div>
+      <div class="scene-text"><p>Veldor llega a la torre de Moscoff. Encuentra al Prof. Balkov sobre una mesa.</p>
+      <blockquote>Moscoff, furioso, le corta una mano al profesor y se la arroja a Veldor.</blockquote>
+      <p>Exige como pago a Noah. Veldor promete sin comprometerse del todo. Moscoff asigna a <strong>Arryn</strong> como vigilante permanente.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Escenas 4–5 — Muelles, Reconciliación y Neverember</div>
+      <div class="scene-text"><p>Noah viaja a Sigil, inserta el segundo fragmento de obsidiana en el Obelisco, recibe provisiones de Alustriel y vuelve. El grupo busca a Dalkyel en los muelles — trabajaba como todero en un barco mercante. Noah se disculpa. Drakothar confisca el sombrero. Dalkyel acepta volver con dos condiciones: no más temas de traición, y si Arryn muere el barco es suyo. Veldor confiesa que prometió entregar a Noah. La guardia real los arresta y lleva ante Neverember.</p>
+      <p>Neverember exige la cabeza de Moscoff. El grupo negocia: matarán a Melaxir primero. Neverember acepta a regañadientes.</p></div>
+    </div>
+    <div class="scene">
+      <div class="scene-name">Epílogo — El Barco Zarpa</div>
+      <div class="scene-text"><p>De vuelta en los muelles, Veldor expone el plan. Las velas del <strong>Pechos de Sirena</strong> se despliegan. El grupo —junto a Arryn de Moscoff y Jerren cautivo— zarpa de Neverwinter. En el horizonte, <strong>una tormenta púrpura antinatural</strong> comienza a formarse.</p></div>
+    </div>
+    <div class="outcome">Resultado: El grupo zarpa hacia la isla de Melaxir. <strong>Balkov mutilado. Vecna quema la mano de Noah. Tormenta púrpura en el horizonte. FIN DE SESIÓN 15.</strong></div>
+  </div>
+</div>
+
+</div><!-- end content -->
+</div><!-- end page -->
+
+<script>
+function toggle(id) {
+  var el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>
