@@ -169,6 +169,104 @@ body{overflow-x:hidden}
   .timeline{padding-left:1.1rem}
 }
 
+
+
+/* --- Portrait modal (added) --- */
+.portrait-btn{
+  display:inline-block;
+  margin-top:.45rem;
+  font-family:'Cinzel',serif;
+  font-size:.68rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--teal);
+  background:transparent;
+  border:1px solid var(--teal);
+  padding:.28rem .75rem;
+  cursor:pointer;
+  border-radius:2px;
+}
+.portrait-btn:hover,
+.portrait-btn:focus-visible{
+  background:var(--teal);
+  color:var(--parchment);
+}
+.portrait-btn:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
+
+.modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  z-index:9999;
+}
+.modal.open{ display:block; }
+.modal-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  backdrop-filter: blur(2px);
+}
+.modal-dialog{
+  position:relative;
+  max-width: min(720px, calc(100vw - 2rem));
+  max-height: calc(100vh - 2rem);
+  margin: 1rem auto;
+  background: var(--parchment);
+  border:2px solid var(--gold-dim);
+  box-shadow:0 0 0 8px rgba(0,0,0,.25), 0 0 40px rgba(0,0,0,.6);
+  overflow:auto;
+  border-radius:6px;
+  padding:1rem 1rem 1.2rem;
+}
+.modal-title{
+  font-family:'Cinzel',serif;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--blood);
+  margin: .2rem 0 .8rem;
+}
+.modal-close{
+  position:absolute;
+  top:.55rem;
+  right:.6rem;
+  width:2.2rem;
+  height:2.2rem;
+  border:1px solid var(--gold-dim);
+  background:var(--parchment-dark);
+  color:var(--ink);
+  border-radius:4px;
+  cursor:pointer;
+  font-size:1.4rem;
+  line-height:1;
+}
+.modal-close:hover,
+.modal-close:focus-visible{
+  background:var(--ink);
+  color:var(--gold-light);
+}
+.modal-close:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
+
+.modal-img{
+  display:block;
+  width:100%;
+  height:auto;
+  border:1px solid var(--parchment-shadow);
+  box-shadow:2px 2px 10px rgba(0,0,0,.18);
+  background:var(--parchment-dark);
+}
+.modal-hint{
+  margin-top:.8rem;
+  font-family:'IM Fell English',serif;
+  font-style:italic;
+  color:var(--gold-dim);
+  font-size:.9rem;
+}
+
+@media print{
+  .modal{ display:none !important; }
+}
+
 </style>
 </head>
 <body>
@@ -196,7 +294,7 @@ body{overflow-x:hidden}
 <div class="characters-grid">
 
 <div class="char-card">
-  <div class="char-header"><div class="char-icon">&#128302;</div><div><div class="char-name">Noah</div><div class="char-role">Astral Elf — Mago de Adivinacion (devoto de Mystra)</div></div></div>
+  <div class="char-header"><div class="char-icon">&#128302;</div><div><div class="char-name">Noah</div><div class="char-role">Astral Elf — Mago de Adivinacion (devoto de Mystra)</div><button type="button" class="portrait-btn" data-portrait="noah">Ver retrato</button></div></div>
   <div class="char-body">
     <span class="char-label">Apariencia</span>
     <p>Elfo astral esbelto, 1.80 m. Cabello azul largo que flota levemente. Ojos azules con brillo cosmico. Tunicas arcanas azul-plata con runas de Mystra. Tiene un brazo necrosado del que se avergüenza.</p>
@@ -214,7 +312,7 @@ body{overflow-x:hidden}
 </div>
 
 <div class="char-card">
-  <div class="char-header"><div class="char-icon">&#128007;</div><div><div class="char-name">Veldor</div><div class="char-role">Harengon — Pícaro Arcano (Arcane Trickster)</div></div></div>
+  <div class="char-header"><div class="char-icon">&#128007;</div><div><div class="char-name">Veldor</div><div class="char-role">Harengon — Pícaro Arcano (Arcane Trickster)</div><button type="button" class="portrait-btn" data-portrait="veldor">Ver retrato</button></div></div>
   <div class="char-body">
     <span class="char-label">Apariencia</span>
     <p>Conejo bipedo mediano, 1.50 m. Pelaje marron, parte del rostro quemada/cicatrizada. Armadura de cuero ennegrecida y tachonada. Dos dagas. Bufanda alrededor del cuello y la mandibula.</p>
@@ -234,7 +332,7 @@ body{overflow-x:hidden}
 </div>
 
 <div class="char-card">
-  <div class="char-header"><div class="char-icon">&#10024;</div><div><div class="char-name">Nalare</div><div class="char-role">Aasimar — Hechicera Aberrante (devota de Amaunator)</div></div></div>
+  <div class="char-header"><div class="char-icon">&#10024;</div><div><div class="char-name">Nalare</div><div class="char-role">Aasimar — Hechicera Aberrante (devota de Amaunator)</div><button type="button" class="portrait-btn" data-portrait="nalare">Ver retrato</button></div></div>
   <div class="char-body">
     <span class="char-label">Apariencia</span>
     <p>Aasimar femenina, 1.70 m, cabello rubio. Brillo celestial sutil. Tunicas arcanas doradas/blancas con motivos celestiales. Daga y baculo de hechicera.</p>
@@ -252,7 +350,7 @@ body{overflow-x:hidden}
 </div>
 
 <div class="char-card">
-  <div class="char-header"><div class="char-icon">&#128128;</div><div><div class="char-name">Dalkyel</div><div class="char-role">Alto elfo — Mago Nigromante / Arqueologo Pirata</div></div></div>
+  <div class="char-header"><div class="char-icon">&#128128;</div><div><div class="char-name">Dalkyel</div><div class="char-role">Alto elfo — Mago Nigromante / Arqueologo Pirata</div><button type="button" class="portrait-btn" data-portrait="dalkyel">Ver retrato</button></div></div>
   <div class="char-body">
     <span class="char-label">Apariencia</span>
     <p>Alto Elfo, 1.80 m, ojos marrones. Capucha descuidada sobre largas trenzas oscuras. Armadura de cuero con huesos y calaveras cosidos. Multiples pendientes, marcas oscuras en la boca. Mascota: gato <strong>Orion</strong>.</p>
@@ -270,7 +368,7 @@ body{overflow-x:hidden}
 </div>
 
 <div class="char-card">
-  <div class="char-header"><div class="char-icon">&#128009;</div><div><div class="char-name">Drakothar</div><div class="char-role">Dragonborn dorado — Guerrero</div></div></div>
+  <div class="char-header"><div class="char-icon">&#128009;</div><div><div class="char-name">Drakothar</div><div class="char-role">Dragonborn dorado — Guerrero</div><button type="button" class="portrait-btn" data-portrait="drakothar">Ver retrato</button></div></div>
   <div class="char-body">
     <span class="char-label">Apariencia</span>
     <p>Dragonborn metalico dorado, 2.50 m, hocico pronunciado. Armadura de placas completa. Espada flamigera (obtenida en el Feywild, reemplazo su hacha).</p>
@@ -288,7 +386,7 @@ body{overflow-x:hidden}
 </div>
 
 <div class="char-card">
-  <div class="char-header"><div class="char-icon">&#129683;</div><div><div class="char-name">Grandal Glutonian</div><div class="char-role">Humano — Bárbaro Berserker (Clan Glutonian)</div></div></div>
+  <div class="char-header"><div class="char-icon">&#129683;</div><div><div class="char-name">Grandal Glutonian</div><div class="char-role">Humano — Bárbaro Berserker (Clan Glutonian)</div><button type="button" class="portrait-btn" data-portrait="grandal">Ver retrato</button></div></div>
   <div class="char-body">
     <span class="char-label">Apariencia</span>
     <p>Humano musculoso, 2.00 m, cabello largo gris-blancuzco. Pieles y equipo tosco. Gran arma de dos manos. Lleva bolsa de comidainstinto de «ama comer» evidente.</p>
@@ -532,6 +630,132 @@ body{overflow-x:hidden}
 
 </div>
 <div class="footer">«Los secretos… él los valora más que la vida misma…» &emsp;— Últimas palabras de Dagger &emsp;&#10022;&emsp; Dossier de los Aguipardos · Protectores de Neverwinter · Sesiones 1–15</div>
+
+
+<!-- Portrait Modal (added) -->
+<div class="modal" id="portraitModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close="1"></div>
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="portraitTitle">
+    <button type="button" class="modal-close" aria-label="Cerrar">&times;</button>
+    <div id="portraitTitle" class="modal-title">Retrato</div>
+    <img id="portraitImg" class="modal-img" src="" alt="">
+    <p class="modal-hint">Presiona ESC o haz clic fuera del cuadro para cerrar.</p>
+  </div>
+</div>
+
 </main>
+
+<script>
+(() => {
+  const modal = document.getElementById('portraitModal');
+  if (!modal) return;
+
+  const backdrop = modal.querySelector('.modal-backdrop');
+  const closeBtn = modal.querySelector('.modal-close');
+  const titleEl = document.getElementById('portraitTitle');
+  const imgEl = document.getElementById('portraitImg');
+
+    const PORTRAITS = {
+    veldor: {
+      title: 'Veldor',
+      src: 'Veldor.PNG',
+      alt: 'Retrato de Veldor'
+    },
+    noah: {
+      title: 'Noah',
+      src: 'Noah.PNG',
+      alt: 'Retrato de Noah'
+    },
+    nalare: {
+      title: 'Nalare',
+      src: 'Nalare.PNG',
+      alt: 'Retrato de Nalare'
+    },
+    dalkyel: {
+      title: 'Dalkyel',
+      src: 'Dalkyel.png',
+      alt: 'Retrato de Dalkyel'
+    },
+    drakothar: {
+      title: 'Drakothar',
+      src: 'Drakothar.png',
+      alt: 'Retrato de Drakothar'
+    },
+    grandal: {
+      title: 'Grandal Glutonian',
+      src: 'Grandal.png',
+      alt: 'Retrato de Grandal Glutonian'
+    }
+  };
+
+  let lastFocus = null;
+
+  function openPortrait(key){
+    const p = PORTRAITS[key];
+    if (!p) return;
+
+    lastFocus = document.activeElement;
+
+    titleEl.textContent = p.title;
+    imgEl.src = p.src;
+    imgEl.alt = p.alt;
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+
+    // Prevent background scroll
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+
+    closeBtn.focus({ preventScroll: true });
+  }
+
+  function closePortrait(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+
+    // Restore scroll
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+
+    // Clear img to stop downloading / free memory
+    imgEl.src = '';
+    imgEl.alt = '';
+
+    if (lastFocus && typeof lastFocus.focus === 'function') {
+      lastFocus.focus({ preventScroll: true });
+    }
+    lastFocus = null;
+  }
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.portrait-btn');
+    if (btn) {
+      const key = btn.getAttribute('data-portrait');
+      openPortrait(key);
+      return;
+    }
+    if (modal.classList.contains('open')) {
+      const wantsClose = e.target === backdrop || e.target.closest('[data-close="1"]') || e.target === closeBtn;
+      if (wantsClose) closePortrait();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closePortrait();
+    }
+  });
+
+  // Extra safety: close if image fails to load
+  imgEl.addEventListener('error', () => {
+    titleEl.textContent = 'Retrato (no disponible)';
+  });
+
+})();
+</script>
+
 </body>
 </html>
