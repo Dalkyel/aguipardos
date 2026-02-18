@@ -471,6 +471,33 @@
     @media (prefers-reduced-motion: reduce) {
       .nav-link, .session-header, .session-arrow { transition: none !important; }
     }
+
+
+/* --- Mobile fixes (added) --- */
+html{-webkit-text-size-adjust:100%}
+body{overflow-x:hidden}
+.session-toggle,.nav-link{touch-action:manipulation}
+
+/* Allow the header text column to shrink/wrap */
+.session-main{min-width:0}
+.session-name,.scene-name,.arc-title,.arc-subtitle{overflow-wrap:anywhere;word-break:break-word}
+
+@media(max-width:600px){
+  body{padding:1rem .75rem}
+  .header{padding:2.2rem 1rem 1.5rem}
+  .content{padding:1rem}
+  .session-header{flex-wrap:wrap}
+  .session-num{min-width:auto}
+  .scenes{padding:0 1rem 1rem}
+
+  /* Avoid mobile Safari quirks with content-visibility */
+  .session,.arc-header{content-visibility:visible;contain-intrinsic-size:auto}
+}
+
+@media(max-width:420px){
+  .session-num{display:none}
+}
+
 </style>
 </head>
 <body>
