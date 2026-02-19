@@ -169,10 +169,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!select) return;
 
   const characterNames = {
-    noah: ['Noah'],
-    veldor: ['Veldor'],
-    nalare: ['Nalare'],
-    dalkyel: ['Dalkyel'],
+    noah: ['Noah', 'Mystra', 'Spelljammer'],
+    veldor: ['Veldor', 'Feywild', 'Isha', 'Teodore', 'Astor', 'Ashton'],
+    nalare: ['Nalare', 'Amaunator'],
+    dalkyel: ['Dalkyel', 'Orken', 'Orion'],
     drakothar: ['Drakothar', 'Parthurnax'],
     grandal: ['Grandal', 'Glutonian']
   };
@@ -217,6 +217,17 @@ document.addEventListener('DOMContentLoaded', () => {
           });
           p.innerHTML = html;
         });
+        
+        const session = scene.closest('.session');
+        if (session && !session.classList.contains('open')) {
+          const btn = session.querySelector('.session-toggle');
+          const scenes = session.querySelector('.scenes');
+          if (btn && scenes) {
+            session.classList.add('open');
+            scenes.hidden = false;
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        }
       } else {
         scene.style.display = 'none';
       }
