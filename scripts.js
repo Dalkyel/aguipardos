@@ -146,6 +146,7 @@
 // Section dropdown functionality
 (() => {
   const headers = document.querySelectorAll('.section-header[data-toggle]');
+  const contents = new Map();
   
   headers.forEach(header => {
     const targetId = header.getAttribute('data-toggle');
@@ -153,7 +154,7 @@
     
     if (!content) return;
     
-    // Start collapsed
+    contents.set(content, header);
     header.classList.add('collapsed');
     content.classList.add('collapsed');
     content.style.maxHeight = '0';
@@ -162,24 +163,28 @@
       const isCollapsed = header.classList.contains('collapsed');
       
       if (isCollapsed) {
-        // Expand
         header.classList.remove('collapsed');
         content.classList.remove('collapsed');
         content.style.maxHeight = content.scrollHeight + 'px';
       } else {
-        // Collapse
         header.classList.add('collapsed');
         content.classList.add('collapsed');
         content.style.maxHeight = '0';
       }
     });
-    
-    // Update max-height on window resize
-    window.addEventListener('resize', () => {
-      if (!content.classList.contains('collapsed')) {
-        content.style.maxHeight = content.scrollHeight + 'px';
-      }
-    });
+  });
+  
+  // Single resize listener with debounce
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      contents.forEach((header, content) => {
+        if (!content.classList.contains('collapsed')) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
+      });
+    }, 150);
   });
 })();
 
@@ -197,30 +202,31 @@
     grandal: ['Grandal', 'Glutonian']
   };
 
+  const originalContent = new Map();
+  const paragraphs = document.querySelectorAll('.scene-text p');
+  
+  paragraphs.forEach(p => {
+    originalContent.set(p, p.innerHTML);
+  });
+
   function highlightCharacter(character) {
-    const scenes = document.querySelectorAll('.scene-text');
-    
-    scenes.forEach(scene => {
-      const paragraphs = scene.querySelectorAll('p');
+    paragraphs.forEach(p => {
+      const original = originalContent.get(p);
       
-      paragraphs.forEach(p => {
-        const originalText = p.textContent;
-        
-        if (character === 'all') {
-          p.innerHTML = originalText;
-          return;
-        }
-        
-        const names = characterNames[character] || [];
-        let html = originalText;
-        
-        names.forEach(name => {
-          const regex = new RegExp(`(\\b${name}\\b)`, 'gi');
-          html = html.replace(regex, '<mark class="char-highlight">$1</mark>');
-        });
-        
-        p.innerHTML = html;
+      if (character === 'all') {
+        p.innerHTML = original;
+        return;
+      }
+      
+      const names = characterNames[character] || [];
+      let html = original;
+      
+      names.forEach(name => {
+        const regex = new RegExp(`(\\b${name}\\b)`, 'gi');
+        html = html.replace(regex, '<mark class="char-highlight">$1</mark>');
       });
+      
+      p.innerHTML = html;
     });
   }
 
