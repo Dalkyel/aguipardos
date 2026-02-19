@@ -45,9 +45,10 @@
 
   <div class="content">
 
-    <div class="section-header"><span class="icon">&#128165;</span>
-      <h2>Arco Principal de Campaña</h2><span class="icon">&#128165;</span>
+    <div class="section-header" data-toggle="arco-principal"><span class="icon">&#128165;</span>
+      <h2>Arco Principal de Campaña</h2><span class="icon">&#128165;</span><span class="dropdown-arrow">▼</span>
     </div>
+    <div id="arco-principal" class="section-content">
     <div class="thread-card clue" style="margin-bottom: 2rem;">
       <span class="thread-emoji">&#128302;</span>
       <div>
@@ -57,10 +58,12 @@
           dragones de sombras.</p>
       </div>
     </div>
-
-    <div class="section-header"><span class="icon">&#9760;</span>
-      <h2>Enemigos y Presiones Principales</h2><span class="icon">&#9760;</span>
     </div>
+
+    <div class="section-header" data-toggle="enemigos"><span class="icon">&#9760;</span>
+      <h2>Enemigos y Presiones Principales</h2><span class="icon">&#9760;</span><span class="dropdown-arrow">▼</span>
+    </div>
+    <div id="enemigos" class="section-content">
     <div class="threads-list" style="margin-bottom: 2rem;">
       <div class="thread-card clue"><span class="thread-emoji">&#128009;</span>
         <div>
@@ -91,10 +94,12 @@
         </div>
       </div>
     </div>
-
-    <div class="section-header"><span class="icon">&#9889;</span>
-      <h2>Fracturas del Grupo (activas)</h2><span class="icon">&#9889;</span>
     </div>
+
+    <div class="section-header" data-toggle="fracturas"><span class="icon">&#9889;</span>
+      <h2>Fracturas del Grupo (activas)</h2><span class="icon">&#9889;</span><span class="dropdown-arrow">▼</span>
+    </div>
+    <div id="fracturas" class="section-content">
     <div class="threads-list" style="margin-bottom: 2rem;">
       <div class="thread-card clue"><span class="thread-emoji">&#128165;</span>
         <div>
@@ -110,10 +115,12 @@
         </div>
       </div>
     </div>
-
-    <div class="section-header"><span class="icon">&#9876;</span>
-      <h2>Personajes Principales</h2><span class="icon">&#9876;</span>
     </div>
+
+    <div class="section-header" data-toggle="personajes"><span class="icon">&#9876;</span>
+      <h2>Personajes Principales</h2><span class="icon">&#9876;</span><span class="dropdown-arrow">▼</span>
+    </div>
+    <div id="personajes" class="section-content">
     <div class="characters-grid">
 
       <div class="char-card">
@@ -306,12 +313,14 @@
       </div>
 
     </div>
+    </div>
 
 
     <!-- GEO SECTION -->
-    <div class="section-header"><span class="icon">&#128506;</span>
-      <h2>Ubicaciones y Personajes del Mundo</h2><span class="icon">&#128101;</span>
+    <div class="section-header" data-toggle="ubicaciones"><span class="icon">&#128506;</span>
+      <h2>Ubicaciones y Personajes del Mundo</h2><span class="icon">&#128101;</span><span class="dropdown-arrow">▼</span>
     </div>
+    <div id="ubicaciones" class="section-content">
 
     <!-- LEILON -->
     <div class="geo-region">
@@ -663,14 +672,16 @@
         </div>
       </div>
     </div>
+    </div>
 
 
 
     <!-- CLUES & ARTIFACTS -->
     <section id="pistas">
-      <div class="section-header"><span class="icon">&#128269;</span>
-        <h2>Pistas</h2><span class="icon">&#128269;</span>
+      <div class="section-header" data-toggle="pistas-content"><span class="icon">&#128269;</span>
+        <h2>Pistas</h2><span class="icon">&#128269;</span><span class="dropdown-arrow">▼</span>
       </div>
+      <div id="pistas-content" class="section-content">
       <div class="threads-list">
         <div class="thread-card clue"><span class="thread-emoji">&#128009;</span>
           <div>
@@ -716,12 +727,14 @@
           </div>
         </div>
       </div>
+      </div>
     </section>
 
     <section id="artefactos">
-      <div class="section-header"><span class="icon">&#128142;</span>
-        <h2>Artefactos</h2><span class="icon">&#128142;</span>
+      <div class="section-header" data-toggle="artefactos-content"><span class="icon">&#128142;</span>
+        <h2>Artefactos</h2><span class="icon">&#128142;</span><span class="dropdown-arrow">▼</span>
       </div>
+      <div id="artefactos-content" class="section-content">
       <div class="threads-list">
 
 
@@ -802,12 +815,14 @@
           </div>
         </div>
       </div>
+      </div>
     </section>
 
     <section id="cabos-sueltos">
-      <div class="section-header"><span class="icon">&#10068;</span>
-        <h2>Cabos Sueltos</h2><span class="icon">&#10068;</span>
+      <div class="section-header" data-toggle="cabos-content"><span class="icon">&#10068;</span>
+        <h2>Cabos Sueltos</h2><span class="icon">&#10068;</span><span class="dropdown-arrow">▼</span>
       </div>
+      <div id="cabos-content" class="section-content">
       <div class="threads-list">
         <div class="thread-card open"><span class="thread-emoji">&#127807;</span>
           <div>
@@ -902,15 +917,17 @@
           </div>
         </div>
       </div>
+      </div>
     </section>
 
     <!-- TIMELINE -->
-    <div class="section-header"><span class="icon">&#128221;</span>
-      <h2>Resumen Cronologico de Sesiones</h2><span class="icon">&#128221;</span>
+    <div class="section-header" data-toggle="timeline-content"><span class="icon">&#128221;</span>
+      <h2>Resumen Cronologico de Sesiones</h2><span class="icon">&#128221;</span><span class="dropdown-arrow">▼</span>
     </div>
+    <div id="timeline-content" class="section-content">
     <div class="timeline-cta">
       <a class="cta-link" href="events.html">&#128212; Ver crónica completa de sesiones <span
-              aria-hidden="true">ââ€ â€™</span></a>
+              aria-hidden="true">1 - 15</span></a>
     </div>
     <div class="timeline">
 
@@ -984,6 +1001,7 @@
         <div class="session-content">Clan Glutonian acampado en las puertas; el padre Rufus se retira al ver a Grandal vivo. Sir Rulf Van Gutten recrimina al grupo 10+ días desaparecidos. Noah se hace pasar por Vecna con ilusiones — Vecna real quema su mano en el acto. Dalkyel monta un domo y envía no-muertos contra Noah para silenciarlo; fracasa y se marcha. Veldor ante Moscoff: le corta una mano al prof. Gustaff y exige a Noah como pago; asigna a Arryn al grupo. Noah entrega el segundo fragmento a Alustriel en Sigil. El grupo recupera a Dalkyel en los muelles; Noah se disculpa; Drakothar confisca el Sombrero. Arrestados ante Neverember: acuerdan matar a Melaxir primero, luego a Moscoff. <em>El Pechos de Sirena</em> zarpa. <strong>Tormenta púrpura en el horizonte.</strong></div>
       </div>
 
+    </div>
     </div>
 
     <div class="callout"><strong>&#127919; Objetivo inmediato:</strong> Navegar hasta la isla de Melaxir D'haran y
