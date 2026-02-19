@@ -15,11 +15,15 @@ body{background:var(--shadow);background-image:radial-gradient(ellipse at 20% 10
 .nav-link:hover,.nav-link:focus-visible{background:var(--teal);color:var(--parchment)}
 .nav-link:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .content{padding:2rem}
-.section-header{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 1.2rem}
+.section-header{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 1.2rem;cursor:pointer;user-select:none}
 .section-header::before,.section-header::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--section-border))}
 .section-header::after{background:linear-gradient(to left,transparent,var(--section-border))}
 .section-header h2{font-family:'Cinzel',serif;font-size:1rem;font-weight:700;color:var(--blood);letter-spacing:.25em;text-transform:uppercase;white-space:nowrap;padding:0 .5rem;overflow-wrap:anywhere;word-break:break-word}
 .section-header .icon{font-size:1.2rem;color:var(--gold)}
+.section-header .dropdown-arrow{font-size:.9rem;color:var(--gold-dim);transition:transform .2s;margin-left:.3rem}
+.section-header.collapsed .dropdown-arrow{transform:rotate(-90deg)}
+.section-content{transition:max-height .3s ease-out,opacity .2s ease-out;overflow:hidden}
+.section-content.collapsed{max-height:0!important;opacity:0;margin:0;padding:0}
 strong{font-weight:600;color:var(--ink)}
 em{font-style:italic;color:var(--blood)}
 .footer{border-top:3px double var(--gold-dim);padding:1.2rem 2rem;text-align:center;font-family:'IM Fell English',serif;font-style:italic;font-size:.85rem;color:var(--gold-dim)}
