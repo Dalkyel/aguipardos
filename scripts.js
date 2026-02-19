@@ -100,48 +100,24 @@
 })();
 
 // Session toggle functionality for events.html
-(() => {
-  const sessions = Array.from(document.querySelectorAll('.session[id]'));
-  const byId = new Map(sessions.map(s => [s.id, s]));
-
-  function setOpen(session, open) {
-    session.classList.toggle('open', open);
-    const btn = session.querySelector('button.session-toggle');
-    const scenes = session.querySelector('.scenes');
-    if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if (scenes) {
-      if (open) scenes.removeAttribute('hidden');
-      else scenes.setAttribute('hidden', '');
-    }
-  }
-
-  function toggleSession(session) {
-    const isOpen = session.classList.contains('open');
-    setOpen(session, !isOpen);
-  }
-
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('button.session-toggle');
-    if (!btn) return;
-    const id = btn.getAttribute('data-target');
-    const session = id ? byId.get(id) : btn.closest('.session');
-    if (session) toggleSession(session);
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.session').forEach(s => {
+    const btn = s.querySelector('.session-toggle');
+    const scenes = s.querySelector('.scenes');
+    if (!btn || !scenes) return;
+    
+    btn.onclick = () => {
+      s.classList.toggle('open');
+      if (s.classList.contains('open')) {
+        scenes.hidden = false;
+        btn.setAttribute('aria-expanded', 'true');
+      } else {
+        scenes.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    };
   });
-
-  function openFromHash() {
-    const id = (location.hash || '').replace('#', '');
-    if (!id) return;
-    const session = byId.get(id);
-    if (session) {
-      setOpen(session, true);
-      session.scrollIntoView({ block: 'start' });
-    }
-  }
-
-  sessions.forEach(s => setOpen(s, false));
-  openFromHash();
-  window.addEventListener('hashchange', openFromHash);
-})();
+});
 
 // Section dropdown functionality
 (() => {
