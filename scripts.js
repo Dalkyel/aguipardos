@@ -142,3 +142,43 @@
   openFromHash();
   window.addEventListener('hashchange', openFromHash);
 })();
+
+// Section dropdown functionality
+(() => {
+  const headers = document.querySelectorAll('.section-header[data-toggle]');
+  
+  headers.forEach(header => {
+    const targetId = header.getAttribute('data-toggle');
+    const content = document.getElementById(targetId);
+    
+    if (!content) return;
+    
+    // Start collapsed
+    header.classList.add('collapsed');
+    content.classList.add('collapsed');
+    content.style.maxHeight = '0';
+    
+    header.addEventListener('click', () => {
+      const isCollapsed = header.classList.contains('collapsed');
+      
+      if (isCollapsed) {
+        // Expand
+        header.classList.remove('collapsed');
+        content.classList.remove('collapsed');
+        content.style.maxHeight = content.scrollHeight + 'px';
+      } else {
+        // Collapse
+        header.classList.add('collapsed');
+        content.classList.add('collapsed');
+        content.style.maxHeight = '0';
+      }
+    });
+    
+    // Update max-height on window resize
+    window.addEventListener('resize', () => {
+      if (!content.classList.contains('collapsed')) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    });
+  });
+})();
