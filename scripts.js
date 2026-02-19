@@ -182,3 +182,84 @@
     });
   });
 })();
+
+// Character filter functionality for events.html
+(() => {
+  const select = document.getElementById('character-select');
+  if (!select) return;
+
+  const characterNames = {
+    noah: ['Noah'],
+    veldor: ['Veldor'],
+    nalare: ['Nalare'],
+    dalkyel: ['Dalkyel'],
+    drakothar: ['Drakothar', 'Parthurnax'],
+    grandal: ['Grandal', 'Glutonian']
+  };
+
+  function highlightCharacter(character) {
+    const scenes = document.querySelectorAll('.scene-text');
+    
+    scenes.forEach(scene => {
+      const paragraphs = scene.querySelectorAll('p');
+      
+      paragraphs.forEach(p => {
+        const originalText = p.textContent;
+        
+        if (character === 'all') {
+          p.innerHTML = originalText;
+          return;
+        }
+        
+        const names = characterNames[character] || [];
+        let html = originalText;
+        
+        names.forEach(name => {
+          const regex = new RegExp(`(\\b${name}\\b)`, 'gi');
+          html = html.replace(regex, '<mark class="char-highlight">$1</mark>');
+        });
+        
+        p.innerHTML = html;
+      });
+    });
+  }
+
+  select.addEventListener('change', (e) => {
+    highlightCharacter(e.target.value);
+  });
+})();
+
+// Character card toggle functionality for index.html
+(() => {
+  const cards = document.querySelectorAll('.char-card[id]');
+  
+  cards.forEach(card => {
+    const btn = card.querySelector('.char-toggle');
+    const bodyId = btn?.getAttribute('aria-controls');
+    const body = bodyId ? document.getElementById(bodyId) : null;
+    
+    if (!btn || !body) return;
+    
+    btn.addEventListener('click', () => {
+      const isOpen = card.classList.contains('open');
+      
+      if (isOpen) {
+        card.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        body.setAttribute('hidden', '');
+      } else {
+        card.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        body.removeAttribute('hidden');
+      }
+      
+      // Update parent section max-height
+      const section = card.closest('.section-content');
+      if (section && !section.classList.contains('collapsed')) {
+        setTimeout(() => {
+          section.style.maxHeight = section.scrollHeight + 'px';
+        }, 10);
+      }
+    });
+  });
+})();
