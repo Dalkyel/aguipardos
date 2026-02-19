@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn = s.querySelector('.session-toggle');
     const scenes = s.querySelector('.scenes');
     if (!btn || !scenes) return;
-    
+
     btn.onclick = () => {
       s.classList.toggle('open');
       if (s.classList.contains('open')) {
@@ -122,20 +122,20 @@ document.addEventListener('DOMContentLoaded', () => {
 // Section dropdown functionality
 (() => {
   const headers = document.querySelectorAll('.section-header[data-toggle]');
-  
+
   headers.forEach(header => {
     const targetId = header.getAttribute('data-toggle');
     const content = document.getElementById(targetId);
-    
+
     if (!content) return;
-    
+
     header.classList.add('collapsed');
     content.classList.add('collapsed');
     content.style.maxHeight = '0';
-    
+
     header.addEventListener('click', () => {
       const isCollapsed = header.classList.contains('collapsed');
-      
+
       if (isCollapsed) {
         header.classList.remove('collapsed');
         content.classList.remove('collapsed');
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-  
+
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
@@ -179,29 +179,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const originalContent = new Map();
   const paragraphs = document.querySelectorAll('.scene-text p');
-  
+
   paragraphs.forEach(p => {
     originalContent.set(p, p.innerHTML);
   });
 
   function highlightCharacter(character) {
-    paragraphs.forEach(p => {
-      const original = originalContent.get(p);
-      
+    const scenes = document.querySelectorAll('.scene');
+
+    scenes.forEach(scene => {
+      const sceneText = scene.querySelector('.scene-text');
+      if (!sceneText) return;
+
+      const original = sceneText.textContent;
+
       if (character === 'all') {
-        p.innerHTML = original;
+        scene.style.display = '';
+        sceneText.querySelectorAll('p').forEach(p => {
+          p.innerHTML = originalContent.get(p);
+        });
         return;
       }
-      
+
       const names = characterNames[character] || [];
-      let html = original;
-      
-      names.forEach(name => {
-        const regex = new RegExp(`(\\b${name}\\b)`, 'gi');
-        html = html.replace(regex, '<mark class="char-highlight">$1</mark>');
+      const found = names.some(name => {
+        const regex = new RegExp(`\\b${name}\\b`, 'i');
+        return regex.test(original);
       });
-      
-      p.innerHTML = html;
+
+      if (found) {
+        scene.style.display = '';
+        sceneText.querySelectorAll('p').forEach(p => {
+          let html = originalContent.get(p);
+          names.forEach(name => {
+            const regex = new RegExp(`(\\b${name}\\b)`, 'gi');
+            html = html.replace(regex, '<mark class="char-highlight">$1</mark>');
+          });
+          p.innerHTML = html;
+        });
+      } else {
+        scene.style.display = 'none';
+      }
     });
   }
 
@@ -213,17 +231,17 @@ document.addEventListener('DOMContentLoaded', () => {
 // Character card toggle functionality for index.html
 (() => {
   const cards = document.querySelectorAll('.char-card[id]');
-  
+
   cards.forEach(card => {
     const btn = card.querySelector('.char-toggle');
     const bodyId = btn?.getAttribute('aria-controls');
     const body = bodyId ? document.getElementById(bodyId) : null;
-    
+
     if (!btn || !body) return;
-    
+
     btn.addEventListener('click', () => {
       const isOpen = card.classList.contains('open');
-      
+
       if (isOpen) {
         card.classList.remove('open');
         btn.setAttribute('aria-expanded', 'false');
@@ -233,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.setAttribute('aria-expanded', 'true');
         body.removeAttribute('hidden');
       }
-      
+
       const section = card.closest('.section-content');
       if (section && !section.classList.contains('collapsed')) {
         setTimeout(() => {
