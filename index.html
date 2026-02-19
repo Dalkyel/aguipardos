@@ -123,16 +123,19 @@
     <div id="personajes" class="section-content">
     <div class="characters-grid">
 
-      <div class="char-card">
-        <div class="char-header">
-          <div class="char-icon">&#128302;</div>
-          <div>
-            <div class="char-name">Noah</div>
-            <div class="char-role">Astral Elfo Mago de Adivinación (devoto de Mystra)</div><button type="button"
-                                                                                                   class="portrait-btn" data-portrait="noah">Ver retrato</button>
+      <div class="char-card" id="char-noah">
+        <button class="char-toggle" aria-controls="char-noah-body" aria-expanded="false">
+          <div class="char-header">
+            <div class="char-icon">&#128302;</div>
+            <div>
+              <div class="char-name">Noah</div>
+              <div class="char-role">Astral Elfo Mago de Adivinación (devoto de Mystra)</div>
+            </div>
+            <span class="char-arrow">▶</span>
           </div>
-        </div>
-        <div class="char-body">
+        </button>
+        <div class="char-body" id="char-noah-body" hidden>
+          <button type="button" class="portrait-btn" data-portrait="noah">Ver retrato</button>
           <span class="char-label">Apariencia</span>
           <p>Elfo astral esbelto, 1.80 m. Cabello azul largo que flota levemente. Ojos azules con brillo cósmico.
             Tunicas arcanas azul-plata con runas de Mystra. Tiene un brazo necrosado del que se avergüenza.</p>
@@ -151,16 +154,19 @@
         </div>
       </div>
 
-      <div class="char-card">
-        <div class="char-header">
-          <div class="char-icon">&#128007;</div>
-          <div>
-            <div class="char-name">Veldor</div>
-            <div class="char-role">Harengon Pícaro Arcano (Arcane Trickster)</div><button type="button"
-                                                                                          class="portrait-btn" data-portrait="veldor">Ver retrato</button>
+      <div class="char-card" id="char-veldor">
+        <button class="char-toggle" aria-controls="char-veldor-body" aria-expanded="false">
+          <div class="char-header">
+            <div class="char-icon">&#128007;</div>
+            <div>
+              <div class="char-name">Veldor</div>
+              <div class="char-role">Harengon Pícaro Arcano (Arcane Trickster)</div>
+            </div>
+            <span class="char-arrow">▶</span>
           </div>
-        </div>
-        <div class="char-body">
+        </button>
+        <div class="char-body" id="char-veldor-body" hidden>
+          <button type="button" class="portrait-btn" data-portrait="veldor">Ver retrato</button>
           <span class="char-label">Apariencia</span>
           <p>Harengon, 1.50 m. Pelaje marron, parte del rostro quemada/cicatrizada. Armadura de cuero
             ennegrecida y tachonada. Dos dagas. Bufanda alrededor del cuello y la mandibula.</p>
@@ -185,16 +191,19 @@
         </div>
       </div>
 
-      <div class="char-card">
-        <div class="char-header">
-          <div class="char-icon">&#10024;</div>
-          <div>
-            <div class="char-name">Nalare</div>
-            <div class="char-role">Aasimar Hechicera Aberrante (devota de Amaunator)</div><button type="button"
-                                                                                                  class="portrait-btn" data-portrait="nalare">Ver retrato</button>
+      <div class="char-card" id="char-nalare">
+        <button class="char-toggle" aria-controls="char-nalare-body" aria-expanded="false">
+          <div class="char-header">
+            <div class="char-icon">&#10024;</div>
+            <div>
+              <div class="char-name">Nalare</div>
+              <div class="char-role">Aasimar Hechicera Aberrante (devota de Amaunator)</div>
+            </div>
+            <span class="char-arrow">▶</span>
           </div>
-        </div>
-        <div class="char-body">
+        </button>
+        <div class="char-body" id="char-nalare-body" hidden>
+          <button type="button" class="portrait-btn" data-portrait="nalare">Ver retrato</button>
           <span class="char-label">Apariencia</span>
           <p>Aasimar femenina, 1.70 m, cabello rubio. Brillo celestial sutil. Tunicas arcanas doradas/blancas con
             motivos celestiales. Daga y baculo de hechicera.</p>
@@ -218,16 +227,19 @@
         </div>
       </div>
 
-      <div class="char-card">
-        <div class="char-header">
-          <div class="char-icon">&#128128;</div>
-          <div>
-            <div class="char-name">Dalkyel</div>
-            <div class="char-role">Alto elfo Mago Nigromante / Arqueologo Pirata</div><button type="button"
-                                                                                              class="portrait-btn" data-portrait="dalkyel">Ver retrato</button>
+      <div class="char-card" id="char-dalkyel">
+        <button class="char-toggle" aria-controls="char-dalkyel-body" aria-expanded="false">
+          <div class="char-header">
+            <div class="char-icon">&#128128;</div>
+            <div>
+              <div class="char-name">Dalkyel</div>
+              <div class="char-role">Alto elfo Mago Nigromante / Arqueologo Pirata</div>
+            </div>
+            <span class="char-arrow">▶</span>
           </div>
-        </div>
-        <div class="char-body">
+        </button>
+        <div class="char-body" id="char-dalkyel-body" hidden>
+          <button type="button" class="portrait-btn" data-portrait="dalkyel">Ver retrato</button>
           <span class="char-label">Apariencia</span>
           <p>Alto Elfo, 1.80 m, ojos marrones. Capucha descuidada sobre largas trenzas oscuras. Armadura de cuero con
             huesos y calaveras cosidos. Multiples pendientes, marcas oscuras en la boca. Mascota: gato
@@ -254,16 +266,19 @@
         </div>
       </div>
 
-      <div class="char-card">
-        <div class="char-header">
-          <div class="char-icon">&#128009;</div>
-          <div>
-            <div class="char-name">Drakothar</div>
-            <div class="char-role">Dragonborn dorado Guerrero</div><button type="button" class="portrait-btn"
-                                                                           data-portrait="drakothar">Ver retrato</button>
+      <div class="char-card" id="char-drakothar">
+        <button class="char-toggle" aria-controls="char-drakothar-body" aria-expanded="false">
+          <div class="char-header">
+            <div class="char-icon">&#128009;</div>
+            <div>
+              <div class="char-name">Drakothar</div>
+              <div class="char-role">Dragonborn dorado Guerrero</div>
+            </div>
+            <span class="char-arrow">▶</span>
           </div>
-        </div>
-        <div class="char-body">
+        </button>
+        <div class="char-body" id="char-drakothar-body" hidden>
+          <button type="button" class="portrait-btn" data-portrait="drakothar">Ver retrato</button>
           <span class="char-label">Apariencia</span>
           <p>Dragonborn metalico dorado, 2.50 m, hocico pronunciado. Armadura de placas completa. Espada flamigera
             (obtenida en el Feywild, reemplazo su hacha).</p>
@@ -285,16 +300,19 @@
         </div>
       </div>
 
-      <div class="char-card">
-        <div class="char-header">
-          <div class="char-icon">&#129683;</div>
-          <div>
-            <div class="char-name">Grandal Glutonian</div>
-            <div class="char-role">Humano Bárbaro Berserker (Clan Glutonian)</div><button type="button"
-                                                                                          class="portrait-btn" data-portrait="grandal">Ver retrato</button>
+      <div class="char-card" id="char-grandal">
+        <button class="char-toggle" aria-controls="char-grandal-body" aria-expanded="false">
+          <div class="char-header">
+            <div class="char-icon">&#129683;</div>
+            <div>
+              <div class="char-name">Grandal Glutonian</div>
+              <div class="char-role">Humano Bárbaro Berserker (Clan Glutonian)</div>
+            </div>
+            <span class="char-arrow">▶</span>
           </div>
-        </div>
-        <div class="char-body">
+        </button>
+        <div class="char-body" id="char-grandal-body" hidden>
+          <button type="button" class="portrait-btn" data-portrait="grandal">Ver retrato</button>
           <span class="char-label">Apariencia</span>
           <p>Humano musculoso, 2.00 m, cabello largo gris-blancuzco. Pieles y equipo tosco. Gran arma de dos manos.
             Lleva bolsa de comida instinto de «ama comer» evidente.</p>
