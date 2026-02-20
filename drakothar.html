@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drakothar &mdash; Dossier del Personaje</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    /* ===================== RESET & BASE ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0a06;
+      --surface:   #1a1208;
+      --surface2:  #231a0d;
+      --border:    #5c3d12;
+      --gold:      #c8933a;
+      --gold-lt:   #e2b96a;
+      --bronze:    #8b5e1a;
+      --parchment: #d4b87a;
+      --bone:      #c8b490;
+      --flame:     #e05a1a;
+      --blood:     #8b1c1c;
+      --shadow:    #2d1f0a;
+      --text:      #c8b490;
+      --vecna:     #6a2fa0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Crimson Text', Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    /* ===================== WRAPPER ===================== */
+    .wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 1.2rem 4rem;
+    }
+
+    /* ===================== TITLE BLOCK ===================== */
+    .title-block {
+      text-align: center;
+      padding: 3rem 1.5rem 2.5rem;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+      background: radial-gradient(ellipse at top, #2d1800 0%, transparent 70%);
+    }
+
+    .eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      color: var(--bronze);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .char-name {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: clamp(3.2rem, 10vw, 6rem);
+      color: var(--gold);
+      text-shadow: 0 0 40px rgba(200,147,58,0.6), 0 2px 8px #000;
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+    }
+
+    .char-subtitle {
+      font-family: 'IM Fell English', serif;
+      font-size: 1.05rem;
+      color: var(--bone);
+      letter-spacing: 0.04em;
+      font-style: italic;
+    }
+
+    .nav-link {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 0.4rem 1.2rem;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-link:hover { background: var(--border); color: var(--parchment); }
+
+    /* ===================== SECTION HEADERS ===================== */
+    .section-header {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--flame);
+      background: var(--surface);
+      padding: 0.85rem 1.1rem;
+      margin-bottom: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      user-select: none;
+      transition: background 0.18s;
+    }
+    .section-header:hover { background: var(--shadow); }
+
+    .sigil {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: var(--flame);
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      flex-shrink: 0;
+    }
+
+    .dropdown-arrow {
+      margin-left: auto;
+      font-size: 0.7rem;
+      color: var(--bronze);
+      transition: transform 0.25s;
+    }
+    .section-header.open .dropdown-arrow { transform: rotate(180deg); }
+
+    /* ===================== SECTION CONTENT ===================== */
+    .section-content {
+      border: 1px solid var(--border);
+      border-top: none;
+      background: var(--surface2);
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.35s ease;
+      margin-bottom: 1.2rem;
+    }
+    .section-content.open { max-height: 9999px; }
+
+    .section {
+      padding: 1.4rem 1.3rem;
+    }
+
+    /* ===================== STAT GRID ===================== */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--flame);
+      padding: 0.9rem 1rem;
+      border-radius: 2px;
+    }
+
+    .stat-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-value {
+      font-size: 0.95rem;
+      color: var(--parchment);
+      line-height: 1.5;
+    }
+
+    /* ===================== PHILOSOPHY BLOCK ===================== */
+    .philosophy {
+      border-left: 4px solid var(--flame);
+      background: var(--surface);
+      padding: 1.2rem 1.4rem;
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 1.08rem;
+      color: var(--parchment);
+      line-height: 1.75;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ===================== TIP GRID (TRAITS) ===================== */
+    .tip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .tip-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--flame);
+      padding: 0.9rem 1rem;
+      border-radius: 2px;
+    }
+
+    .tip-header {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .tip-body {
+      font-size: 0.9rem;
+      color: var(--bone);
+      line-height: 1.6;
+    }
+
+    /* ===================== TIMELINE ===================== */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .tl-event {
+      border-left: 3px solid var(--flame);
+      padding: 1rem 1.2rem;
+      margin-bottom: 0.15rem;
+      background: var(--surface);
+      position: relative;
+    }
+    .tl-event::before {
+      content: '';
+      position: absolute;
+      left: -7px;
+      top: 1.1rem;
+      width: 11px;
+      height: 11px;
+      background: var(--flame);
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+    }
+
+    .tl-session {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 0.3rem;
+    }
+
+    .tl-desc {
+      font-size: 0.92rem;
+      color: var(--parchment);
+      margin-bottom: 0.4rem;
+    }
+
+    .tl-impact {
+      font-size: 0.85rem;
+      color: var(--bone);
+      font-style: italic;
+      opacity: 0.85;
+    }
+
+    /* ===================== RELATIONSHIPS ===================== */
+    .rel-list { display: flex; flex-direction: column; gap: 0.9rem; }
+
+    .rel-card {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 1.1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      align-items: flex-start;
+    }
+    .rel-card.ally   { border-left: 4px solid #4a8c4a; }
+    .rel-card.neutral{ border-left: 4px solid var(--gold); }
+    .rel-card.tension{ border-left: 4px solid var(--flame); }
+    .rel-card.enemy  { border-left: 4px solid var(--blood); }
+    .rel-card.vecna  { border-left: 4px solid var(--vecna); }
+
+    .rel-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--shadow);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    .rel-card.ally    .rel-icon { border-color: #4a8c4a; }
+    .rel-card.tension .rel-icon { border-color: var(--flame); }
+    .rel-card.enemy   .rel-icon { border-color: var(--blood); }
+    .rel-card.vecna   .rel-icon { border-color: var(--vecna); }
+
+    .rel-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      color: var(--gold-lt);
+      margin-bottom: 0.15rem;
+    }
+    .rel-status {
+      font-size: 0.75rem;
+      color: var(--bronze);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.05em;
+    }
+    .rel-desc { font-size: 0.88rem; color: var(--bone); margin-bottom: 0.4rem; }
+    .rel-tip  { font-size: 0.82rem; color: rgba(200,180,140,0.7); font-style: italic; }
+
+    /* ===================== HOOKS ===================== */
+    .hook-list { display: flex; flex-direction: column; gap: 0.7rem; }
+
+    .hook {
+      padding: 1rem 1.2rem 1rem 2.8rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      position: relative;
+    }
+    .hook::before {
+      content: attr(data-num);
+      position: absolute;
+      left: 0.8rem;
+      top: 0.9rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      color: var(--flame);
+      font-weight: 700;
+    }
+
+    .hook-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--gold-lt);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+    }
+    .hook-body { font-size: 0.88rem; color: var(--bone); }
+
+    .hook.resolved {
+      border-color: var(--gold);
+      opacity: 0.75;
+    }
+
+    /* ===================== COMBAT GRID ===================== */
+    .combat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 0.8rem;
+    }
+
+    .combat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--gold);
+      padding: 0.85rem 1rem;
+      border-radius: 2px;
+    }
+    .combat-card.flame { border-top-color: var(--flame); }
+    .combat-card.blood { border-top-color: var(--blood); }
+    .combat-card.vecna { border-top-color: var(--vecna); }
+
+    .combat-card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .combat-card.flame .combat-card-title { color: var(--flame); }
+    .combat-card.blood .combat-card-title { color: #c04040; }
+    .combat-card.vecna .combat-card-title { color: #9a6fd0; }
+
+    .combat-card-body { font-size: 0.88rem; color: var(--bone); }
+
+    /* ===================== DANGER BOX ===================== */
+    .danger-box {
+      border: 2px solid var(--blood);
+      background: rgba(139,28,28,0.1);
+      padding: 1.2rem 1.4rem;
+      border-radius: 2px;
+      margin: 0 1.3rem 1.3rem;
+    }
+    .danger-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #c04040;
+      margin-bottom: 0.7rem;
+    }
+    .danger-body { font-size: 0.9rem; color: var(--bone); line-height: 1.7; }
+
+    /* ===================== VECNA BOX ===================== */
+    .vecna-box {
+      border: 2px solid var(--vecna);
+      background: rgba(106,47,160,0.12);
+      padding: 1.2rem 1.4rem;
+      border-radius: 2px;
+    }
+    .vecna-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #9a6fd0;
+      margin-bottom: 0.7rem;
+    }
+    .vecna-body { font-size: 0.9rem; color: var(--bone); line-height: 1.7; }
+
+    /* ===================== TAGS ===================== */
+    .tag {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.18rem 0.55rem;
+      border-radius: 2px;
+      margin: 0.1rem 0.2rem 0.1rem 0;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--bone);
+    }
+    .tag.flame { border-color: var(--flame); color: var(--flame); background: rgba(224,90,26,0.1); }
+    .tag.gold  { border-color: var(--gold);  color: var(--gold);  background: rgba(200,147,58,0.1); }
+    .tag.vecna { border-color: var(--vecna); color: #9a6fd0;      background: rgba(106,47,160,0.12); }
+    .tag.blood { border-color: var(--blood); color: #c04040;      background: rgba(139,28,28,0.1); }
+
+    /* ===================== SECTION TITLE ===================== */
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ===================== REACTION LIST ===================== */
+    .reaction-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .reaction-row {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 0.9rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+    .reaction-row.first  { border-left: 4px solid var(--flame); }
+    .reaction-row.second { border-left: 4px solid var(--gold); }
+    .reaction-row.third  { border-left: 4px solid var(--bronze); }
+    .reaction-priority {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--flame);
+      min-width: 28px;
+      text-align: center;
+      padding-top: 0.1rem;
+    }
+    .reaction-row.second .reaction-priority { color: var(--gold); }
+    .reaction-row.third  .reaction-priority { color: var(--bronze); }
+    .reaction-name { font-size: 0.92rem; color: var(--parchment); margin-bottom: 0.2rem; font-weight: 600; }
+    .reaction-when { font-size: 0.84rem; color: var(--bone); font-style: italic; }
+
+    /* ===================== COMBAT TABLE ===================== */
+    .combat-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .combat-table th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--surface);
+      color: var(--gold);
+      border: 1px solid var(--border);
+      padding: 0.6rem 0.7rem;
+      text-align: left;
+    }
+    .combat-table td {
+      border: 1px solid var(--border);
+      padding: 0.55rem 0.7rem;
+      color: var(--bone);
+      vertical-align: top;
+    }
+    .combat-table tr:nth-child(even) td { background: var(--surface); }
+
+    /* ===================== WHISPER ===================== */
+    .whisper {
+      text-align: center;
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      color: rgba(200,147,58,0.35);
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      padding: 3rem 0 1rem;
+    }
+
+    /* ===================== CONTRADICTIONS BOX ===================== */
+    .contradiction-box {
+      border: 1px dashed var(--flame);
+      background: rgba(224,90,26,0.06);
+      padding: 1rem 1.2rem;
+      border-radius: 2px;
+      font-size: 0.88rem;
+      color: var(--bone);
+    }
+    .contradiction-box strong { color: var(--flame); }
+
+    /* ===================== SCROLLBAR ===================== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 600px) {
+      .stat-grid, .tip-grid, .combat-grid { grid-template-columns: 1fr; }
+      .rel-card { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- TITLE -->
+  <div class="title-block">
+    <div class="eyebrow">&#10022; Dossier del Personaje &mdash; Campana Los Aguipardos &#10022;</div>
+    <div class="char-name">Drakothar</div>
+    <div class="char-subtitle">Dragonborn Metalico Dorado &nbsp;&middot;&nbsp; Guerrero de Primera Linea &nbsp;&middot;&nbsp; Vengador del Hogar Perdido
+      <br><span style="color:var(--flame); font-style:normal;">Portador del Encanto de la Mano que se Arrastra</span>
+    </div>
+    <a class="nav-link" href="index.html" style="margin-top:1rem;">Volver al Dossier</a>
+  </div>
+
+  <!-- IDENTITY -->
+  <div class="section-header open" data-toggle="identity">
+    <span class="sigil"></span> Identidad &amp; Apariencia
+    <span class="dropdown-arrow">&#9660;</span>
+  </div>
+  <div id="identity" class="section-content open">
+    <div class="section">
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-label">Raza &amp; Clase</div>
+          <div class="stat-value">Dragonborn metalico dorado &mdash; Guerrero (Fighter)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Apariencia Fisica</div>
+          <div class="stat-value">2.50 m de altura. Hocico pronunciado. Escamas doradas metalicas. Armadura de placas completa. Porte imponente y presencia fisica dominante.</div>
+        </div>
+        <div class="stat-card" style="border-top-color:var(--flame);">
+          <div class="stat-label">Arma Actual</div>
+          <div class="stat-value"><strong style="color:var(--flame);">Espada flamigera</strong> &mdash; obtenida en el Feywild. Reemplazo a su hacha original. Fuego encantado en cada golpe.</div>
+        </div>
+        <div class="stat-card" style="border-top-color:var(--blood);">
+          <div class="stat-label">Herida Central</div>
+          <div class="stat-value">Su hogar fue destruido por el dragon <strong style="color:var(--blood);">Viligax</strong>. Su hermano <strong>Parthurnax</strong> sufrio amnesia total tras ser capturado por el culto de Vecna.</div>
+        </div>
+        <div class="stat-card" style="border-top-color:var(--vecna);">
+          <div class="stat-label">Encanto de Vecna</div>
+          <div class="stat-value"><strong style="color:#9a6fd0;">Mano que se Arrastra</strong> &mdash; el poder roba vida con cada golpe. Otorgado directamente por Vecna tras el ritual de Zalyr.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Situacion Actual</div>
+          <div class="stat-value">A bordo del <em>Pechos de Sirena</em>. Enfocado en destruir a Melaxir. Psicologicamente inestable tras perder un recuerdo en el ritual de Jerren.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHILOSOPHY / VOICE -->
+  <div class="section-header open" data-toggle="philosophy">
+    <span class="sigil"></span> Filosofia &mdash; La Voz Interna de Drakothar
+    <span class="dropdown-arrow">&#9660;</span>
+  </div>
+  <div id="philosophy" class="section-content open">
+    <div class="section">
+      <div class="philosophy">
+        Mi hogar fue borrado. Mi hermano fue vaciado. El hombre que lo hizo sigue respirando. Hay un solo codigo que entiendo: el filo de la hoja y la claridad del fuego. No me pidan calma cuando el mundo me pide sangre. Soy la primera linea. Soy el escudo. Soy la respuesta.
+        <br><br>
+        El honor no es una formula &mdash; es lo que decides hacer cuando nadie te mira. Decapite a Dorgen cuando el grupo lo pidio. Lo hice porque era lo correcto. Hubiera hecho lo mismo por cualquiera de ellos.
+        <br><br>
+        Pero Jerren... Jerren merecia morir y casi lo mato. Que me durmieran fue una humillacion. O una salvacion. Todavia no lo se.
+      </div>
+      <p style="color:var(--bone); font-size:0.93rem; margin-top:1rem;">
+        El nucleo de Drakothar es <strong style="color:var(--gold);">la lealtad como codigo de guerra</strong>. No es cruel &mdash; es directo. El moralismo complejo lo desestabiliza. Cuando la situacion tiene un enemigo claro, es invencible. Cuando el enemigo es alguien del grupo o un aliado moral ambiguo, se quiebra. <em>Interpretar como alguien que sabe exactamente lo que quiere pero no sabe como pedirlo sin un hacha de por medio.</em>
+      </p>
+    </div>
+  </div>
+
+  <!-- BACKSTORY -->
+  <div class="section-header" data-toggle="backstory">
+    <span class="sigil"></span> Historia de Origen &mdash; El Camino de Drakothar
+    <span class="dropdown-arrow">&#9660;</span>
+  </div>
+  <div id="backstory" class="section-content">
+    <div class="section">
+      <div class="philosophy" style="border-left-color:var(--gold); font-style:normal; font-size:0.95rem;">
+        Drakothar crece en un hogar dragonborn bajo la sombra y la memoria de su herencia dorada. Tiene un hermano mayor, <strong>Parthurnax</strong>, que desde joven muestra vocacion por la investigacion y el espionaje &mdash; una mente aguda que contrasta con la fuerza bruta de Drakothar.
+        <br><br>
+        Un dia, el dragon <strong style="color:var(--blood);">Viligax</strong> destruye su hogar. El fuego, la destruccion, el exilio. Esa es la imagen que Drakothar carga: su primera espada alzada contra algo que no podia herir. El origen de todo.
+        <br><br>
+        Parthurnax sobrevive y anos mas tarde es reclutado como informante secreto por <strong>Lord Dagult Neverember</strong> para rastrear sectas que adoran al dios de los secretos &mdash; Vecna. Su investigacion lo lleva demasiado lejos: descubre la presencia del culto en todo el norte y paga el precio. El cultista <strong>Zalyr</strong> lo captura, le extrae sus secretos y le roba la memoria.
+        <br><br>
+        Drakothar lo rescata del mausoleo (sesion 6), pero Parthurnax queda en coma profundo. Neverember revela la verdad: el hermano era un activo de inteligencia. Lo estabilizan con vida, pero su mente no regresa. Actualmente trabaja en una taberna con amnesia total, esperando una cura que nadie sabe si existe.
+        <br><br>
+        Y encima de todo, Melaxir D'haran resulta ser el hombre que robo la esencia de Viligax para crear dragones de sombras. El ciclo cierra: el dragon que destruyo el hogar de Drakothar fue robado por el mismo enemigo que el grupo persigue ahora.
+      </div>
+    </div>
+  </div>
+
+  <!-- TRASFONDO: SOLDADO / GUERRERO -->
+  <div class="section-header" data-toggle="background">
+    <span class="sigil"></span> Trasfondo: Guerrero &mdash; Rasgos de Personaje
+    <span class="dropdown-arrow">&#9660;</span>
+  </div>
+  <div id="background" class="section-content">
+    <div class="section">
+      <div class="tip-grid">
+        <div class="tip-card" style="border-top-color:var(--gold);">
+          <div class="tip-header">Rasgos de Personalidad</div>
+          <div class="tip-body">
+            &#8226; Soy directo. Si tengo algo que decir, lo digo con una espada o con palabras &mdash; pero lo digo.<br>
+            &#8226; Tengo un codigo de honor claro: no abandono a los que protejo.<br>
+            &#8226; La ambiguedad moral me pone nervioso. Los grises no me sientan tan bien como el blanco y el negro.<br>
+            &#8226; Confio en la fuerza. En la mia y en la del grupo. Si alguien cae, lo levanto.<br>
+            &#8226; Puedo perder la calma cuando algo amenaza lo que me importa. Y lo que mas me importa es mi hermano.
+          </div>
+        </div>
+        <div class="tip-card" style="border-top-color:var(--flame);">
+          <div class="tip-header">Ideales</div>
+          <div class="tip-body">
+            &#8226; <strong style="color:var(--parchment);">Venganza como justicia.</strong> Viligax destruyo mi hogar. Melaxir robo su esencia. Hay una cadena de culpa que terminara con mi espada.<br>
+            &#8226; <strong style="color:var(--parchment);">Lealtad sin condiciones.</strong> Los que luchan a mi lado merecen que yo este en pie mientras ellos no pueden.<br>
+            &#8226; <strong style="color:var(--parchment);">Honor en el campo.</strong> Matar es parte de la guerra. Matar sin necesidad es otra cosa.
+          </div>
+        </div>
+        <div class="tip-card" style="border-top-color:#4a8c4a;">
+          <div class="tip-header">Vinculos</div>
+          <div class="tip-body">
+            &#8226; <strong style="color:var(--parchment);">Parthurnax:</strong> mi hermano. Sin memoria. En una taberna. Necesito curarle o morir intentandolo.<br>
+            &#8226; Viligax destruyo mi hogar. Si todavia respira, no deberia.<br>
+            &#8226; Grandal habla draconica. Es lo mas cerca de mi herencia que he encontrado en este grupo extrano.
+          </div>
+        </div>
+        <div class="tip-card" style="border-top-color:var(--blood);">
+          <div class="tip-header">Defectos</div>
+          <div class="tip-body">
+            &#8226; Cuando alguien amenaza lo que me importa, pierdo la razon. Casi mato a Jerren. Me durmieron.<br>
+            &#8226; El estres moral me desestabiliza. No fui disenado para dilemas &mdash; fui disenado para cargas.<br>
+            &#8226; <strong style="color:var(--blood);">Perdi un recuerdo en el ritual de Jerren</strong>: mi primera espada. Lo que eso significa internamente esta sin resolver.
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;">
+        <div class="section-title"><span class="sigil"></span> Rasgo Racial &mdash; Dragonborn Dorado</div>
+        <div class="combat-grid" style="grid-template-columns: repeat(auto-fill, minmax(230px,1fr));">
+          <div class="combat-card flame">
+            <div class="combat-card-title">Aliento de Dragon</div>
+            <div class="combat-card-body">Los Dragonborn metalicos dorados poseen aliento de fuego (cone de fuego). Su herencia lo vincula directamente al tipo de dragon que destruyo su hogar: Viligax. <em style="color:rgba(200,180,140,0.6);">(Nota GM: posible tension narrativa al usar esta habilidad.)</em></div>
+          </div>
+          <div class="combat-card">
+            <div class="combat-card-title">Lengua Draconica</div>
+            <div class="combat-card-body">El draconica es su idioma ancestral. La revelacion de que Grandal lo habla creo un vinculo inesperado entre ambos guerreros que va mas alla de la utilidad tactica.</div>
+          </div>
+          <div class="combat-card">
+            <div class="combat-card-title">Resistencia al Fuego</div>
+            <div class="combat-card-body">Como Dragonborn de linaje dorado, Drakothar tiene resistencia al dano de fuego. Esto lo posiciona como primera linea ideal contra enemigos elementales y la espada flamigera lo complementa.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="section-header open" data-toggle="timeline">
+    <span class="sigil"></span> Momentos Definitorios &mdash; Lo Que Lo Formo
+    <span class="dropdown-arrow">&#9660;</span>
+  </div>
+  <div id="timeline" class="section-content open">
+    <div class="section">
+      <div class="timeline">
+        <div class="tl-event">
+          <div class="tl-session">Sesion 1&ndash;2 &mdash; Arco de Leilon</div>
+          <div class="tl-desc">En el caos del ataque pirata a Leilon, Drakothar cae al agua durante la huida por el muelle. Noah lanza una cuerda y lo rescata. Un pirata aferrado a la cuerda muere a manos de Drakothar antes de poder subir al bote. Primera accion de campana: fuerza bruta al servicio de la supervivencia del grupo.</div>
+          <div class="tl-impact">&rarr; Desde el primer momento es el que absorbe el dano y permite que los demas funcionen. Ese rol lo define hasta hoy.</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-session">Sesion 4 &mdash; Bajo Neverwinter</div>
+          <div class="tl-desc">En los tuneles de Neverwinter Bajo, Drakothar se topa con Parthurnax &mdash; su hermano &mdash; quien seguia la pista del dragon Viligax. Parthurnax le indica en que posada se hospeda el grupo. La reunion es breve y cargada de historia no contada.</div>
+          <div class="tl-impact">&rarr; El primer indicio de que la campana toca directamente su herida mas profunda. Viligax no es un recuerdo lejano &mdash; sigue activo en el mundo.</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-session">Sesion 6 &mdash; El Mausoleo y el Rescate</div>
+          <div class="tl-desc">En el mausoleo de Neverdeath, el grupo descubre a Parthurnax cautivo de Zalyr. El cultista le habia robado los secretos y la memoria. El grupo lo rescata con vida pero su mente ya no esta. Los sanadores y clerigos no logran despertarlo de un coma profundo.</div>
+          <div class="tl-impact">&rarr; El momento que define todo. El hermano esta vivo, pero para Drakothar es casi peor. No es un cadaver que llorar. Es una promesa abierta que no puede cumplir solo.</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-session">Sesion 7 &mdash; Neverember revela la verdad</div>
+          <div class="tl-desc">Lord Dagult Neverember convoca al grupo y revela que Parthurnax era su informante secreto, rastreando sectas de Vecna en el norte. Su investigacion era lo suficientemente peligrosa como para que el culto lo atacara. Drakothar recibe el Encanto de la Mano que se Arrastra directamente de Vecna tras el ritual de Zalyr.</div>
+          <div class="tl-impact">&rarr; Ahora Drakothar lleva literalmente el poder del dios que persigue a su hermano. Una contradiccion que puede explotar o fortalecer en cualquier momento.</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-session">Sesion 8 &mdash; Vision Apocaliptica de Vecna</div>
+          <div class="tl-desc">Durante el viaje interdimensional, cada personaje recibe una vision de lo que ocurrira si fracasan. La vision de Drakothar: su hermano muerto, vacio, sirviendo como recipiente de un dios sin rostro. Vecna susurro: "Esto es lo que sucedera si fracasan."</div>
+          <div class="tl-impact">&rarr; La peor pesadilla posible materializada como profecia. No es abstracto. Es Parthurnax. Es personal. Y eso significa que Drakothar no puede fallar, literalmente.</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-session">Sesiones 9&ndash;13 &mdash; Feywild y Dragones de Sombras</div>
+          <div class="tl-desc">En el Feywild, Drakothar remata a SihlHa y a Briosk, dos dragones de sombras. En la escena del bosque, el grupo actua en sincronismo: Noah conjura luz, Nalare abre el follaje y Drakothar aprovecha el resquicio para asestar el golpe final. Descubre que los poderes de los dragones de sombras provienen de la esencia robada de Viligax &mdash; fue Melaxir quien "robo su alma."</div>
+          <div class="tl-impact">&rarr; La pieza encaja. El hombre al que persiguen es el mismo que armo la destruccion de su hogar. Ya no es una mision de grupo &mdash; es personal.</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-session">Sesion 12 &mdash; Tension con Dalkyel</div>
+          <div class="tl-desc">En el Feywild, Dalkyel realiza un ritual sospechoso cosiendo huesos y murmurando en idioma oscuro. Drakothar intenta confrontarlo. Grandal interviene hablando en draconica, desconcertando al Dragonborn y disipando la tension con una conexion inesperada.</div>
+          <div class="tl-impact">&rarr; Grandal habla su idioma ancestral. Eso no lo esperaba. La desconfianza hacia Dalkyel sigue latente, pero la conexion con Grandal es un ancla de camaraderia genuina.</div>
+        </div>
+        <div class="tl-event" style="border-left-color:var(--blood);">
+          <div class="tl-session">Sesion 14 &mdash; El Pantano de la Bruja y el Intento de Matar a Jerren</div>
+          <div class="tl-desc">Tras la batalla contra Aghmed, el grupo participa en el ritual de comunion con Jerren: cada personaje pierde un recuerdo intimo. Drakothar pierde el recuerdo de su primera espada. Intenta matar a Jerren durante el proceso y tiene que ser dormido por el grupo para detenerlo.</div>
+          <div class="tl-impact">&rarr; Este es el punto de quiebre psicologico. Fue sedado por sus propios companieros. Lo que siente sobre eso &mdash; humillacion, rabia, gratitud, confusion &mdash; esta en tus manos resolver.</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-session">Sesion 15 &mdash; Conflicto con Noah y Disciplina</div>
+          <div class="tl-desc">Noah se hace pasar por Vecna con ilusiones para "probar" a Dalkyel. Vecna real quema la mano de Noah como castigo. Drakothar, que considera esa clase de enganos una violacion al codigo del grupo, confisca el Sombrero de Disfraz a Noah como disciplina.</div>
+          <div class="tl-impact">&rarr; El gesto revela que Drakothar se siente con autoridad moral dentro del grupo. No como lider politico, sino como guardia del codigo compartido.</div>
+        </div>
+        <div class="tl-event" style="border-left-color:var(--gold);">
+          <div class="tl-session">Sesion 16 &mdash; A la Mar</div>
+          <div class="tl-desc">Junto a Veldor, apunala y arroja al mar a Arryn &mdash; agente de Moscoff &mdash; sin consultar al grupo, transfiriendo la propiedad del Pechos de Sirena a Dalkyel. Actua por el grupo sin pedir permiso, espejo exacto de lo que Dalkyel hizo en S15. La batalla naval termina con el barco norte destruido por Dalkyel y un Dragon Tortuga colosal persiguiendo al grupo.</div>
+          <div class="tl-impact">&rarr; Mato a Arryn por el grupo, no por placer. Pero no consulto. El mismo codigo que usaria para juzgar a otros lo aplico sin pensarlo dos veces. Tiene consistencia o hipocresía?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RELACIONES -->
+  <div class="section-header" data-toggle="relationships">
+    <span class="sigil"></span> Relaciones del Grupo
+    <span class="dropdown-arrow">&#9660;</span>
+  </div>
+  <div id="relationships" class="section-content">
+    <div class="section">
+      <div class="rel-list">
+
+        <div class="rel-card neutral">
+          <div class="rel-icon">&#9876;</div>
+          <div>
+            <div class="rel-name">Grandal Glutonian</div>
+            <div class="rel-status">Vinculo Inesperado &mdash; Camara de Guerreros</div>
+            <div class="rel-desc">Grandal habla draconica. Ese gesto, en medio de la tension con Dalkyel, fue lo unico que necesito para desconcertar a Drakothar de manera positiva. Dos guerreros de primera linea con codigos diferentes pero mutuamente comprensibles. Grandal tambi&eacute;n intervino para calmar la tension en el Feywild.</div>
+            <div class="rel-tip">Roleplay: La conexion es simple, directa y genuina. No hay agenda. Grandal entiende el draconica y eso significa que entiende algo de donde viene Drakothar. Usalo.</div>
+          </div>
+        </div>
+
+        <div class="rel-card tension">
+          <div class="rel-icon">&#9876;</div>
+          <div>
+            <div class="rel-name">Veldor</div>
+            <div class="rel-status">Alianza Tactica &mdash; Moral Compartida con Metodos Distintos</div>
+            <div class="rel-desc">Juntos mataron a Arryn sin consultar al grupo. Hay pragmatismo compartido y un codigo de resultados que ambos entienden. Pero Veldor opera en grises que a veces incomodan a Drakothar. El acto de S16 los ato con un secreto ejecutado en silencio.</div>
+            <div class="rel-tip">Roleplay: Respeto funcional. No son amigos en el sentido emocional, pero confian en que el otro hara lo que tiene que hacer cuando importa. Ese es el unico tipo de confianza que Drakothar entiende plenamente.</div>
+          </div>
+        </div>
+
+        <div class="rel-card tension">
+          <div class="rel-icon">&#9876;</div>
+          <div>
+            <div class="rel-name">Dalkyel</div>
+            <div class="rel-status">Tension Persistente &mdash; Metodos que Chocan</div>
+            <div class="rel-desc">Drakothar observo con desconfianza los rituales de nigromancia de Dalkyel desde el primer momento. Ese escepticismo nunca desaparecio. Paradojicamente, en S16 Drakothar hizo exactamente lo que le critica a Dalkyel: actuar sin consultar. El espejo incomodo es evidente.</div>
+            <div class="rel-tip">Roleplay: No es odio. Es incomprension. Drakothar no entiende como alguien puede funcionar en esa ambiguedad constante. Y eso lo incomoda mas que el miedo.</div>
+          </div>
+        </div>
+
+        <div class="rel-card ally">
+          <div class="rel-icon">&#9876;</div>
+          <div>
+            <div class="rel-name">Nalare</div>
+            <div class="rel-status">Respeto Mutuo &mdash; Brujula Moral</div>
+            <div class="rel-desc">Nalare es la brujula moral del grupo. Drakothar carga juntos con ella en primera linea &mdash; sus golpes "resuenan como truenos" segun las cronicas. Ambos tienen codigos claros aunque distintos. Ella confronto a los que se desviaron, el confisco el sombrero: diferentes formas del mismo impulso.</div>
+            <div class="rel-tip">Roleplay: La confianza que deposita en Nalare es tacita pero real. Es quien lo estabilizaria si volviera a estar al borde de perder el control.</div>
+          </div>
+        </div>
+
+        <div class="rel-card tension">
+          <div class="rel-icon">&#9876;</div>
+          <div>
+            <div class="rel-name">Noah</div>
+            <div class="rel-status">Tension Activa &mdash; El Sombrero Confiscado</div>
+            <div class="rel-desc">Noah se hizo pasar por Vecna para "probar" a Dalkyel. Drakothar lo juzgo como una violacion al codigo del grupo y le confisco el Sombrero de Disfraz como disciplina. No hay rencor personal &mdash; hay exigencia de conducta. Drakothar espera que Noah entienda el mensaje sin que haya que explicarlo.</div>
+            <div class="rel-tip">Roleplay: No es castigo emocional. Es codigo de guerra aplicado a condiciones de grupo. Si Noah demuestra fiabilidad, la relacion se normaliza. Si no, la distancia crece.</div>
+          </div>
+        </div>
+
+        <div class="rel-card ally">
+          <div class="rel-icon">&#9876;</div>
+          <div>
+            <div class="rel-name">Parthurnax</div>
+            <div class="rel-status">Hermano &mdash; Amnesia Total. Trabaja en Taberna. Pendiente de Cura.</div>
+            <div class="rel-desc">El anclaje emocional mas profundo de Drakothar. Fue informante de Neverember, fue capturado por Zalyr, fue vaciado de memoria. Esta vivo pero no esta presente. La vision de Vecna &mdash; el hermano como recipiente de un dios &mdash; es la amenaza maxima que Drakothar puede imaginar.</div>
+            <div class="rel-tip">Roleplay: Todo lo que Drakothar hace tiene a Parthurnax como horizonte. Cuando el grupo avanza hacia Melaxir, avanza hacia la unica persona cuya muerte o corrupcion romperia a Drakothar completamente.</div>
+          </div>
+        </div>
+
+        <div class="rel-card enemy">
+          <div class="rel-icon">&#9876;</div>
+          <div>
+            <div class="rel-name">Melaxir D'haran</div>
+            <div class="rel-status">Enemigo Principal &mdash; El que Robo la Esencia de Viligax</div>
+            <div class="rel-desc">Comerciante Chultan que opera un laboratorio que transforma humanos en dragones de sombras usando la esencia de Viligax. Destruyo indirectamente el hogar de Drakothar al robar el alma del dragon que lo ataco. No han llegado a enfrentarse aun. El mapa a su isla ya esta en manos del grupo.</div>
+            <div class="rel-tip">Roleplay: Este es el final de una cadena. Cuando lleguen a esa isla, Drakothar tiene que decidir: quiere venganza o quiere justicia? Son la misma cosa para el?</div>
+          </div>
+        </div>
+
+        <div class="rel-card neutral">
+          <div class="rel-icon">&#9876;</div>
+          <div>
+            <div class="rel-name">Lord Neverember</div>
+            <div class="rel-status">Empleador Complejo &mdash; El que Uso a su Hermano</div>
+            <div class="rel-desc">Neverember revelo que Parthurnax era su informante secreto. Eso significa que fue el quien envio a su hermano al peligro. El resultado fue la amnesia total de Parthurnax. Drakothar lo sabe. La relacion es funcional pero tiene una herida enterrada.</div>
+            <div class="rel-tip">Roleplay: Trabaja para Neverember porque necesita los recursos. Pero la deuda moral no esta saldada. Llegara el momento de plantearla?</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- GANCHOS NARRATIVOS -->
+  <div class="section-header open" data-toggle="hooks">
+    <span class="sigil"></span> Ganchos Narrativos Abiertos &mdash; La Agenda Oculta
+    <span class="dropdown-arrow">&#9660;</span>
+  </div>
+  <div id="hooks" class="section-content open">
+    <div class="section">
+      <div class="hook-list">
+        <div class="hook" data-num="I">
+          <div class="hook-title">Parthurnax &mdash; La Cura que Nadie Sabe si Existe</div>
+          <div class="hook-body">Su hermano esta vivo, trabajando en una taberna, sin memoria. Los sanadores no pudieron hacer nada. Los clerigos tampoco. La amnesia fue causada por magia ritual de extraccion de secretos de nivel alto. Que requiere devolverle la memoria? Nadie lo sabe aun. Es el gancho mas personal y el mas urgente.</div>
+        </div>
+        <div class="hook" data-num="II">
+          <div class="hook-title">Viligax &mdash; El Dragon que Destruyo el Hogar. Sigue vivo?</div>
+          <div class="hook-body">El grupo creyo haberlo matado, pero huyo malherido. Melaxir robaba la esencia de un "dragon agonizante." Si Melaxir uso esa esencia, Viligax podria estar entre la vida y la muerte en algun laboratorio. O muerto. O vivo y furioso. El primer dragon de sombras que hablo dijo: "Lo robo... lo robo de su alma." Que queda de Viligax?</div>
+        </div>
+        <div class="hook" data-num="III">
+          <div class="hook-title">La Vision de Vecna &mdash; Hermano como Recipiente</div>
+          <div class="hook-body">La peor imagen posible: Parthurnax muerto y vacio, sirviendo como recipiente de un dios sin rostro. Vecna dijo que eso "sucedera si fracasan." La vision no es solo miedo &mdash; es una amenaza operativa. Mientras Parthurnax este vivo y sin memoria en esa taberna, es un objetivo potencial del culto.</div>
+        </div>
+        <div class="hook" data-num="IV">
+          <div class="hook-title">El Recuerdo Perdido &mdash; La Primera Espada</div>
+          <div class="hook-body">En el ritual de Jerren, Drakothar perdio el recuerdo de su primera espada. No sabe exactamente que significa eso aun. Afecta como recuerda su historia? Su identidad como guerrero? Fue un objeto simbolico o un recuerdo de alguien? El vacio esta ahi. Las consecuencias no han llegado todavia.</div>
+        </div>
+        <div class="hook" data-num="V">
+          <div class="hook-title">El Encanto de la Mano que se Arrastra &mdash; Poder de Vecna en su Cuerpo</div>
+          <div class="hook-body">Cada golpe roba vida gracias al encanto. Vecna lo marco personalmente. Drakothar usa ese poder para combatir al mismo culto que lo marco. Hay algo profundamente incongruente en eso. Que piensa sobre ello? Lo usa sin pensarlo o le genera incomodidad? Podria convertirse en palanca para Vecna?</div>
+        </div>
+        <div class="hook" data-num="VI">
+          <div class="hook-title">La Muerte de Arryn &mdash; Espejo del Grupo</div>
+          <div class="hook-body">Drakothar y Veldor mataron a Arryn sin consultar al grupo, del mismo modo que Dalkyel actuo sin consultar en S15. La propiedad del barco paso a Dalkyel. Drakothar hizo lo que pensaba que era correcto. Es eso diferente a lo que siempre le ha incomodado de los otros? La respuesta honesta lo define.</div>
+        </div>
+        <div class="hook" data-num="VII">
+          <div class="hook-title">La Deuda con Neverember</div>
+          <div class="hook-body">Neverember uso a Parthurnax como activo de inteligencia. Esa decision envia a su hermano directamente al peligro y resulta en la perdida de su memoria. Drakothar sabe esto. Trabajan para Neverember porque conviene. Pero tarde o temprano, ese silencio se rompe.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VECNA -->
+  <div class="section-header" data-toggle="vecna">
+    <span class="sigil"></span> La Sombra de Vecna &mdash; Encanto y Vision
+    <span class="dropdown-arrow">&#9660;</span>
+  </div>
+  <div id="vecna" class="section-content">
+    <div class="section">
+      <div class="vecna-box">
+        <div class="vecna-title">Encanto: Mano que se Arrastra</div>
+        <div class="vecna-body">
+          Otorgado directamente por Vecna tras el ritual de Zalyr en el mausoleo (s7). El poder roba vida con cada golpe. Drakothar no lo pidio &mdash; lo recibio. Lo usa contra los mismos enemigos que el dios-lich usa como herramienta.<br><br>
+          <strong style="color:#9a6fd0;">Vision Apocaliptica (s8):</strong> Flotando en la nada durante el viaje interdimensional, Drakothar ve a su hermano Parthurnax muerto, vacio, sirviendo como recipiente de un dios sin rostro. Vecna susurro: "Esto es lo que sucedera si fracasan."<br><br>
+          <em style="color:rgba(180,150,210,0.7);">Conexion tematica: Drakothar porta el encanto de Vecna en su propio cuerpo mientras lucha para evitar que ese mismo dios use a su hermano. La contradiccion es el punto narrativo mas rico de su arco.</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRADICIONES CANONICAS -->
+  <div class="section-header" data-toggle="contradictions">
+    <span class="sigil"></span> Notas del Director &mdash; Contradicciones y Puntos a Resolver
+    <span class="dropdown-arrow">&#9660;</span>
+  </div>
+  <div id="contradictions" class="section-content">
+    <div class="section">
+      <div class="contradiction-box">
+        <p style="margin-bottom:0.7rem;"><strong>Altura registrada:</strong> En Characters_Descriptions.pdf se indica 2.5 m. En el index.html del dossier principal aparece 2.50 m. No hay contradiccion real, pero vale la pena unificar la cifra canonicamente.</p>
+        <p style="margin-bottom:0.7rem;"><strong>Parthurnax &mdash; Estado tras el rescate:</strong> En el PDF de eventos se lo encuentra con vida pero en coma profundo (s7). En el index.html se indica "trabaja en taberna con amnesia total." Ambos estados se leen como progresion: salio del coma con amnesia pero sin sus memorias. <em style="color:rgba(200,180,140,0.65);">Contradiccion aparente resuelta: el coma cedio pero los recuerdos no regresaron.</em></p>
+        <p style="margin-bottom:0.7rem;"><strong>Viligax &mdash; Muerte vs. Esencia robada:</strong> El grupo creyo haberlo matado pero huyo malherido. El primer dragon de sombras dice que Melaxir "robo su alma" de un dragon agonizante. <em style="color:rgba(200,180,140,0.65);">El canon actual sugiere que Viligax esta entre la vida y la muerte, con su esencia parcialmente robada. El GM debera definir su estado exacto.</em></p>
+        <p style="margin-bottom:0.7rem;"><strong>Espada flamigera vs. Hacha:</strong> El dossier confirma que la espada reemplazo al hacha en el Feywild. No hay inconsistencia, pero la hacha original no tiene registro de destino. <em style="color:rgba(200,180,140,0.65);">Potencial gancho: el arma original de Drakothar, perdida o abandonada, podria reaparecer.</em></p>
+        <p><strong>Recuerdo perdido en el ritual de Jerren:</strong> Se confirma como "su primera espada." Dado que ya no porta hacha sino espada flamigera, hay tension simbolica interesante. El recuerdo perdido es literalmente el arma que ya no tiene. Intencional o coincidencia? <em style="color:rgba(200,180,140,0.65);">El GM deberia decidir si esto es un parche en la continuidad o una senal narrativa deliberada.</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUIA DE COMBATE -->
+  <div class="section-header" data-toggle="combat">
+    <span class="sigil"></span> Guia de Combate &mdash; Primera Linea Efectiva
+    <span class="dropdown-arrow">&#9660;</span>
+  </div>
+  <div id="combat" class="section-content">
+    <div class="section">
+      <p style="color:var(--bone); font-size:0.9rem; margin-bottom:1rem; font-style:italic;">El rol de Drakothar es absorber dano, generar amenaza y cerrar distancias. Primero en entrar, ultimo en salir.</p>
+      <div class="combat-grid">
+        <div class="combat-card flame">
+          <div class="combat-card-title">Espada Flamigera</div>
+          <div class="combat-card-body">Dano de fuego adicional en cada ataque. Obtenida en el Feywild. Complementa su resistencia nativa al fuego y el simbolismo de su herencia. Contra no-muertos y seres de sombra, el dano de fuego es especialmente relevante.</div>
+        </div>
+        <div class="combat-card vecna">
+          <div class="combat-card-title">Mano que se Arrastra (Vecna)</div>
+          <div class="combat-card-body">Roba vida con cada golpe. Funciona como auto-curacion implicita en combate prolongado. Permite a Drakothar mantenerse en pie mas tiempo sin depender de los sanadores del grupo.</div>
+        </div>
+        <div class="combat-card">
+          <div class="combat-card-title">Armadura de Placas</div>
+          <div class="combat-card-body">CA maxima disponible para la primera linea. Permite interponerse entre los enemigos y los aliados fragiles (Noah, Nalare) sin necesidad de coordinacion verbal.</div>
+        </div>
+        <div class="combat-card">
+          <div class="combat-card-title">Aliento de Dragon</div>
+          <div class="combat-card-body">Cono de fuego. Util contra multiples enemigos agrupados. Usar con cautela: el fuego es el mismo elemento del dragon que destruyo su hogar. Tension narrativa y tactica combinadas.</div>
+        </div>
+        <div class="combat-card flame">
+          <div class="combat-card-title">Prioridad de Objetivos</div>
+          <div class="combat-card-body">Eliminar primero lo que amenaza a los aliados caidos o fragiles. Segunda prioridad: el enemigo mas letal en pie. Grandal y Drakothar operan bien como duo de primera linea cubriendo angulos distintos.</div>
+        </div>
+        <div class="combat-card blood">
+          <div class="combat-card-title">Alerta Psicologica</div>
+          <div class="combat-card-body">En combate contra objetivos con carga personal (Melaxir, agentes de Viligax), Drakothar puede actuar fuera del plan. El grupo lo durmio una vez. Tener a alguien preparado para intervenir es tactica valida de mesa.</div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem; overflow-x:auto;">
+        <div class="section-title"><span class="sigil"></span> Flujo de Turno &mdash; Referencia Rapida</div>
+        <table class="combat-table">
+          <thead>
+            <tr>
+              <th>Situacion</th>
+              <th>Accion Principal</th>
+              <th>Accion Bonus / Reaccion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Multiples enemigos agrupados</td>
+              <td>Aliento de dragon (cono)</td>
+              <td>Reposicionarse para proteger a un aliado fragil</td>
+            </tr>
+            <tr>
+              <td>Un solo enemigo fuerte</td>
+              <td>Espada flamigera: atacar, aprovechar Mano que se Arrastra</td>
+              <td>Mantener terreno, no retroceder</td>
+            </tr>
+            <tr>
+              <td>Aliado caido cerca</td>
+              <td>Interponerse entre el enemigo y el aliado</td>
+              <td>Gritar al grupo su posicion para que lleguen los sanadores</td>
+            </tr>
+            <tr>
+              <td>Enemigo con resistencia al fuego</td>
+              <td>Dano fisico de la espada sin activar llamas</td>
+              <td>Cambiar angulo, buscar flanco con Grandal</td>
+            </tr>
+            <tr>
+              <td>Objetivo de alto valor personal (Melaxir)</td>
+              <td>Carga directa. Objetivo: incapacitar, no matar inmediatamente</td>
+              <td>ALERTA: alto riesgo de actuar fuera del plan del grupo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUIA DE INTERPRETACION -->
+  <div class="section-header" data-toggle="roleplay">
+    <span class="sigil"></span> Guia de Interpretacion &mdash; Como Jugar a Drakothar
+    <span class="dropdown-arrow">&#9660;</span>
+  </div>
+  <div id="roleplay" class="section-content">
+    <div class="section">
+      <div class="philosophy" style="border-left-color:var(--gold); font-style:normal; font-size:0.93rem;">
+        Drakothar no busca ser lider. Busca ser confiable. Para el, ser confiable significa estar en pie cuando los demas no pueden. Significa actuar cuando la situacion lo requiere aunque nadie lo haya pedido. Significa tener un codigo y aplicarlo &mdash; incluso cuando eso lo mete en problemas.
+        <br><br>
+        El punto de tension mas rico: <strong style="color:var(--gold);">hace exactamente lo que critica en los demas, pero sin hipocresía consciente.</strong> Cuando actuó sin consultar al matar a Arryn, lo hizo por las mismas razones que Dalkyel actuo en S15. Pero Drakothar no lo procesa como equivalente. Esa brecha entre percepcion propia y realidad es el filón dramatico mas productivo.
+        <br><br>
+        Sobre el hermano: Parthurnax no deberia ser mencionado en cada escena, pero deberia <em>pesar</em> en todas. Una pausa antes de entrar al combate. Un vistazo al horizonte cuando alguien menciona Neverwinter. Esa es la forma de jugarlo sin sobreexplicarlo.
+      </div>
+      <div class="tip-grid" style="margin-top:1rem;">
+        <div class="tip-card" style="border-top-color:var(--gold);">
+          <div class="tip-header">Cuando el grupo debate</div>
+          <div class="tip-body">Drakothar no tiene paciencia para debates largos. Ofrece su opinion una vez, con claridad. Si el grupo decide distinto, acepta pero no oculta que no esta de acuerdo.</div>
+        </div>
+        <div class="tip-card" style="border-top-color:var(--flame);">
+          <div class="tip-header">Cuando alguien esta en peligro</div>
+          <div class="tip-body">Reaccion instintiva: interponer el cuerpo. No lo calcula, lo hace. Eso include a personajes con quienes tiene tension activa como Noah o Dalkyel. El codigo no tiene excepciones.</div>
+        </div>
+        <div class="tip-card" style="border-top-color:var(--blood);">
+          <div class="tip-header">Cuando aparece algo de Viligax o Melaxir</div>
+          <div class="tip-body">Pausa. Respiracion. Control visible del impulso. Si el grupo no esta mirando, puede perder esa batalla interna. Si esta mirando, demuestra cuanto le cuesta mantener la cabeza.</div>
+        </div>
+        <div class="tip-card" style="border-top-color:var(--vecna);">
+          <div class="tip-header">Cuando usa el encanto de Vecna</div>
+          <div class="tip-body">No lo comenta. No lo celebra. El robo de vida simplemente ocurre. Pero si alguien del grupo lo senala, la incomodidad es real. No tiene respuesta preparada para eso.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITUACION ACTUAL -->
+  <div class="section-header open" data-toggle="current">
+    <span class="sigil"></span> Situacion Actual &mdash; Estado al Inicio del Arco Siguiente
+    <span class="dropdown-arrow">&#9660;</span>
+  </div>
+  <div id="current" class="section-content open">
+    <div class="section">
+      <div class="stat-grid">
+        <div class="stat-card" style="border-top-color:var(--gold);">
+          <div class="stat-label">Ubicacion</div>
+          <div class="stat-value">A bordo del <em>Pechos de Sirena</em>. Navegando hacia la Tormenta Purpura Antinatural perseguidos por el Dragon Tortuga.</div>
+        </div>
+        <div class="stat-card" style="border-top-color:var(--flame);">
+          <div class="stat-label">Objetivo Inmediato</div>
+          <div class="stat-value">Llegar a la isla de Melaxir D'haran. Destruirlo. Recuperar lo que queda de la esencia de Viligax. Encontrar una cura para Parthurnax.</div>
+        </div>
+        <div class="stat-card" style="border-top-color:var(--blood);">
+          <div class="stat-label">Estado Psicologico</div>
+          <div class="stat-value">Inestable bajo estres moral. Perdio un recuerdo en el ritual de Jerren. Fue dormido por el grupo en S14. Los dos eventos juntos crean una grieta que aun no se ha abordado internamente.</div>
+        </div>
+        <div class="stat-card" style="border-top-color:var(--vecna);">
+          <div class="stat-label">Amenaza Activa</div>
+          <div class="stat-value">Vision de Vecna sin resuelta. Encanto activo en su cuerpo. Parthurnax como objetivo potencial del culto mientras permanece sin memoria y sin proteccion en Neverwinter.</div>
+        </div>
+      </div>
+      <div style="margin-top:1.2rem;">
+        <div class="danger-box">
+          <div class="danger-title">La Pregunta que No Ha Respondido</div>
+          <div class="danger-body">
+            Si Viligax sigue vivo &mdash; reducido, agonizante, con su esencia parcialmente robada &mdash; que hace Drakothar cuando lo encuentre?
+            <br><br>
+            Venganza: matar al dragon que destruyo su hogar.<br>
+            Justicia: salvar lo que queda de una criatura que fue robada por Melaxir.<br>
+            Pragmatismo: usar esa esencia de dragon para curar a Parthurnax.
+            <br><br>
+            <em>Las tres opciones son coherentes con quien es. Las tres se contradicen entre si. Esa es la decision que lo define.</em>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="whisper">&#10022; el fuego que destruye y el fuego que protege son la misma llama &#10022;</div>
+  </footer>
+
+</div>
+
+<script>
+  // Toggle sections
+  document.querySelectorAll('.section-header').forEach(function(header) {
+    header.addEventListener('click', function() {
+      var id = this.getAttribute('data-toggle');
+      var content = document.getElementById(id);
+      if (!content) return;
+      var isOpen = content.classList.contains('open');
+      content.classList.toggle('open', !isOpen);
+      this.classList.toggle('open', !isOpen);
+    });
+  });
+</script>
+</body>
+</html>
