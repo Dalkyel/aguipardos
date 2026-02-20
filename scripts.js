@@ -43,7 +43,7 @@
 
   let lastFocus = null;
 
-  function openPortrait(key){
+  function openPortrait(key) {
     const p = PORTRAITS[key];
     if (!p) return;
 
@@ -59,7 +59,7 @@
     closeBtn.focus({ preventScroll: true });
   }
 
-  function closePortrait(){
+  function closePortrait() {
     modal.close();
     modal.classList.remove('open');
 
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
           });
           p.innerHTML = html;
         });
-        
+
         const session = scene.closest('.session');
         if (session && !session.classList.contains('open')) {
           const btn = session.querySelector('.session-toggle');
@@ -264,6 +264,43 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const section = card.closest('.section-content');
+      if (section && !section.classList.contains('collapsed')) {
+        setTimeout(() => {
+          section.style.maxHeight = section.scrollHeight + 'px';
+        }, 10);
+      }
+    });
+  });
+})();
+
+// Geo-region toggle functionality for index.html
+(() => {
+  const geoHeaders = document.querySelectorAll('.geo-header');
+
+  geoHeaders.forEach(header => {
+    const region = header.closest('.geo-region');
+    const body = region?.querySelector('.geo-body');
+
+    if (!body) return;
+
+    header.classList.add('collapsed');
+    body.classList.add('collapsed');
+    body.style.maxHeight = '0';
+
+    header.addEventListener('click', () => {
+      const isCollapsed = header.classList.contains('collapsed');
+
+      if (isCollapsed) {
+        header.classList.remove('collapsed');
+        body.classList.remove('collapsed');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      } else {
+        header.classList.add('collapsed');
+        body.classList.add('collapsed');
+        body.style.maxHeight = '0';
+      }
+
+      const section = region.closest('.section-content');
       if (section && !section.classList.contains('collapsed')) {
         setTimeout(() => {
           section.style.maxHeight = section.scrollHeight + 'px';
