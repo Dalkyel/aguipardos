@@ -21,6 +21,7 @@ body{background:var(--shadow);background-image:radial-gradient(ellipse at 20% 10
 .character-filter select:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .char-highlight{background:var(--gold-light);color:var(--ink);padding:0 .2rem;border-radius:2px;font-weight:600}
 .content{padding:2rem}
+.content>section{margin:0!important;padding:0!important;display:block;unicode-bidi:normal}
 .section-header{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 1.2rem;cursor:pointer;user-select:none}
 .section-header::before,.section-header::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--section-border))}
 .section-header::after{background:linear-gradient(to left,transparent,var(--section-border))}
@@ -172,8 +173,9 @@ html{-webkit-text-size-adjust:100%}
     .header::before,.header::after{display:none}
     .party-status{padding:1rem;gap:1rem}
     .content{padding:1rem}
-    section{width:100%;margin-left:auto;margin-right:auto}
-    .section-header{display:block;text-align:center}
+    section{padding:0;margin:0}
+    .threads-list{margin:0;padding:0}
+    .section-header{display:block!important;text-align:center}
     .section-header::before,.section-header::after{display:none}
     .section-header h2{white-space:normal;padding:0;letter-spacing:.18em}
     .thread-card{flex-direction:column;gap:.6rem}
