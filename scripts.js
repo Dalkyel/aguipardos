@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     veldor: ['Veldor', 'Feywild', 'Isha', 'Teodore', 'Astor', 'Ashton'],
     nalare: ['Nalare', 'Amaunator'],
     dalkyel: ['Dalkyel', 'Orken', 'Orion'],
-    drakothar: ['Drakothar', 'Parthurnax'],
+    drakothar: ['Drakothar', 'Parthurnax', 'Dracotia', 'Viligax', 'Bahamut'],
     grandal: ['Grandal', 'Glutonian']
   };
 
