@@ -122,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Section dropdown functionality
 (() => {
   const headers = document.querySelectorAll('.section-header[data-toggle]');
+  const isCharacterPage = document.body.classList.contains('dalkyel-page') || document.body.classList.contains('drakothar-page');
 
   headers.forEach(header => {
     const targetId = header.getAttribute('data-toggle');
@@ -129,38 +130,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!content) return;
 
-    header.classList.add('collapsed');
-    content.classList.add('collapsed');
-    content.style.maxHeight = '0';
+    if (isCharacterPage) {
+      header.classList.remove('open');
+      content.classList.remove('open');
 
-    header.addEventListener('click', () => {
-      const isCollapsed = header.classList.contains('collapsed');
+      header.addEventListener('click', () => {
+        header.classList.toggle('open');
+        content.classList.toggle('open');
+      });
+    } else {
+      header.classList.add('collapsed');
+      content.classList.add('collapsed');
+      content.style.maxHeight = '0';
 
-      if (isCollapsed) {
-        header.classList.remove('collapsed');
-        content.classList.remove('collapsed');
-        content.style.maxHeight = content.scrollHeight + 'px';
-      } else {
-        header.classList.add('collapsed');
-        content.classList.add('collapsed');
-        content.style.maxHeight = '0';
-      }
-    });
-  });
+      header.addEventListener('click', () => {
+        const isCollapsed = header.classList.contains('collapsed');
 
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      headers.forEach(header => {
-        const targetId = header.getAttribute('data-toggle');
-        const content = document.getElementById(targetId);
-        if (content && !content.classList.contains('collapsed')) {
+        if (isCollapsed) {
+          header.classList.remove('collapsed');
+          content.classList.remove('collapsed');
           content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+          header.classList.add('collapsed');
+          content.classList.add('collapsed');
+          content.style.maxHeight = '0';
         }
       });
-    }, 150);
+    }
   });
+
+  if (!isCharacterPage) {
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        headers.forEach(header => {
+          const targetId = header.getAttribute('data-toggle');
+          const content = document.getElementById(targetId);
+          if (content && !content.classList.contains('collapsed')) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+          }
+        });
+      }, 150);
+    });
+  }
 })();
 
 // Character filter functionality for events.html
