@@ -207,33 +207,53 @@ html{-webkit-text-size-adjust:100%}
    DALKYEL CHARACTER PAGE STYLES
    ═══════════════════════════════════════════════════════════════════════════ */
 
-.dalkyel-page{background:var(--ink);color:var(--parchment);font-family:'Crimson Text',Georgia,serif;font-size:17px;line-height:1.7;min-height:100vh}
-.dalkyel-page::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 10%,rgba(120,30,30,0.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 90%,rgba(80,50,20,0.12) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(42,31,20,0.9) 0%,var(--ink) 100%);pointer-events:none;z-index:0}
-.wrapper{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:3rem 2rem 5rem}
-.title-block{text-align:center;padding:3rem 2rem;margin-bottom:3rem;position:relative;border:1px solid var(--gold);border-image:linear-gradient(to right,transparent,var(--gold),transparent) 1}
-.title-block::before,.title-block::after{content:'';display:block;height:2px;background:linear-gradient(to right,transparent,var(--gold),var(--blood),var(--gold),transparent);margin:0.5rem auto}
-.eyebrow{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;opacity:0.8}
-.dalkyel-page .char-name{font-family:'UnifrakturMaguntia',cursive;font-size:5rem;color:var(--parchment);line-height:1;text-shadow:0 0 30px rgba(184,137,42,0.4),0 0 60px rgba(120,30,30,0.3);margin-bottom:0.5rem}
-.char-subtitle{font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:0.3em;color:var(--bone);font-weight:400}
-.section{margin-bottom:3rem}
-.section-header{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 1.2rem;cursor:pointer;user-select:none}
-.section-header .sigil{font-size:1.2rem;color:var(--gold)}
-.section-header{font-family:'Cinzel',serif;font-size:1rem;font-weight:700;color:var(--blood);letter-spacing:0.25em;text-transform:uppercase}
-.section-header .dropdown-arrow{font-size:0.9rem;color:var(--gold-dim);transition:transform 0.2s;margin-left:auto}
-.section-header.collapsed .dropdown-arrow{transform:rotate(-90deg)}
-.section-content{transition:max-height 0.3s ease-out,opacity 0.2s ease-out;overflow:hidden}
-.section-content.collapsed{max-height:0!important;opacity:0;margin:0;padding:0}
-.section-title{font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);padding-bottom:0.5rem;border-bottom:1px solid rgba(184,137,42,0.3);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.8rem}
-.section-title .sigil{font-size:1rem}
-.divider{display:flex;align-items:center;gap:1rem;margin:2rem 0;color:var(--gold);opacity:0.5;font-size:1.2rem}
-.divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold))}
-.divider::after{background:linear-gradient(to left,transparent,var(--gold))}
-.philosophy{background:linear-gradient(135deg,rgba(122,28,28,0.12),rgba(42,31,20,0.6));border-left:3px solid var(--blood);border-right:1px solid rgba(184,137,42,0.2);padding:1.5rem 2rem;margin:2rem 0;font-style:italic;font-size:1.05rem;color:var(--bone);position:relative}
-.philosophy::before{content:'"';font-family:'UnifrakturMaguntia',cursive;font-size:5rem;color:var(--blood);opacity:0.3;position:absolute;top:-1rem;left:0.5rem;line-height:1}
-.section-title .sigil{font-size:1rem}
-.stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:1.5rem}
-.stat-card{background:rgba(14,11,8,0.7);border:1px solid rgba(184,137,42,0.2);padding:1rem;position:relative}
-.stat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(184,137,42,0.04),transparent)}
+.dalkyel-page {
+  --gold:#c8933a;
+  --gold-light:#c8933a;
+  --gold-dim:#8b5e1a;
+  --ink:#0e0c08;
+  --parchment:#e8d8b8;
+  --parchment-dark:#1a1610;
+  --parchment-shadow:#8b5e1a;
+  --bone:#c8b89a;
+  --blood:#8b1a1a;
+  --blood-light:#8b1a1a;
+  --shadow:#0e0c08;
+  --teal:#1d5c5c;
+  --teal-light:#2a8080;
+  --purple:#3d1c6e;
+  --purple-light:#5a2fa0;
+  --flame:#d4601a;
+  --bronze:#8b5e1a;
+  --dark:#0e0c08;
+  --panel:#1a1610;
+  --panel2:#221e14;
+  --border:rgba(200,147,58,0.25);
+  --text:#c8b89a;
+  --vecna:#6a2fa0;
+  background:var(--dark);
+  color:var(--text);
+  font-family:'Crimson Text',Georgia,serif;
+  font-size:17px;
+  line-height:1.7;
+  min-height:100vh;
+}
+.dalkyel-page::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 10%,rgba(212,96,26,0.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 90%,rgba(139,94,26,0.12) 0%,transparent 50%);pointer-events:none;z-index:0}
+.dalkyel-page .wrapper{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.dalkyel-page .title-block{text-align:center;padding:2.5rem 1rem 2rem;border-bottom:1px solid var(--border);margin-bottom:2rem}
+.dalkyel-page .eyebrow{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.18em;color:var(--bronze);text-transform:uppercase;margin-bottom:0.6rem}
+.dalkyel-page .char-name{font-family:'UnifrakturMaguntia',cursive;font-size:4.5rem;color:var(--gold);line-height:1;text-shadow:0 0 40px rgba(200,147,58,0.4);margin-bottom:0.4rem}
+.dalkyel-page .char-subtitle{font-family:'IM Fell English',serif;font-size:1rem;color:var(--bone);font-style:italic;letter-spacing:0.04em}
+.dalkyel-page .section{background:var(--panel);border:1px solid var(--border);border-top:none;padding:1.5rem;margin-bottom:0;display:block}
+.dalkyel-page .section-header{display:flex;align-items:center;gap:0.6rem;padding:0.75rem 1.2rem;background:var(--panel);border-left:3px solid var(--flame);border-bottom:1px solid var(--border);font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);cursor:pointer;user-select:none;margin-top:1.5rem}
+.dalkyel-page .section-header .dropdown-arrow{margin-left:auto;font-size:0.7rem;transition:transform 0.25s}
+.dalkyel-page .section-header.open .dropdown-arrow{transform:rotate(180deg)}
+.dalkyel-page .section-content{display:none;overflow:hidden}
+.dalkyel-page .section-content.open{display:block}
+.dalkyel-page .stat-card{background:var(--panel2);border:1px solid var(--border);border-top:2px solid var(--flame);padding:0.8rem 1rem}
+.dalkyel-page .stat-card::before{display:none}
+.dalkyel-page .philosophy{border-left:3px solid var(--flame);padding:1rem 1.2rem;font-family:'IM Fell English',serif;font-style:italic;font-size:1.05rem;color:var(--parchment);background:rgba(212,96,26,0.06);line-height:1.75;margin:0}
+.dalkyel-page .philosophy::before{display:none}
 .stat-label{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);opacity:0.7;margin-bottom:0.3rem}
 .stat-value{font-size:0.95rem;color:var(--parchment);font-style:italic}
 .rel-list{display:flex;flex-direction:column;gap:1.2rem}
@@ -350,3 +370,149 @@ html{-webkit-text-size-adjust:100%}
 ::-webkit-scrollbar-thumb{background:var(--blood)}
 .scene-image{text-align:center;margin:1.5rem 0}
 .scene-image img{max-width:100%;height:auto;border:2px solid var(--parchment-shadow);box-shadow:0 4px 12px rgba(0,0,0,.3)}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DRAKOTHAR CHARACTER PAGE STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.drakothar-page { 
+  --gold: #c8933a;
+  --flame: #d4601a;
+  --bronze: #8b5e1a;
+  --bone: #c8b89a;
+  --parchment: #e8d8b8;
+  --blood: #8b1a1a;
+  --dark: #0e0c08;
+  --panel: #1a1610;
+  --panel2: #221e14;
+  --border: rgba(200,147,58,0.25);
+  --text: #c8b89a;
+  --vecna: #6a2fa0;
+  --ok: #2a6a2a;
+  background: var(--dark); 
+  color: var(--text); 
+  font-family: 'Crimson Text', Georgia, serif; 
+  font-size: 1.05rem; 
+  line-height: 1.65; 
+  min-height: 100vh; 
+}
+.drakothar-page .wrapper { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+.drakothar-page .title-block { text-align: center; padding: 2.5rem 1rem 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+.drakothar-page .eyebrow { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.18em; color: var(--bronze); text-transform: uppercase; margin-bottom: 0.6rem; }
+.drakothar-page .char-name { font-family: 'UnifrakturMaguntia', cursive; font-size: 4.5rem; color: var(--gold); line-height: 1; text-shadow: 0 0 40px rgba(200,147,58,0.4); margin-bottom: 0.4rem; }
+.drakothar-page .char-subtitle { font-family: 'IM Fell English', serif; font-size: 1rem; color: var(--bone); font-style: italic; letter-spacing: 0.04em; }
+.drakothar-page .nav-link { display: inline-block; margin-top: 1rem; padding: 0.4rem 1.2rem; border: 1px solid var(--border); color: var(--gold); text-decoration: none; font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.12em; }
+.drakothar-page .section-header { display: flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1.2rem; background: var(--panel); border-left: 3px solid var(--flame); border-bottom: 1px solid var(--border); font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); cursor: pointer; user-select: none; margin-top: 1.5rem; }
+.drakothar-page .section-header .dropdown-arrow { margin-left: auto; font-size: 0.7rem; transition: transform 0.25s; }
+.drakothar-page .section-header.open .dropdown-arrow { transform: rotate(180deg); }
+.drakothar-page .section-content { display: none; }
+.drakothar-page .section-content.open { display: block; }
+.drakothar-page .section { background: var(--panel); border: 1px solid var(--border); border-top: none; padding: 1.5rem; }
+.drakothar-page .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem; }
+.drakothar-page .stat-card { background: var(--panel2); border: 1px solid var(--border); border-top: 2px solid var(--flame); padding: 0.8rem 1rem; }
+.drakothar-page .stat-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bronze); margin-bottom: 0.3rem; }
+.drakothar-page .stat-value { font-size: 0.95rem; color: var(--parchment); }
+.drakothar-page .ability-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.6rem; margin-bottom: 1.2rem; }
+.drakothar-page .ability-card { background: var(--panel2); border: 1px solid var(--border); border-top: 2px solid var(--flame); padding: 0.6rem 0.4rem; text-align: center; }
+.drakothar-page .ability-name { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bronze); margin-bottom: 0.2rem; }
+.drakothar-page .ability-score { font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold); line-height: 1; }
+.drakothar-page .ability-mod { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--flame); margin-top: 0.1rem; }
+.drakothar-page .ability-save { font-size: 0.72rem; color: var(--bone); margin-top: 0.2rem; }
+.drakothar-page .combat-bar { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.6rem; margin-bottom: 1.2rem; }
+.drakothar-page .combat-stat { background: var(--panel2); border: 1px solid var(--border); padding: 0.7rem; text-align: center; }
+.drakothar-page .combat-stat-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bronze); margin-bottom: 0.2rem; }
+.drakothar-page .combat-stat-value { font-family: 'Cinzel', serif; font-size: 1.6rem; font-weight: 700; color: var(--gold); line-height: 1; }
+.drakothar-page .combat-stat-value.hp { color: #6abf6a; }
+.drakothar-page .combat-stat-value.ac { color: var(--flame); }
+.drakothar-page .weapon-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-bottom: 1.2rem; }
+.drakothar-page .weapon-table th { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bronze); padding: 0.4rem 0.8rem; border-bottom: 1px solid var(--border); text-align: left; }
+.drakothar-page .weapon-table td { padding: 0.5rem 0.8rem; border-bottom: 1px solid rgba(200,147,58,0.1); color: var(--bone); vertical-align: top; }
+.drakothar-page .weapon-table tr:last-child td { border-bottom: none; }
+.drakothar-page .weapon-table .wname { color: var(--parchment); font-weight: 600; }
+.drakothar-page .weapon-table .whit { color: var(--flame); font-family: 'Cinzel', serif; font-size: 0.88rem; }
+.drakothar-page .weapon-table .wdmg { color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.88rem; }
+.drakothar-page .attuned-tag { display: inline-block; padding: 0.1rem 0.4rem; font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid var(--flame); color: var(--flame); margin-left: 0.3rem; vertical-align: middle; }
+.drakothar-page .resource-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem; margin-bottom: 1rem; }
+.drakothar-page .resource-card { background: var(--panel2); border: 1px solid var(--border); border-left: 3px solid var(--flame); padding: 0.8rem 1rem; }
+.drakothar-page .resource-card.short-rest { border-left-color: var(--gold); }
+.drakothar-page .resource-card.long-rest { border-left-color: var(--bronze); }
+.drakothar-page .resource-card.free { border-left-color: #4a6a4a; }
+.drakothar-page .resource-name { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
+.drakothar-page .resource-uses { font-size: 1.2rem; color: var(--flame); font-family: 'Cinzel', serif; margin-bottom: 0.2rem; }
+.drakothar-page .resource-desc { font-size: 0.85rem; color: var(--bone); line-height: 1.5; }
+.drakothar-page .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.2rem 1rem; }
+.drakothar-page .skill-row { display: flex; align-items: center; gap: 0.4rem; padding: 0.15rem 0; font-size: 0.88rem; color: var(--bone); }
+.drakothar-page .skill-row.prof { color: var(--parchment); }
+.drakothar-page .skill-mod { font-family: 'Cinzel', serif; font-size: 0.78rem; color: var(--flame); min-width: 2rem; text-align: right; }
+.drakothar-page .skill-mod.prof-mod { color: var(--gold); }
+.drakothar-page .prof-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+.drakothar-page .prof-dot.filled { background: var(--flame); }
+.drakothar-page .combat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.8rem; }
+.drakothar-page .combat-card { background: var(--panel2); border: 1px solid var(--border); padding: 0.9rem 1rem; }
+.drakothar-page .combat-card.flame-card { border-left: 3px solid var(--flame); }
+.drakothar-page .combat-card.vecna-card { border-left: 3px solid var(--vecna); background: rgba(106,47,160,0.08); }
+.drakothar-page .combat-card.warning-card { border-left: 3px solid #c8a020; background: rgba(200,160,32,0.06); }
+.drakothar-page .combat-card.ok-card { border-left: 3px solid #4a8a4a; background: rgba(74,138,74,0.06); }
+.drakothar-page .combat-card.danger { border-left: 3px solid var(--blood); }
+.drakothar-page .combat-card.gold-card { border-left: 3px solid var(--gold); }
+.drakothar-page .combat-card-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+.drakothar-page .combat-card-body { font-size: 0.92rem; color: var(--bone); line-height: 1.6; }
+.drakothar-page .priority-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.drakothar-page .priority-row { display: flex; gap: 0.8rem; align-items: flex-start; padding: 0.6rem 0.8rem; background: var(--panel2); border: 1px solid var(--border); }
+.drakothar-page .priority-num { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; color: var(--flame); min-width: 1.5rem; text-align: center; line-height: 1.4; }
+.drakothar-page .priority-content { flex: 1; }
+.drakothar-page .priority-name { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.2rem; }
+.drakothar-page .priority-desc { font-size: 0.88rem; color: var(--bone); line-height: 1.5; }
+.drakothar-page .philosophy { border-left: 3px solid var(--flame); padding: 1rem 1.2rem; font-family: 'IM Fell English', serif; font-style: italic; font-size: 1.05rem; color: var(--parchment); background: rgba(212,96,26,0.06); line-height: 1.75; }
+.drakothar-page .tip-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.8rem; }
+.drakothar-page .tip-card { background: var(--panel2); border: 1px solid var(--border); border-top: 3px solid var(--gold); padding: 0.9rem 1rem; }
+.drakothar-page .tip-header { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+.drakothar-page .tip-body { font-size: 0.92rem; color: var(--bone); line-height: 1.6; }
+.drakothar-page .timeline { border-left: 2px solid var(--flame); padding-left: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+.drakothar-page .tl-event { position: relative; }
+.drakothar-page .tl-event::before { content: ''; position: absolute; left: -1.65rem; top: 0.45rem; width: 10px; height: 10px; border-radius: 50%; background: var(--flame); border: 2px solid var(--dark); }
+.drakothar-page .tl-session { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bronze); margin-bottom: 0.2rem; }
+.drakothar-page .tl-desc { font-size: 0.96rem; color: var(--parchment); margin-bottom: 0.2rem; }
+.drakothar-page .tl-impact { font-size: 0.88rem; color: var(--bone); font-style: italic; }
+.drakothar-page .section-title { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bronze); margin-bottom: 0.8rem; margin-top: 1.2rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border); }
+.drakothar-page .vecna-box { background: rgba(106,47,160,0.12); border: 1px solid rgba(106,47,160,0.4); border-left: 3px solid var(--vecna); padding: 1rem 1.2rem; margin-top: 1rem; }
+.drakothar-page .vecna-box-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: #9a5fd0; margin-bottom: 0.5rem; }
+.drakothar-page .danger-box { background: rgba(139,26,26,0.12); border: 1px solid rgba(139,26,26,0.4); border-left: 3px solid var(--blood); padding: 1rem 1.2rem; margin-top: 1rem; }
+.drakothar-page .danger-box-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: #c04040; margin-bottom: 0.5rem; }
+.drakothar-page .contra-box { background: rgba(200,147,58,0.06); border: 1px dashed rgba(200,147,58,0.35); border-left: 3px solid var(--bronze); padding: 1rem 1.2rem; margin-top: 0.8rem; }
+.drakothar-page .contra-title { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bronze); margin-bottom: 0.4rem; }
+.drakothar-page .rel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.8rem; }
+.drakothar-page .rel-card { background: var(--panel2); border: 1px solid var(--border); border-top: 2px solid var(--bronze); padding: 0.8rem 1rem; }
+.drakothar-page .rel-card.tense { border-top-color: var(--blood); }
+.drakothar-page .rel-card.strong { border-top-color: var(--flame); }
+.drakothar-page .rel-card.enemy { border-top-color: #8b1a1a; background: rgba(139,26,26,0.06); }
+.drakothar-page .rel-name { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 0.15rem; }
+.drakothar-page .rel-role { font-size: 0.78rem; color: var(--bronze); font-style: italic; margin-bottom: 0.4rem; }
+.drakothar-page .rel-desc { font-size: 0.9rem; color: var(--bone); line-height: 1.55; }
+.drakothar-page .hook-list { display: flex; flex-direction: column; gap: 0.8rem; }
+.drakothar-page .hook-item { background: var(--panel2); border: 1px solid var(--border); border-left: 3px solid var(--flame); padding: 0.8rem 1rem; }
+.drakothar-page .hook-item.critical { border-left-color: var(--blood); }
+.drakothar-page .hook-item.vecna-hook { border-left-color: var(--vecna); }
+.drakothar-page .hook-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+.drakothar-page .hook-item.critical .hook-title { color: #c04040; }
+.drakothar-page .hook-item.vecna-hook .hook-title { color: #9a5fd0; }
+.drakothar-page .hook-desc { font-size: 0.92rem; color: var(--bone); line-height: 1.6; }
+.drakothar-page .tag { display: inline-block; padding: 0.15rem 0.5rem; font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--border); color: var(--bone); margin: 0.15rem 0.15rem 0.15rem 0; }
+.drakothar-page .tag.flame { border-color: var(--flame); color: var(--flame); }
+.drakothar-page .tag.vecna { border-color: var(--vecna); color: #9a5fd0; }
+.drakothar-page .tag.gold { border-color: var(--gold); color: var(--gold); }
+.drakothar-page .tag.ok { border-color: #4a8a4a; color: #7abf7a; }
+.drakothar-page .note-box { background: rgba(139,94,26,0.1); border: 1px solid rgba(139,94,26,0.3); border-left: 3px solid var(--bronze); padding: 0.8rem 1rem; margin-top: 0.8rem; font-size: 0.88rem; color: var(--bone); }
+.drakothar-page .whisper { text-align: center; font-family: 'UnifrakturMaguntia', cursive; font-size: 1.3rem; color: rgba(200,147,58,0.35); margin-top: 3rem; letter-spacing: 0.15em; }
+.drakothar-page p { margin-bottom: 0.7rem; }
+.drakothar-page p:last-child { margin-bottom: 0; }
+.drakothar-page strong { color: var(--parchment); }
+.drakothar-page em { color: var(--bone); }
+
+@media (max-width: 650px) {
+  .drakothar-page .char-name { font-size: 3rem; }
+  .drakothar-page .ability-grid { grid-template-columns: repeat(3, 1fr); }
+  .drakothar-page .stat-grid, .drakothar-page .tip-grid, .drakothar-page .combat-grid, .drakothar-page .rel-grid, .drakothar-page .resource-grid { grid-template-columns: 1fr; }
+  .drakothar-page .skills-grid { grid-template-columns: 1fr; }
+}
