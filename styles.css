@@ -409,10 +409,11 @@ html{-webkit-text-size-adjust:100%}
 .drakothar-page .section-content { display: none; }
 .drakothar-page .section-content.open { display: block; }
 .drakothar-page .section { background: var(--panel); border: 1px solid var(--border); border-top: none; padding: 1.5rem; }
-.drakothar-page .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem; }
-.drakothar-page .stat-card { background: var(--panel2); border: 1px solid var(--border); border-top: 2px solid var(--flame); padding: 0.8rem 1rem; }
-.drakothar-page .stat-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bronze); margin-bottom: 0.3rem; }
-.drakothar-page .stat-value { font-size: 0.95rem; color: var(--parchment); }
+.drakothar-page .stat-grid { display: grid !important; grid-template-columns: 1fr !important; gap: 0.8rem !important; }
+.drakothar-page .stat-card { background: var(--panel2) !important; border: 1px solid var(--border) !important; border-top: 2px solid var(--flame) !important; padding: 0.8rem 1rem !important; }
+.drakothar-page .stat-card::before { display: none !important; }
+.drakothar-page .stat-label { font-family: 'Cinzel', serif !important; font-size: 0.6rem !important; letter-spacing: 0.3em !important; text-transform: uppercase !important; color: var(--gold) !important; opacity: 0.7 !important; margin-bottom: 0.3rem !important; }
+.drakothar-page .stat-value { font-size: 0.95rem !important; color: var(--parchment) !important; font-style: italic !important; }
 .drakothar-page .ability-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.6rem; margin-bottom: 1.2rem; }
 .drakothar-page .ability-card { background: var(--panel2); border: 1px solid var(--border); border-top: 2px solid var(--flame); padding: 0.6rem 0.4rem; text-align: center; }
 .drakothar-page .ability-name { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bronze); margin-bottom: 0.2rem; }
