@@ -322,3 +322,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 })();
+
+// Timeline session toggle functionality for index.html
+(() => {
+  const sessionToggles = document.querySelectorAll('.session-toggle');
+
+  sessionToggles.forEach(btn => {
+    const session = btn.closest('.session');
+    const content = session?.querySelector('.session-content');
+
+    if (!content) return;
+
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+      if (isExpanded) {
+        btn.setAttribute('aria-expanded', 'false');
+        content.setAttribute('hidden', '');
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        content.removeAttribute('hidden');
+      }
+    });
+  });
+})();
