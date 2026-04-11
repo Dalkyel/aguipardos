@@ -480,20 +480,30 @@
             <div class="combat-card-title">Modo B &mdash; Skirmisher / Ejecutor</div>
             <div class="combat-card-body">
               Cuando conviene conservar slots o el combate ya está controlado, cambia a ejecución precisa.
-              <strong>La cimitarra es tu arma principal en melee</strong>; las <strong>dagas</strong> sirven para presión secundaria,
-              lanzamiento o combate cerrado; la <strong>Light Crossbow +1</strong> es la opción segura cuando no puedes tomar
-              posición. El motor real del pícaro es <strong>Find Familiar + Help</strong> o un
-              aliado / invocación adyacente al blanco &rarr; ataque de arma a distancia &rarr;
-              <strong>Sneak Attack +1d6</strong>.
+              <strong>Cimitarra + daga via Nick Mastery</strong> son dos ataques dentro de una sola Attack Action,
+              dejando la Bonus Action libre. La <strong>Light Crossbow +1</strong> es la opción segura a distancia.
+              El motor real del pícaro es <strong>Find Familiar + Help</strong> o un aliado / invocación adyacente al blanco
+              &rarr; ataque de arma (Finesse o Ranged) &rarr; <strong>Sneak Attack +1d6</strong>.
             </div>
           </div>
           <div class="combat-card">
-            <div class="combat-card-title">Corrección Crítica</div>
+            <div class="combat-card-title">Nick Mastery &mdash; La Regla que Libera la Bonus Action</div>
+            <div class="combat-card-body">
+              Tanto la <strong>cimitarra</strong> como la <strong>daga</strong> tienen Mastery: <strong>Nick</strong> (PHB 2024).
+              Nick permite hacer el ataque extra de la propiedad Light <strong>como parte de la Attack Action</strong>,
+              no como Bonus Action. Resultado: <strong>dos ataques de arma en una Action</strong>, Bonus Action completamente libre
+              para comandar invocación, recargar el Ward o Misty Step de emergencia. Solo un Sneak Attack por turno, aplica
+              en el primero que impacte con condiciones cumplidas.
+            </div>
+          </div>
+          <div class="combat-card">
+            <div class="combat-card-title">Correcciones Criticas de Reglas</div>
             <div class="combat-card-body">
               <strong>Fire Bolt</strong>, <strong>Chill Touch</strong> y <strong>Toll the Dead</strong>
-              <strong>no activan Sneak Attack</strong>. Sneak Attack exige un <strong>ataque con arma</strong> de
-              <strong>finesse</strong> o <strong>ranged weapon</strong>. Tu backup correcto es la ballesta ligera +1, no el
-              loop de cantrips.
+              <strong>no activan Sneak Attack</strong>. Sneak Attack exige arma <strong>Finesse</strong> o <strong>Ranged</strong>.
+              <br><br>
+              <strong>Dalkyel es Rogue 1</strong> &mdash; no tiene <strong>Cunning Action</strong> (nivel 2 de Rogue). No puede
+              Disengage, Dash ni Hide como Bonus Action. Salir de melee sin Misty Step expone a Opportunity Attack.
             </div>
           </div>
         </div>
@@ -521,8 +531,10 @@
           <div class="stat-card">
             <div class="stat-label">Armas Mundanas</div>
             <div class="stat-value">La <strong>cimitarra</strong> es la herramienta principal para explotar control en melee.
-              Las <strong>dagas</strong> son utilitarias: off-hand, lanzamiento y peleas apretadas. La <strong>ballesta</strong>
-              es respaldo seguro, no identidad central.</div>
+              Con <strong>Nick Mastery</strong>, la <strong>daga</strong> se añade como segundo ataque dentro de la misma Attack Action,
+              liberando la Bonus Action completamente. La <strong>ballesta</strong>
+              es respaldo seguro a distancia, no identidad central. La propiedad <strong>Loading</strong> limita la ballesta
+              a un disparo por acción, siempre.</div>
           </div>
           <div class="stat-card">
             <div class="stat-label">Error Típico</div>
@@ -580,10 +592,18 @@
           <div class="spell-row utility">
             <div class="spell-slot-badge">Nota</div>
             <div>
-              <div class="spell-name">Arcane Ward: cómo recargarlo</div>
-              <div class="spell-desc"><strong>Ritual Alarm no recarga el Ward.</strong> La recarga relevante ocurre cuando
-                lanzas abjuración <strong>con slot</strong> como <strong>Shield</strong>, <strong>Counterspell</strong>,
-                <strong>Mage Armor</strong> o <strong>Banishment</strong>.</div>
+              <div class="spell-name">Arcane Ward: cómo recargarlo (dos vias)</div>
+              <div class="spell-desc">
+                <strong>Via 1 &mdash; Lanzar abjuración con slot:</strong> Siempre que lances
+                <strong>Shield</strong>, <strong>Counterspell</strong>, <strong>Mage Armor</strong>,
+                <strong>Banishment</strong> u otra abjuración con slot, el Ward recupera el doble del nivel del slot
+                (Niv 1 = +2, Niv 2 = +4, Niv 3 = +6, Niv 4 = +8).<br><br>
+                <strong>Via 2 &mdash; Bonus Action directa:</strong> Como Bonus Action puedes gastar cualquier slot sin
+                lanzar hechizo y el Ward recupera el doble del nivel del slot gastado. Útil cuando la Bonus Action
+                está libre (gracias a Nick Mastery) y el Ward está bajo.<br><br>
+                <strong>Ritual Alarm no recarga el Ward</strong> porque no consume slot. Alarm como ritual es útil,
+                pero es independiente del Ward.
+              </div>
             </div>
             <span class="spell-tag control">Regla</span>
           </div>
@@ -779,9 +799,9 @@
           <div class="combat-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px,1fr));">
             <div class="combat-card">
               <div class="combat-card-title" style="color:#d05050;">Quieres conservar slots</div>
-              <div class="combat-card-body"><strong>Find Familiar: Help</strong> &rarr; <strong>cimitarra</strong> si el campo ya es
-                seguro; <strong>daga</strong> si necesitas flexibilidad; <strong>ballesta</strong> si no puedes entrar. El objetivo no es
-                disparar siempre: es <strong>cobrar la ventaja con el arma correcta</strong>.</div>
+              <div class="combat-card-body"><strong>Nick Mastery en melee:</strong> cimitarra + daga en una Attack Action,
+                Bonus Action libre para comandar invocación o recargar Ward. Si necesitas distancia,
+                <strong>Find Familiar: Help</strong> &rarr; <strong>ballesta</strong> &rarr; Sneak Attack.</div>
             </div>
             <div class="combat-card">
               <div class="combat-card-title" style="color:#a870d0;">Quieres que falle una salvación</div>
@@ -790,9 +810,10 @@
             </div>
             <div class="combat-card purple">
               <div class="combat-card-title">Quieres daño sin gastar mucho</div>
-              <div class="combat-card-body"><strong>Primero arma, luego cantrip</strong>. Usa <strong>cimitarra o daga</strong> si tu
-                control ya abrió la ventana; reserva <strong>Toll the Dead</strong>, <strong>Fire Bolt</strong> o <strong>Chill Touch</strong>
-                para cuando no haya ruta segura de Sneak Attack o el objetivo exija ese efecto concreto.</div>
+              <div class="combat-card-body"><strong>Cimitarra + Daga via Nick</strong> (dos ataques, una Action).
+                Usa <strong>Toll the Dead</strong>, <strong>Fire Bolt</strong> o <strong>Chill Touch</strong>
+                solo cuando no haya ruta segura de Sneak Attack o el objetivo requiera ese efecto específico.
+                Los cantrips de hechizo <strong>no activan Sneak Attack</strong>.</div>
             </div>
           </div>
         </div>
@@ -827,46 +848,52 @@
     <div id="reactions" class="section-content">
       <div class="section">
         <p style="color:var(--bone); font-size:0.9rem; margin-bottom:1rem; font-style:italic;">Solo tienes una reacción
-          por round. Guárdala para la pieza que más altera la escena.</p>
+          por round. Si gastas la reacción en cualquier opción, no tienes las demás hasta tu próximo turno. Guárdala para
+          la pieza que más altera la escena.</p>
         <div class="reaction-list">
           <div class="reaction-row first">
             <div class="reaction-priority">I</div>
             <div>
-              <div class="reaction-name">Counterspell &mdash; Cuando un conjuro enemigo puede cambiar la pelea</div>
-              <div class="reaction-when">No siempre es la primera por iniciativa, pero sí por impacto. Contra magia rival
-                seria, esta es la reacción que más gana encuentros.</div>
+              <div class="reaction-name">Shield &mdash; Cuando un golpe amenaza concentración activa o HP reales</div>
+              <div class="reaction-when">Prioridad máxima cuando tienes Web, Hypnotic Pattern, Banishment o Greater Invisibility
+                activos. Cada slot de Niv 1 gastado en Shield también recarga el Ward en +2 HP. No la malgastes
+                si el Ward absorbe cómodo y la concentración no está en riesgo.</div>
             </div>
           </div>
           <div class="reaction-row second">
             <div class="reaction-priority">II</div>
             <div>
-              <div class="reaction-name">Silvery Barbs &mdash; Cuando un enemigo supera una salvación crítica</div>
-              <div class="reaction-when">Sobre todo en Web, Hypnotic Pattern y Banishment. También sirve para castigar un
-                crítico enemigo o asegurar Ventaja para un aliado clave.</div>
+              <div class="reaction-name">Counterspell &mdash; Cuando un conjuro enemigo puede cambiar la pelea</div>
+              <div class="reaction-when">Contra magia rival seria, esta es la reacción que más gana encuentros.
+                Reserva al menos un slot de Niv 3 si hay caster enemigo visible. El slot gastado también
+                recarga el Ward en +6 HP.</div>
             </div>
           </div>
           <div class="reaction-row third">
             <div class="reaction-priority">III</div>
             <div>
-              <div class="reaction-name">Shield &mdash; Cuando el golpe amenaza HP reales o concentración</div>
-              <div class="reaction-when">No la malgastes si el Ward aguanta cómodo. Gástala cuando el impacto realmente
-                te obligaría a perder control del combate.</div>
+              <div class="reaction-name">Silvery Barbs &mdash; Cuando un enemigo supera una salvación crítica</div>
+              <div class="reaction-when">Sobre todo en Web, Hypnotic Pattern y Banishment. También sirve para castigar un
+                crítico enemigo o asegurar Ventaja para un aliado clave. Niv 1, no recarga el Ward (no es abjuración).</div>
             </div>
           </div>
           <div class="reaction-row fourth">
             <div class="reaction-priority">IV</div>
             <div>
               <div class="reaction-name">Absorb Elements &mdash; Para picos de daño elemental</div>
-              <div class="reaction-when">Especialmente relevante en esta campaña por dragones, tormentas y magia de área.
-              </div>
+              <div class="reaction-when">Tormentas, dragones, magia de área, fuego de cubierta. Recarga Ward en +2 HP.
+                Bonus adicional: el siguiente ataque de arma cuerpo a cuerpo añade 1d6 del mismo tipo elemental &mdash;
+                sinergia directa con el turno Nick Mastery siguiente.</div>
             </div>
           </div>
           <div class="reaction-row">
             <div class="reaction-priority">V</div>
             <div>
               <div class="reaction-name">Projected Ward &mdash; Para mantener de pie a un aliado clave</div>
-              <div class="reaction-when">Nalare, Noah o Veldor siguen aportando más que muchos puntos de Ward guardados si
-                están a un golpe de caer.</div>
+              <div class="reaction-when">Cuando un aliado visible a 30 ft va a recibir daño que lo tiraría, puedes redirigir
+                ese daño a tu Ward (sin slot, sin concentracion). Nalare, Noah o Veldor siguen aportando más que muchos
+                puntos de Ward si están a un golpe de caer. Advertencia: consume HP de tu propio escudo y bloquea
+                Shield y Counterspell ese round.</div>
             </div>
           </div>
         </div>
@@ -892,26 +919,38 @@
               <tr>
                 <td>Múltiples enemigos / choke point</td>
                 <td><strong>Web</strong> o <strong>Hypnotic Pattern</strong></td>
-                <td><strong>Misty Step</strong> solo si te están cerrando</td>
+                <td>Ward recharge con slot Niv 2 si Ward esta bajo; sino libre</td>
                 <td><strong>Silvery Barbs</strong> o <strong>Counterspell</strong></td>
               </tr>
               <tr>
                 <td>Jefe solitario</td>
-                <td><strong>Mind Sliver</strong> &rarr; <strong>Banishment</strong></td>
+                <td><strong>Mind Sliver</strong> &rarr; siguiente turno <strong>Banishment</strong></td>
                 <td>&mdash;</td>
                 <td><strong>Silvery Barbs</strong> si supera la salvación</td>
               </tr>
               <tr>
-                <td>Combate ya controlado / conservar slots</td>
-                <td><strong>Light Crossbow +1</strong> con Help del familiar</td>
-                <td>&mdash;</td>
+                <td>Combate controlado / ejecutar melee</td>
+                <td><strong>Cimitarra</strong> (1d6+DEX) + <strong>Daga via Nick</strong> (1d4) &mdash; dos ataques, una Action</td>
+                <td><strong>Libre</strong>: comandar invocación / Ward recharge / nada</td>
+                <td><strong>Shield</strong> si concentración activa</td>
+              </tr>
+              <tr>
+                <td>Combate controlado / ejecutar a distancia</td>
+                <td><strong>Light Crossbow +1</strong> con Help del familiar (1 disparo, Loading)</td>
+                <td>Comandar invocación / Ward recharge</td>
                 <td><strong>Shield</strong> o <strong>Counterspell</strong></td>
               </tr>
               <tr>
-                <td>Te están cerrando cuerpo a cuerpo</td>
-                <td><strong>Mirror Image</strong> o reposicionamiento</td>
-                <td><strong>Misty Step</strong></td>
-                <td><strong>Shield</strong></td>
+                <td>Ward bajo (&lt; 8 HP) y Bonus Action libre</td>
+                <td>Ataque o hechizo segun el campo</td>
+                <td><strong>Ward recharge:</strong> gastar slot sin lanzar hechizo (+doble nivel al Ward)</td>
+                <td>Segun amenaza presente</td>
+              </tr>
+              <tr>
+                <td>Te están cerrando en melee sin escape</td>
+                <td><strong>Mirror Image</strong> o ataque y aguantar</td>
+                <td><strong>Misty Step</strong> (slot Niv 2) si la situacion es critica</td>
+                <td><strong>Shield</strong> &mdash; sin Cunning Action, Disengage normal cuesta la Action completa</td>
               </tr>
               <tr>
                 <td>Caster enemigo visible</td>
@@ -921,18 +960,99 @@
               </tr>
               <tr>
                 <td>Necesitas daño limpio y seguro</td>
-                <td><strong>Magic Missile</strong> o <strong>Toll the Dead</strong></td>
+                <td><strong>Magic Missile</strong> o ataque de arma</td>
                 <td>&mdash;</td>
                 <td><strong>Absorb Elements</strong> / <strong>Shield</strong></td>
               </tr>
               <tr>
                 <td>Modo sigilo / hostigamiento</td>
-                <td><strong>Greater Invisibility</strong> &rarr; cimitarra, daga o ballesta según distancia</td>
-                <td>&mdash;</td>
+                <td><strong>Greater Invisibility</strong> &rarr; cimitarra+daga (Nick) o ballesta según distancia</td>
+                <td>Libre por Nick Mastery en melee</td>
                 <td><strong>Shield</strong> o <strong>Counterspell</strong></td>
               </tr>
             </tbody>
           </table>
+        </div>
+        <p style="color:var(--bone); font-size:0.82rem; margin-top:0.8rem; font-style:italic;">
+          <strong>Regla clave:</strong> Dalkyel es <strong>Rogue 1</strong>. No tiene Cunning Action. Disengage como
+          Bonus Action no existe en su kit. Salir de cuerpo a cuerpo sin Misty Step expone a Opportunity Attack.
+        </p>
+      </div>
+    </div>
+
+    <!-- WEAPON MASTERY -->
+    <div class="section-header open" data-toggle="mastery"><span class="sigil"></span> Weapon Mastery &mdash; Nick y la Bonus Action Libre
+      <span class="dropdown-arrow">&#9660;</span></div>
+    <div id="mastery" class="section-content open">
+      <div class="section">
+        <p style="color:var(--bone); font-size:0.9rem; margin-bottom:1rem; font-style:italic;">
+          Rogue nivel 1 otorga Weapon Mastery para 2 armas con proficiencia, renovable en cada Long Rest.
+          La elección correcta para Dalkyel activa una de las mecánicas más importantes del build.
+        </p>
+        <div class="combat-grid">
+          <div class="combat-card">
+            <div class="combat-card-title">Elección Principal: Cimitarra + Daga (Nick + Nick)</div>
+            <div class="combat-card-body">
+              Ambas armas tienen <strong>Mastery: Nick</strong> (PHB 2024). La propiedad Light normalmente
+              requiere Bonus Action para el segundo ataque. Nick lo convierte en parte de la Attack Action.<br><br>
+              Resultado en turno de ejecución melee:<br>
+              &bull; Attack Action &rarr; <strong>Cimitarra</strong> (1d6 Slashing, Finesse, DEX o STR)<br>
+              &bull; Incluido en misma Action via Nick &rarr; <strong>Daga</strong> (1d4 Piercing, Finesse, sin modificador al daño salvo negativo)<br>
+              &bull; <strong>Bonus Action: completamente libre</strong><br>
+              &bull; Sneak Attack aplica solo en uno de los dos ataques (el primero que impacte con condiciones cumplidas)
+            </div>
+          </div>
+          <div class="combat-card purple">
+            <div class="combat-card-title">Usos de la Bonus Action Liberada</div>
+            <div class="combat-card-body">
+              Con Nick Mastery activo en melee, la Bonus Action queda libre para:<br><br>
+              &bull; <strong>Comando al no-muerto</strong> (Summon Undead requiere Bonus para comandar)<br>
+              &bull; <strong>Ward recharge</strong> (gastar slot = +doble nivel HP al Ward)<br>
+              &bull; <strong>Misty Step</strong> de emergencia (aunque esto gasta slot Niv 2)<br>
+              &bull; <strong>Nada</strong> (ahorrándola para el siguiente round)
+            </div>
+          </div>
+          <div class="combat-card">
+            <div class="combat-card-title">Elección Alternativa: Light Crossbow (Slow) a Distancia</div>
+            <div class="combat-card-body">
+              Cuando el combate exige distancia, cambiar una de las Mastery a la Light Crossbow añade:<br><br>
+              &bull; <strong>Mastery: Slow</strong> &mdash; si golpeas, reduces velocidad del objetivo 10 ft<br>
+              &bull; Útil para impedir que enemigos alcancen a aliados o te persigan a ti<br>
+              &bull; La crossbow tiene <strong>Loading</strong>: máximo 1 disparo por Action, nunca más<br>
+              &bull; La crossbow es <strong>Two-Handed</strong>: mientras la sostienes no tienes mano libre para foco
+              arcano físico, pero el <em>spellbook</em> puede actuar como foco arcano según las reglas del Wizard
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARCANE RECOVERY -->
+    <div class="section-header open" data-toggle="recovery"><span class="sigil"></span> Arcane Recovery &mdash; Gestión de Slots en Descanso Corto
+      <span class="dropdown-arrow">&#9660;</span></div>
+    <div id="recovery" class="section-content open">
+      <div class="section">
+        <p style="color:var(--bone); font-size:0.9rem; margin-bottom:1rem; font-style:italic;">
+          Una vez por descanso largo, al terminar un descanso corto puedes recuperar slots cuyo nivel combinado
+          no exceda la mitad de tu nivel de Wizard redondeado hacia arriba. A Wizard nivel 8: máximo <strong>4 niveles</strong> de slots,
+          ninguno de nivel 6 o superior. Solo una vez por Long Rest.
+        </p>
+        <div class="combat-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px,1fr));">
+          <div class="combat-card">
+            <div class="combat-card-title" style="color:#a870d0;">Opción para combate de magia pesada</div>
+            <div class="combat-card-body">Recuperar un <strong>slot Niv 3</strong> + un <strong>slot Niv 1</strong>.
+              Asegura Counterspell y un Shield de respaldo.</div>
+          </div>
+          <div class="combat-card">
+            <div class="combat-card-title" style="color:#d05050;">Opción para exploración / desgaste</div>
+            <div class="combat-card-body">Recuperar <strong>dos slots Niv 2</strong>.
+              Shield + Misty Step de emergencia cubiertos para la siguiente zona.</div>
+          </div>
+          <div class="combat-card purple">
+            <div class="combat-card-title">Opción de control máximo</div>
+            <div class="combat-card-body">Recuperar un <strong>slot Niv 4</strong>.
+              Reserva para Banishment o Greater Invisibility en el siguiente encuentro crítico.</div>
+          </div>
         </div>
       </div>
     </div>
