@@ -252,6 +252,8 @@ html{-webkit-text-size-adjust:100%}
 .dalkyel-page .section-content.open{display:block}
 .dalkyel-page .stat-card{background:var(--panel2);border:1px solid var(--border);border-top:2px solid var(--flame);padding:0.8rem 1rem}
 .dalkyel-page .stat-card::before{display:none}
+.dalkyel-page strong{color:var(--parchment)}
+.dalkyel-page em{color:var(--bone)}
 .dalkyel-page .philosophy{border-left:3px solid var(--flame);padding:1rem 1.2rem;font-family:'IM Fell English',serif;font-style:italic;font-size:1.05rem;color:var(--parchment);background:rgba(212,96,26,0.06);line-height:1.75;margin:0}
 .dalkyel-page .philosophy::before{display:none}
 .stat-label{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);opacity:0.7;margin-bottom:0.3rem}
