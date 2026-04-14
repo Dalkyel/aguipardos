@@ -582,6 +582,8 @@
               <br><br>
               Rogue 1 / Wizard 8 <strong>Abjurer</strong>. Narrativamente nigromante-hereje.
               En mesa: <strong>caster de tempo control-primero</strong>. Modo skirmisher es <strong>secundario</strong>.
+              <br><br>
+              <strong style="color:var(--gold);">Los &laquo;Big Three&raquo; Saves:</strong> La gran mayoría de hechizos enemigos apuntan a DEX, CON o WIS. Dalkyel es proficiente solo en DEX. CON (+1) y WIS (+1) son <strong>puntos ciegos estructurales</strong>, no errores de build &mdash; es el costo inherente del chasis INT+DEX. Cualquier enemigo que apunte a saves de CON o WIS está explotando la debilidad estructural de Dalkyel.
             </div>
           </div>
           <div class="combat-card">
@@ -705,7 +707,20 @@
               2. Crossbow con SA mientras el control está activo<br>
               3. Mind Sliver si el control está a punto de romperse<br>
               4. Banishment cuando el Ward rompe o el enemigo llega al ~40-50% HP<br>
-              5. Misty Step en el momento que el melee se vuelve la amenaza principal
+              5. Misty Step en el momento que el melee se vuelve la amenaza principal<br><br>
+              <strong style="color:var(--gold);">Regla BA + hechizo con nivel:</strong> Si lanzas un hechizo con nivel como Bonus Action (Misty Step), tu Acción solo puede ser un cantrip. <strong>Misty Step + Web en el mismo turno es ilegal.</strong> Si necesitas escapar Y controlar: Misty Step (BA) &rarr; cantrip desde la nueva posición. Web espera al siguiente turno.
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Cadenas Primer / Detonador</div>
+            <div class="stat-value">
+              Cada turno fuerte de Dalkyel es una secuencia de dos pasos: un <strong>primer</strong> que crea vulnerabilidad, luego un <strong>detonador</strong> que la explota. Las condiciones en D&amp;D no se resetean al detonar &mdash; persisten, permitiendo explotar el mismo primer cada ronda.<br><br>
+              &bull; <strong>Mind Sliver</strong> (&minus;1d4 al próximo save) &rarr; Banishment / Hypnotic Pattern / Web<br>
+              &bull; <strong>Web</strong> (Restrained) &rarr; Crossbow SA / fuego aliado / hechizos de save DEX. <em>Explotable cada ronda, no solo una vez</em><br>
+              &bull; <strong>Hypnotic Pattern</strong> (Incapacitated) &rarr; Crossbow SA cada turno. <strong>No dañar</strong> a los afectados sin propósito<br>
+              &bull; <strong>Putrid Undead</strong> (Poisoned aura) &rarr; Banishment / Phantasmal Killer. Libera concentración de Dalkyel<br>
+              &bull; <strong>Greater Invisibility</strong> &rarr; Ataques repetidos con Advantage. Motor ofensivo sostenido<br>
+              &bull; <strong>Reacción enemiga gastada</strong> &rarr; Hechizo de control decisivo sin riesgo de interrupción
             </div>
           </div>
           <div class="stat-card">
@@ -1084,7 +1099,9 @@
                 conversión de tempo</strong>, no como abridor: lánzalo después de crear una ventana de control
                 (enemigo incapacitado, restringido o sin reacción) para convertir esa ventaja en una postura
                 sostenida más segura. Ventaja en todos los ataques (habilita Sneak Attack), Desventaja contra ti,
-                <strong>no se rompe al atacar ni al lanzar hechizos</strong>.</div>
+                <strong>no se rompe al atacar ni al lanzar hechizos</strong>.<br><br>
+                <strong>Inmunidad a OA:</strong> criaturas que no pueden verte no pueden hacer ataques de oportunidad. Greater Invisibility te da Advantage en ataques Y movimiento libre a través de espacios amenazados.<br>
+                <strong>Cancelación de Desventaja múltiple:</strong> una fuente de Advantage cancela TODAS las fuentes de Disadvantage (y viceversa). Si Dalkyel está Envenenado, Asustado o a rango largo, Greater Invisibility niega todo de golpe. Es una <strong>herramienta de recuperación</strong> contra estados malos, no solo un buff ofensivo.</div>
             </div>
             <span class="spell-tag utility">Pivot</span>
           </div>
@@ -1418,6 +1435,11 @@
           no exceda la mitad de tu nivel de Wizard redondeado hacia arriba. A Wizard nivel 8: máximo <strong>4 niveles</strong> de slots,
           ninguno de nivel 6 o superior. Solo una vez por Long Rest.
         </p>
+        <p style="color:var(--bone); font-size:0.88rem; margin-bottom:1rem;">
+          <strong style="color:var(--gold);">Ritmo de gasto por tipo de día:</strong><br>
+          &bull; <strong>Golden Fleece</strong> (viaje, 1 encuentro/día): gasta libremente. Banishment, Greater Invisibility, Counterspell accesibles cada pelea significativa.<br>
+          &bull; <strong>Monster in the House</strong> (mazmorra, salas consecutivas): conserva slots Niv 3+. Apoya con cantrips y ballesta después de establecer control. Prefiere un hechizo de concentración de alto valor sobre ciclar concentración frecuentemente. Arcane Recovery es triaje de medio día, no excusa para abrir con slots caros.
+        </p>
         <div class="combat-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px,1fr));">
           <div class="combat-card">
             <div class="combat-card-title" style="color:#a870d0;">Opción para combate de magia pesada</div>
@@ -1481,6 +1503,35 @@
       <div class="section">
         <div class="stat-grid">
           <div class="stat-card">
+            <div class="stat-label">Escalado de Negación de Acciones</div>
+            <div class="stat-value">
+              La negación de acciones importa más contra enemigos que obtienen más de sus turnos. <strong>Prioriza control sobre:</strong><br><br>
+              &bull; Criaturas con <strong>Multiattack</strong> &mdash; cada ataque negado multiplica el valor del control<br>
+              &bull; <strong>Casters enemigos</strong> con swings de acción peligrosos<br>
+              &bull; Cualquier cosa que combine acción + BA + reacción eficientemente<br><br>
+              <em style="color:var(--gold);">No preguntes a quién es más fácil dañar primero. Pregunta quién gana más si se le permite un turno completo.</em>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Escalera de Retirada</div>
+            <div class="stat-value">
+              Cuando Dalkyel está en melee, algo ya salió mal. <strong>Dodge es mala idea con CA 16</strong> &mdash; no es suficiente para absorber un ciclo de ataques completo.<br><br>
+              <strong>1. Misty Step</strong> &mdash; primera opción. Teleportación, sin OA, ignora terreno<br>
+              <strong>2. Disengage</strong> &mdash; 2+ enemigos en melee y Misty Step gastado<br>
+              <strong>3. Dash</strong> &mdash; 1 enemigo en alcance, Misty Step gastado, puedes sobrevivir 1 OA<br>
+              <strong>4. Dodge</strong> &mdash; casi nunca. Solo si Ward está lleno y el objetivo es ganar tiempo para un aliado<br><br>
+              <strong>Dash vs. Multiattack:</strong> contra enemigos con Multiattack, Dash es mejor que Dodge &mdash; Dash te saca de su ciclo completo de ataques al costo de máximo 1 OA. Dodge les permite alcanzarte y usar <em>todos</em> sus ataques con Desventaja &mdash; mucho peor.
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Umbrales Mínimos de Objetivos para AoE</div>
+            <div class="stat-value">
+              &bull; <strong>Web</strong> (cubo 20 ft): 2+ enemigos agrupados. Web single-target es desperdicio a menos que el objetivo solo justifique el slot de concentración<br>
+              &bull; <strong>Hypnotic Pattern</strong> (cubo 30 ft): 3+ enemigos en el área, O un objetivo de alto valor con WIS débil<br>
+              &bull; <strong>Banishment</strong>: siempre apropiado como remoción single-target
+            </div>
+          </div>
+          <div class="stat-card">
             <div class="stat-label">Modelo de Dos Ejes (Espacial + Temporal)</div>
             <div class="stat-value">
               La ventaja en combate requiere control simultáneo de <strong>dos ejes independientes</strong>:<br><br>
@@ -1543,7 +1594,9 @@
               &bull; Jugar a Dalkyel como skirmisher-primero / rogue de primera línea<br>
               &bull; Conservar slots mientras civiles están muriendo<br>
               &bull; No preguntar al DM el rango de habilidades enemigas antes de posicionarte<br>
-              &bull; Dañar enemigos afectados por Hypnotic Pattern (los despierta)
+              &bull; Dañar enemigos afectados por Hypnotic Pattern (los despierta)<br>
+              &bull; Lanzar Misty Step + Web (o dos hechizos con nivel) en el mismo turno &mdash; es ilegal<br>
+              &bull; Usar Dodge como acción defensiva (CA 16 es demasiado baja para que rinda)
             </div>
           </div>
         </div>
