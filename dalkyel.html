@@ -635,8 +635,8 @@
           <div class="section-title" style="font-size:0.72rem; margin-bottom:0.8rem;"><span class="sigil"></span> Paquetes de Preparación (12 slots)</div>
           <div class="stat-grid">
             <div class="stat-card">
-              <div class="stat-label">1) Exploración Hostil (Default)</div>
-              <div class="stat-value">Shield, Absorb Elements, Magic Missile, Silvery Barbs, Web, Mirror Image, Hypnotic Pattern, Counterspell, Leomund's Tiny Hut, Summon Undead, Banishment, Greater Invisibility</div>
+              <div class="stat-label">1) Exploración Hostil (Default) <span style="color:var(--gold); font-size:0.75rem;">✅ CORREGIDO</span></div>
+              <div class="stat-value">Shield, <strong>Absorb Elements</strong>, Magic Missile, Silvery Barbs, Web, Mirror Image, <strong>Hypnotic Pattern</strong>, Counterspell, Leomund's Tiny Hut, Summon Undead, Banishment, Greater Invisibility<br><br><em style="color:var(--gold); font-size:0.82rem;">Cambios vs loadout anterior: Phantasmal Killer → Hypnotic Pattern, False Life → Absorb Elements. Ambos swaps mejoran el build sin costo.</em></div>
             </div>
             <div class="stat-card">
               <div class="stat-label">2) Infiltración / Arqueología Pirata</div>
@@ -880,6 +880,17 @@
           <div class="spell-row utility">
             <div class="spell-slot-badge">Nota</div>
             <div>
+              <div class="spell-name">Disciplina de Información Pre-Combate (OBLIGATORIO)</div>
+              <div class="spell-desc">
+                Antes de cada encuentro, usa <strong>Arcana +12</strong> (Expertise) para identificar: (1) ¿qué save apunta la habilidad más peligrosa del enemigo? (2) ¿tiene resistencia a daño no mágico? (3) ¿cuál es el rango de su habilidad más peligrosa? (4) ¿hay Legendary Resistance?<br><br>
+                <strong>Pregunta al DM:</strong> <em>"¿Puedo hacer un check de Arcana para recordar qué tipo de salvación apunta la habilidad más peligrosa de esta criatura?"</em> Dalkyel casi siempre tendrá éxito. Las respuestas determinan qué hechizo abrir y dónde pararse.
+              </div>
+            </div>
+            <span class="spell-tag control">Intel</span>
+          </div>
+          <div class="spell-row utility">
+            <div class="spell-slot-badge">Nota</div>
+            <div>
               <div class="spell-name">Arcane Ward: recarga rápida</div>
               <div class="spell-desc">
                 Lanzar abjuración con slot o gastar slot como BA (sin hechizo) &rarr; Ward recupera <strong>2× nivel del slot</strong>.
@@ -1036,11 +1047,11 @@
           <div class="spell-row lvl3">
             <div class="spell-slot-badge">Niv 3</div>
             <div>
-              <div class="spell-name">Hypnotic Pattern <span style="color:#d05050; font-size:0.8rem;">(⚠ NO PREPARADO &mdash; requiere Short Rest swap)</span></div>
+              <div class="spell-name">Hypnotic Pattern <span style="color:var(--gold); font-size:0.8rem;">(✅ DEBE ESTAR PREPARADO &mdash; swap Phantasmal Killer)</span></div>
               <div class="spell-desc">Tu gran spell de "esta pelea deja de funcionar". Entra cuando Web no resuelve o
                 cuando prefieres apagar múltiples enemigos de golpe. <strong>No dañes a los afectados</strong> &mdash;
                 el daño (incluso de aliados) rompe el efecto. Enfoca fuego en los que NO cayeron.<br>
-                <em style="color:rgba(200,184,154,0.6); font-size:0.85rem;">No está en la preparación actual. Disponible via Memorize Spell en Short Rest. Web es el abridor por defecto.</em></div>
+                <em style="color:var(--gold); font-size:0.85rem;">⚠ Corrección de preparación: Hypnotic Pattern es S-tier y debe estar en el loadout por defecto. Swap Phantasmal Killer → Hypnotic Pattern en el próximo Long Rest. PK es inferior en cada escenario: para remoción single-target Banishment es mejor, para control sostenido HP es mejor.</em></div>
             </div>
             <span class="spell-tag control">Control</span>
           </div>
@@ -1568,6 +1579,100 @@
               &bull; <strong>Conservación de slots:</strong> en escenarios civiles, gastar un slot Niv 4 para garantizar deshabilitación es correcto si salva vidas.<br>
               &bull; <strong>Tolerancia a varianza:</strong> CERO. Un fallo = muerte civil.<br><br>
               <em style="color:rgba(200,184,154,0.6);">El tempo perdido en escenarios civiles se convierte directamente en vidas. La diferencia de 1 ronda entre control total y parcial puede significar 0 vs 4 bajas civiles.</em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROWTH PRIORITIES -->
+    <div class="section-header" data-toggle="growth"><span class="sigil"></span> Prioridades de Crecimiento &mdash; Próximos Upgrades<span
+        class="dropdown-arrow">&#9660;</span></div>
+    <div id="growth" class="section-content">
+      <div class="section">
+        <div class="stat-grid">
+          <div class="stat-card" style="border-color:var(--gold);">
+            <div class="stat-label" style="color:var(--gold);">Prioridad #1 &mdash; Feat: Lucky</div>
+            <div class="stat-value">
+              <strong>Impacto: Estructural.</strong> Convierte el problema de concentración CON +1 de 55% → ~88% en DC 10 (mejor de 3 dados). También funciona como botón de pánico para saves de WIS y supresión de críticos entrantes. No es un upgrade de calidad de vida &mdash; es un <strong>fix estructural</strong> a la vulnerabilidad mecánica más crítica del build.
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Prioridad #2 &mdash; Aprender Dispel Magic</div>
+            <div class="stat-value">La respuesta wizard de uso general más importante que falta en el spellbook. A Wizard 10 (Spell Breaker), Dispel Magic se convierte en BA con bonus de proficiencia en el check y sin costo de slot si falla.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Prioridad #3 &mdash; Aprender Nondetection</div>
+            <div class="stat-value">Encaja con la campaña (vigilancia oculta, Vecna, Melaxir), encaja con la subclase (Abjuración &mdash; recarga Ward +6), soporta el perfil de arqueología/ocultismo.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Prioridad #4 &mdash; Aprender Arcane Eye</div>
+            <div class="stat-value">Una de las herramientas más "Dalkyel" posibles: arqueología, infiltración, mapeo de ruinas, preparación de emboscadas. Ganar antes de que se tire iniciativa.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Prioridad #5 &mdash; Aprender Dimension Door</div>
+            <div class="stat-value">Extracción real (500 ft) y rescate de aliados más allá de lo que Misty Step puede cubrir.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMBAT EXAMPLE LESSONS -->
+    <div class="section-header" data-toggle="examples"><span class="sigil"></span> Lecciones de los Ejemplos de Combate &mdash; Aplicadas a Dalkyel<span
+        class="dropdown-arrow">&#9660;</span></div>
+    <div id="examples" class="section-content">
+      <div class="section">
+        <p style="color:var(--bone); font-size:0.9rem; margin-bottom:1rem; font-style:italic;">
+          Principios extraídos de los 4 ejemplos de combate de <em>Live to Tell the Tale</em> (Niveles 1, 5, 9, 15), traducidos al kit específico de Dalkyel.
+        </p>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Nivel 1 (Emboscada Goblin) &mdash; Scoutea Antes de Entrar</div>
+            <div class="stat-value">
+              Dalkyel tiene las mejores herramientas de scouting del grupo: Stealth +11, Darkvision 60 ft, Find Familiar (Orion). Antes de entrar a cualquier encuentro desconocido: <em>¿puedo enviar a Orion adelante para confirmar posiciones?</em> La BA para ver a través de sus sentidos no cuesta nada.<br><br>
+              <strong>Principio de paciencia de George:</strong> George pasó 4 turnos reposicionándose, nunca atacó hasta tener SA garantizado, y luego one-shot al último enemigo. La ballesta de Dalkyel es la daga de George. No dispares hasta que la condición se cumpla.
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Nivel 5 (Gigante de Escarcha) &mdash; Espera a que Todos Estén en Posición</div>
+            <div class="stat-value">
+              Cuando Dalkyel lanza Web y el resto del grupo tiene Advantage contra objetivos Restrained, esperar una ronda para que todos se posicionen antes de abrir fuego es una decisión que vale la pena.<br><br>
+              <strong>Hechizos sin concentración coexisten con los de concentración.</strong> Summon Undead (concentración) y Mirror Image (sin concentración) pueden estar activos simultáneamente. No canceles Mirror Image para lanzar Summon Undead.
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Nivel 9 (Cripta de No-Muertos) &mdash; Tipo de Daño Importa</div>
+            <div class="stat-value">
+              Contra criaturas con resistencia a daño físico no mágico, la ballesta de Dalkyel hace la mitad de daño. Pivotea a hechizos: Web (control), Banishment, Mind Sliver (psíquico &mdash; raramente resistido), Fire Bolt (fuego).<br><br>
+              <strong>Rondas de solo cantrips son correctas cuando el control aguanta.</strong> Si Web está funcionando y el grupo maneja el resto, cantrips + ballesta es la jugada correcta de conservación de recursos.
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Nivel 15 (Dragón Negro) &mdash; Inversión Pre-Combate</div>
+            <div class="stat-value">
+              Los hechizos de utilidad lanzados antes del combate son parte de la economía de acción del encuentro, no un costo separado. Mage Armor (gratis), Find Familiar (ritual gratis), Detect Magic (ritual gratis) &mdash; no hay excusa para llegar a un encuentro sin estos activos.<br><br>
+              <strong>Principio de Ambush Master:</strong> Si tienes la opción entre establecer una condición que beneficia a tus aliados (Web, Hypnotic Pattern) y hacer daño directo que solo te beneficia a ti, el beneficio grupal casi siempre gana. Dalkyel es un controlador. Su valor se multiplica a través de la economía de acción de todos en su bando.<br><br>
+              <strong>Decisiones estándar:</strong> No abandones una decisión matemáticamente correcta porque los dados están saliendo mal. Si Web es el abridor correcto contra un encuentro melee-heavy, es correcto incluso cuando el primer enemigo pasa la salvación.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- READIED CROSSBOW -->
+    <div class="section-header" data-toggle="ready-sa"><span class="sigil"></span> Ballesta Preparada &mdash; SA Fuera de Turno<span
+        class="dropdown-arrow">&#9660;</span></div>
+    <div id="ready-sa" class="section-content">
+      <div class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">El Hábito Nuevo</div>
+            <div class="stat-value">
+              Sneak Attack se activa una vez por <strong>turno</strong>, no una vez por ronda en tu propia iniciativa. Un ataque de ballesta Preparado (Ready) que se dispara en el turno de otra criatura aún califica para SA si la condición se cumple (aliado adyacente o Advantage).<br><br>
+              <strong>Cuándo usarlo:</strong> En turnos donde Dalkyel ya lanzó su hechizo de concentración y está en posición segura, Preparar la ballesta para un disparo SA fuera de turno da un ataque extra que de otra forma sería solo un cantrip.<br><br>
+              <strong>Trigger ejemplo:</strong> <em>"Cuando el Ghostly Undead esté adyacente al objetivo y tenga línea de tiro limpia."</em><br><br>
+              <strong style="color:#d05050;">NO Preparar si:</strong> Shield o Counterspell aún pueden ser necesarios esta ronda. Ready consume la reacción.<br>
+              <strong style="color:#d05050;">NO Preparar hechizos con slot:</strong> Si el trigger no se activa antes de tu próximo turno, el slot se pierde. Solo cantrips o ballesta.
             </div>
           </div>
         </div>
