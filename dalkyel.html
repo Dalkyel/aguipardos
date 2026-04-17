@@ -431,123 +431,196 @@
       </div>
     </div>
 
-    <!-- ABILITY SCORES & SKILLS -->
-    <div class="section-header" data-toggle="abilities"><span class="sigil"></span> Puntuaciones de Habilidad, Skills &amp; Idiomas<span
+    <!-- COMBAT DOCTRINE -->
+    <div class="section-header" data-toggle="combat-doctrine"><span class="sigil"></span> Doctrina de Combate &mdash; Control Primero<span
         class="dropdown-arrow">&#9660;</span></div>
-    <div id="abilities" class="section-content">
+    <div id="combat-doctrine" class="section-content">
+      <div class="section">
+        <div class="philosophy">
+          <strong style="color:var(--gold);">Control → Sobrevivir → Recuperar Tempo → Aislar → Finalizar</strong>
+        </div>
+        <p style="color:var(--bone); font-size:0.95rem; margin-top:1rem;">
+          Dalkyel es un <strong>caster de control-tempo con presión híbrida limitada de armas</strong>. Su trabajo es negar el turno más peligroso del enemigo, proteger la concentración, y convertir el control en kills de Sneak Attack. La ballesta es la recompensa por buen control, no el sustituto.
+        </p>
+
+        <div class="stat-grid" style="margin-top:1.5rem;">
+          <div class="stat-card">
+            <div class="stat-label">Identidad de Combate</div>
+            <div class="stat-value">Mago de control usando un chasis de Spellslinger: construido como un backliner arcano defendido por DEX, piloteado como un caster de control-tempo.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Pregunta Principal Cada Turno</div>
+            <div class="stat-value"><em style="color:var(--gold);">"¿Quién puede impedirme tomar turnos?"</em> → Neutralizar primero</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Vulnerabilidades Críticas</div>
+            <div class="stat-value">CON +1 (60% en DC 10), WIS +1 (colapso de un solo save), concentración frágil. <strong style="color:var(--gold);">Próxima prioridad de feat: Lucky</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMBAT STATS -->
+    <div class="section-header" data-toggle="combat-stats"><span class="sigil"></span> Estadísticas de Combate Actuales<span
+        class="dropdown-arrow">&#9660;</span></div>
+    <div id="combat-stats" class="section-content">
       <div class="section">
         <div style="overflow-x:auto;">
           <table class="combat-table">
             <thead>
-              <tr><th>Habilidad</th><th>Puntuación</th><th>Modificador</th></tr>
+              <tr><th>Estadística</th><th>Valor</th><th>Relevancia de Combate</th></tr>
             </thead>
             <tbody>
-              <tr><td>STR</td><td>8</td><td>&minus;1</td></tr>
-              <tr><td>DEX</td><td>17</td><td>+3</td></tr>
-              <tr><td>CON</td><td>13</td><td>+1</td></tr>
-              <tr><td>INT</td><td>18</td><td>+4</td></tr>
-              <tr><td>WIS</td><td>12</td><td>+1</td></tr>
-              <tr><td>CHA</td><td>10</td><td>+0</td></tr>
+              <tr><td>AC</td><td>16 (Mage Armor)</td><td>Shield → 21 por 1 ronda</td></tr>
+              <tr><td>HP / Ward / Efectivo</td><td>49 / 20 / 69</td><td>Ward absorbe primero; exceso pasa a través</td></tr>
+              <tr><td>Spell Save DC</td><td>16</td><td>Web, Banishment, Hypnotic Pattern, Summon Undead</td></tr>
+              <tr><td>Spell Attack</td><td>+8 (+9 vía TS Crossbow)</td><td>Fire Bolt, True Strike, ballesta</td></tr>
+              <tr><td>CON Save</td><td>+1 (no proficiente)</td><td style="color:#d05050;">Checks de concentración: solo 60% en DC 10</td></tr>
+              <tr><td>WIS Save</td><td>+1 (no proficiente)</td><td style="color:#d05050;">Vulnerabilidad de colapso de un solo save</td></tr>
+              <tr><td>DEX Save</td><td>+7 (proficiente)</td><td>Supervivencia AoE; Cobertura añade +2/+5</td></tr>
             </tbody>
           </table>
         </div>
-
-        <div style="margin-top:1.5rem;">
-          <div class="section-title" style="font-size:0.72rem; margin-bottom:0.8rem;"><span class="sigil"></span> Skills con Expertise (&starf;) y Proficiencia</div>
-          <div class="stat-grid">
-            <div class="stat-card">
-              <div class="stat-label">Expertise (&starf;&starf;)</div>
-              <div class="stat-value">
-                &bull; <strong>Acrobatics</strong> +11 (DEX)<br>
-                &bull; <strong>Arcana</strong> +12 (INT)<br>
-                &bull; <strong>Stealth</strong> +11 (DEX)
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">Proficiente</div>
-              <div class="stat-value">
-                &bull; History +8 (INT)<br>
-                &bull; Investigation +8 (INT)<br>
-                &bull; Sleight of Hand +7 (DEX)<br>
-                &bull; Survival +5 (WIS)
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">Saving Throws</div>
-              <div class="stat-value">
-                &bull; <strong style="color:var(--gold);">DEX +7</strong> (proficiente)<br>
-                &bull; <strong style="color:var(--gold);">INT +8</strong> (proficiente)<br>
-                &bull; CON +1 <span style="color:#d05050;">(concentración frágil)</span><br>
-                &bull; WIS +1 <span style="color:#d05050;">(colapso por save único)</span><br>
-                &bull; STR &minus;1 &bull; CHA +0
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top:1.5rem;">
-          <div class="section-title" style="font-size:0.72rem; margin-bottom:0.8rem;"><span class="sigil"></span> Idiomas &amp; Proficiencias de Herramientas</div>
-          <div class="stat-grid">
-            <div class="stat-card">
-              <div class="stat-label">Idiomas</div>
-              <div class="stat-value">Common, Common Sign Language, Draconic, Goblin, Orc, Thieves' Cant</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">Herramientas</div>
-              <div class="stat-value">Navigator's Tools, Thieves' Tools</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">Armadura &amp; Armas</div>
-              <div class="stat-value">Light Armor. Simple Weapons + Martial con Finesse o Light (Rogue). Crossbow, Handcrossbow, Rapier, Scimitar, Shortsword, Whip.</div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
-    <!-- EQUIPMENT -->
-    <div class="section-header" data-toggle="equipment"><span class="sigil"></span> Equipo &amp; Inventario<span
+    <!-- WEAPON MECHANICS -->
+    <div class="section-header" data-toggle="weapon-mechanics"><span class="sigil"></span> Mecánicas de Armas &amp; True Strike<span
         class="dropdown-arrow">&#9660;</span></div>
-    <div id="equipment" class="section-content">
+    <div id="weapon-mechanics" class="section-content">
       <div class="section">
         <div class="stat-grid">
           <div class="stat-card">
-            <div class="stat-label">Armas</div>
+            <div class="stat-label">Light Crossbow +1 (Slow)</div>
             <div class="stat-value">
-              &bull; Light Crossbow +1 (1d8+4, Slow, 80/320 ft)<br>
-              &bull; Scimitar (1d6+3, Nick, Finesse)<br>
-              &bull; Dagger &times;2 (1d4+3, Nick, Finesse, Thrown 20/60 ft)
+              +8 to hit, 1d8+4 piercing, rango 80/320<br>
+              Slow mastery: −10 ft velocidad hasta inicio del siguiente turno<br>
+              Loading: máx 1 disparo por Acción<br>
+              <strong style="color:#d05050;">Ranged en melee = Disadvantage + no Sneak Attack</strong>
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Objetos Mágicos</div>
+            <div class="stat-label">Melee: Scimitar (Nick) + Dagger (Nick)</div>
             <div class="stat-value">
-              &bull; <strong>Talking Doll</strong> (Attuned) &mdash; el diario de Orken<br>
-              &bull; <strong>Wind Fan</strong> &mdash; Gust of Wind (Niv 2, STR 13, empuje 15 ft)<br>
-              &bull; Spell Scroll (Cantrip) &times;5
+              Nick Mastery: ataque extra es parte de la acción Attack, no Bonus Action<br>
+              Scimitar (1d6+3) + Dagger vía Nick (1d4+3) + SA 1d6 en primer hit que califique<br>
+              <strong style="color:var(--gold);">Bonus Action LIBRE</strong> para recarga de Ward, comando de summon, Misty Step
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Equipo de Aventura</div>
+            <div class="stat-label">True Strike Weapon Lines</div>
             <div class="stat-value">
-              Leather Armor, Spellbook, Bolts &times;30, Basic Poison, Backpack, Bedroll, Tent, Waterskin, Rations &times;4, Drum, Navigator's Tools, Thieves' Tools, Traveler's Clothes, Tinderbox, Ink Pen, Ink
+              True Strike usa <strong>INT</strong> para rolls de ataque y daño. En Nivel 9 añade <strong>1d6 Radiant</strong><br>
+              <strong>TS Crossbow +1:</strong> +9 to hit, 1d8+5 Piercing + 1d6 Radiant (avg 13 / 16.5 w/ SA)<br>
+              <strong>TS Scimitar:</strong> +8 to hit, 1d6+4 Slashing + 1d6 Radiant (avg 11 / 14.5 w/ SA)<br>
+              <strong>TS Dagger:</strong> +8 to hit, 1d4+4 Piercing + 1d6 Radiant (avg 10 / 13.5 w/ SA)
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Dinero &amp; Carga</div>
+            <div class="stat-label">Sneak Attack</div>
             <div class="stat-value">
-              45 CP, 45 SP, 0 GP<br>
-              Peso: ~83 lb / Encumbered: 120 lb
+              1d6 una vez por turno con Advantage O aliado adyacente<br>
+              <strong>Mejores habilitadores de SA:</strong> Summon Undead (Ghostly) adyacente, Greater Invisibility, Web (Restrained), cualquier aliado adyacente al objetivo
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="divider"></div>    <!-- HP OVERVIEW -->
-    <div class="section-header" data-toggle="hp"><span class="sigil"></span> Defensa Total &mdash; Build Mecánico
-      Actual<span class="dropdown-arrow">&#9660;</span></div>
-    <div id="hp" class="section-content">
+    <!-- SPELL ARSENAL -->
+    <div class="section-header" data-toggle="spell-arsenal"><span class="sigil"></span> Arsenal de Hechizos por Rol<span
+        class="dropdown-arrow">&#9660;</span></div>
+    <div id="spell-arsenal" class="section-content">
+      <div class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Control (Condiciones de Victoria)</div>
+            <div class="stat-value">
+              <strong>Banishment</strong> (4th) — Remoción de objetivo único, umbral CHA ≤ +2 (~75% éxito)<br>
+              <strong>Hypnotic Pattern</strong> (3rd) — Incapacitación multi-objetivo, habilita SA cada turno<br>
+              <strong>Web</strong> (2nd) — Control de área, STR ≤ +2 para contención confiable
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Defensa (Supervivencia)</div>
+            <div class="stat-value">
+              <strong>Shield</strong> (1st) — +5 AC reacción, protección de concentración, Ward +2<br>
+              <strong>Mirror Image</strong> (2nd) — Defensa sin concentración vs rolls de ataque<br>
+              <strong>Greater Invisibility</strong> (4th) — Advantage en ataques, Disadvantage en entrantes, inmunidad OA
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Multiplicadores de Fuerza</div>
+            <div class="stat-value">
+              <strong>Summon Undead</strong> (3rd) — Habilitador de SA, presión sostenida, rider Frightened<br>
+              <strong>Counterspell</strong> (3rd) — Negación de acción vs casters enemigos, Ward +6<br>
+              <strong>Mind Sliver</strong> (cantrip) — Herramienta de setup de save (−1d4 al siguiente save), no cantrip de daño
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Slots de Hechizo (Nivel 9)</div>
+            <div class="stat-value">
+              <strong>1st:</strong> 4 — Shield, Silvery Barbs, Absorb Elements, Magic Missile<br>
+              <strong>2nd:</strong> 3 — Web, Mirror Image, Misty Step<br>
+              <strong>3rd:</strong> 3 — Hypnotic Pattern, Counterspell, Summon Undead<br>
+              <strong>4th:</strong> 2 — Banishment, Greater Invisibility
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPENER DECISION TREE -->
+    <div class="section-header" data-toggle="opener-tree"><span class="sigil"></span> Árbol de Decisión de Apertura<span
+        class="dropdown-arrow">&#9660;</span></div>
+    <div id="opener-tree" class="section-content">
+      <div class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Checklist Pre-Combate</div>
+            <div class="stat-value">
+              ✓ Mage Armor activo, Arcane Ward lleno<br>
+              ✓ Orion desplegado y posicionado adelante<br>
+              ✓ Buena cobertura inicial, ruta de escape identificada<br>
+              ✓ Arcana +12: saves enemigos, resistencias, rangos de habilidad, LR<br>
+              ✓ ¿Golden Fleece (usar libremente) o Monster in the House (conservar 3rd+)?
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Enemigo Único Peligroso</div>
+            <div class="stat-value">
+              <strong>CHA ≤ +2, sin LR:</strong> Banishment (~75% éxito)<br>
+              <strong>WIS débil, sin LR:</strong> Hypnotic Pattern (apertura de tempo + staging)<br>
+              <strong>STR ≤ +2:</strong> Web<br>
+              <strong>Con Legendary Resistance:</strong> Summon Undead (Ghostly) — evita impuesto LR
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Múltiples Enemigos</div>
+            <div class="stat-value">
+              <strong>3+ enemigos, WIS débil:</strong> Hypnotic Pattern<br>
+              <strong>2+ enemigos agrupados:</strong> Web<br>
+              <strong>Presión de rolls de ataque inminente:</strong> Mirror Image
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Tipos Especiales de Enemigo</div>
+            <div class="stat-value">
+              <strong>Caster con Counterspell:</strong> Mind Sliver R1 → hechizo con nivel R2<br>
+              <strong>Magic Resistance:</strong> Greater Invisibility o Summon Undead<br>
+              <strong>Regeneración:</strong> Hypnotic Pattern o Banishment (no carrera de daño)<br>
+              <strong>Volador rápido:</strong> Entrar detrás de obstáculo; Banishment desde melee si atrapado<br>
+              <strong>Emanación CON-save:</strong> Mantenerse fuera de rango; GI + ballesta
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARCANE WARD SYSTEM -->
+    <div class="section-header" data-toggle="arcane-ward"><span class="sigil"></span> Sistema Arcane Ward &mdash; Defensa Activa<span
+        class="dropdown-arrow">&#9660;</span></div>
+    <div id="arcane-ward" class="section-content">
       <div class="section">
         <div class="hp-display">
           <div class="hp-block">
@@ -565,1115 +638,201 @@
             <div class="hp-label">HP Efectivos</div>
           </div>
         </div>
-        <div class="combat-grid">
-          <div class="combat-card">
-            <div class="combat-card-title">Resumen del Chasis</div>
-            <div class="combat-card-body">
-              <span class="stat-badge">+8 Spell Attack</span>
-              <span class="stat-badge">CD 16</span>
-              <span class="stat-badge">CA 16 (Shield &rarr; 21)</span>
-              <span class="stat-badge">Sneak Attack +1d6</span>
-              <span class="stat-badge">DEX Save +7</span>
-              <span class="stat-badge">CON Save +1</span>
-              <span class="stat-badge">WIS Save +1</span>
-              <span class="stat-badge">Darkvision 60 ft</span>
-              <span class="stat-badge">Escalada 30 ft</span>
-              <span class="stat-badge">Hit Dice 1d8+8d6</span>
-              <br><br>
-              Rogue 1 / Wizard 8 <strong>Abjurer</strong>. Narrativamente nigromante-hereje.
-              En mesa: <strong>caster de tempo control-primero</strong>. Modo skirmisher es <strong>secundario</strong>.
-              <br><br>
-              <strong style="color:var(--gold);">Los &laquo;Big Three&raquo; Saves:</strong> La gran mayoría de hechizos enemigos apuntan a DEX, CON o WIS. Dalkyel es proficiente solo en DEX. CON (+1) y WIS (+1) son <strong>puntos ciegos estructurales</strong>, no errores de build &mdash; es el costo inherente del chasis INT+DEX. Cualquier enemigo que apunte a saves de CON o WIS está explotando la debilidad estructural de Dalkyel.
+        
+        <div class="stat-grid" style="margin-top:1.5rem;">
+          <div class="stat-card">
+            <div class="stat-label">Mecánicas del Ward</div>
+            <div class="stat-value">
+              <strong>Creación:</strong> Automática al lanzar hechizo de Abjuración con slot<br>
+              <strong>Recarga Auto:</strong> 2× nivel de slot por cada hechizo de Abjuración<br>
+              <strong>Recarga Manual:</strong> BA + gastar slot → 2× nivel de slot HP<br>
+              <strong>Comportamiento:</strong> Absorbe daño primero, exceso pasa a Dalkyel
             </div>
           </div>
-          <div class="combat-card">
-            <div class="combat-card-title">Modo A &mdash; Controlador / Anti-caster <span style="color:var(--gold);">(Primario)</span></div>
-            <div class="combat-card-body">
-              Abres con <strong>Web</strong> o <strong>Hypnotic Pattern</strong>, reservas
-              <strong>Counterspell</strong>, usas <strong>Banishment</strong> para remover al objetivo
-              más peligroso. <strong>Mind Sliver</strong> prepara salvaciones importantes.
+          <div class="stat-card">
+            <div class="stat-label">Projected Ward (Reacción)</div>
+            <div class="stat-value">
+              Cuando aliado a 30 ft toma daño → Ward absorbe en su lugar<br>
+              <strong style="color:var(--blood);">Usar agresivamente vs Life Drain</strong><br>
+              <strong>Prioridad:</strong> Nalare (AC 10) > Noah > otros aliados
             </div>
           </div>
-          <div class="combat-card purple">
-            <div class="combat-card-title">Modo B &mdash; Skirmisher / Ejecutor <span style="color:#d05050;">(Secundario)</span></div>
-            <div class="combat-card-body">
-              <strong>Solo cuando el control ya está establecido.</strong>
-              Melee: cimitarra + daga via Nick (dos ataques, una Action, BA libre).
-              Distancia: Light Crossbow +1. Motor SA: Familiar Help / aliado adyacente &rarr; arma Finesse o Ranged &rarr; +1d6.
+          <div class="stat-card">
+            <div class="stat-label">Ventana de Banishment</div>
+            <div class="stat-value">
+              <strong style="color:var(--gold);">Ward roto O enemigo al 40–50% HP = Banishment inmediato</strong><br>
+              Ward a 0 cambia tolerancia al riesgo → reposicionar más profundo, priorizar supervivencia
             </div>
           </div>
-          <div class="combat-card">
-            <div class="combat-card-title">Reglas Críticas &mdash; Referencia Rápida</div>
-            <div class="combat-card-body">
-              &bull; <strong>Cantrips no activan SA</strong> &mdash; solo armas Finesse o Ranged<br>
-              &bull; <strong>Sin Cunning Action</strong> (Rogue 1) &mdash; sin Disengage/Dash/Hide como BA<br>
-              &bull; <strong>Ballesta en melee = Desventaja</strong> y sin SA<br>
-              &bull; <strong>Fey Ancestry:</strong> Ventaja vs Charmed (no vs Hold Person, Stun, Fear)<br>
-              &bull; <strong>Nick Mastery:</strong> ver sección Weapon Mastery abajo
+          <div class="stat-card">
+            <div class="stat-label">Plan Defensivo Post-Ward</div>
+            <div class="stat-value">
+              <strong>Mirror Image</strong> se vuelve defensa primaria (sin concentración)<br>
+              <strong>Shield</strong> reservado solo para hits que amenacen concentración<br>
+              Todos los 49 HP son reales sin buffer → disciplina de posicionamiento obligatoria
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SPELL SLOTS & PACKAGES -->
-    <div class="section-header" data-toggle="spell-slots"><span class="sigil"></span> Spell Slots &amp; Paquetes de Preparación<span
+    <!-- COMBAT DECISION FRAMEWORK -->
+    <div class="section-header" data-toggle="combat-framework"><span class="sigil"></span> Marco de Decisión de Combate<span
         class="dropdown-arrow">&#9660;</span></div>
-    <div id="spell-slots" class="section-content">
-      <div class="section">
-        <div class="hp-display">
-          <div class="hp-block"><div class="hp-number">4</div><div class="hp-label">Niv 1</div></div>
-          <div class="hp-block ward"><div class="hp-number">3</div><div class="hp-label">Niv 2</div></div>
-          <div class="hp-block ward"><div class="hp-number">3</div><div class="hp-label">Niv 3</div></div>
-          <div class="hp-block total"><div class="hp-number">2</div><div class="hp-label">Niv 4</div></div>
-        </div>
-        <p style="color:var(--bone); font-size:0.88rem; margin-top:1rem; font-style:italic;">
-          <strong>Siempre disponibles (no cuentan contra el límite de 12 preparados):</strong> Mage Armor, Detect Magic [R], Misty Step, Alarm [R], Arcane Vigor, Mind Sliver, Mage Hand, Chill Touch, Gust of Wind (Wind Fan).
-        </p>
-
-        <div style="margin-top:1.5rem;">
-          <div class="section-title" style="font-size:0.72rem; margin-bottom:0.8rem;"><span class="sigil"></span> Paquetes de Preparación (12 slots)</div>
-          <div class="stat-grid">
-            <div class="stat-card">
-              <div class="stat-label">1) Exploración Hostil (Default) <span style="color:var(--gold); font-size:0.75rem;">✅ CORREGIDO</span></div>
-              <div class="stat-value">Shield, <strong>Absorb Elements</strong>, Magic Missile, Silvery Barbs, Web, Mirror Image, <strong>Hypnotic Pattern</strong>, Counterspell, Leomund's Tiny Hut, Summon Undead, Banishment, Greater Invisibility<br><br><em style="color:var(--gold); font-size:0.82rem;">Cambios vs loadout anterior: Phantasmal Killer → Hypnotic Pattern, False Life → Absorb Elements. Ambos swaps mejoran el build sin costo.</em></div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">2) Infiltración / Arqueología Pirata</div>
-              <div class="stat-value">Shield, Find Familiar, Unseen Servant, Silvery Barbs, Web, Invisibility, Counterspell, Hypnotic Pattern, Summon Undead, Banishment, Greater Invisibility, <em>Dispel Magic (cuando se aprenda)</em></div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">3) Anti-Caster / Pelea de Jefe</div>
-              <div class="stat-value">Shield, Absorb Elements, Silvery Barbs, Magic Missile, Web, Mirror Image, Counterspell, Hypnotic Pattern, <em>Dispel Magic</em>, Summon Undead, Banishment, Greater Invisibility</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">4) Skirmisher de Ballesta (conservar slots)</div>
-              <div class="stat-value">Shield, Absorb Elements, Find Familiar, Silvery Barbs, Web, Mirror Image, Counterspell, Hypnotic Pattern, Summon Undead, Banishment, Greater Invisibility, Magic Missile</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SPELLS TO LEARN -->
-    <div class="section-header" data-toggle="spell-learn"><span class="sigil"></span> Hechizos por Aprender &mdash; Cola de Prioridad<span
-        class="dropdown-arrow">&#9660;</span></div>
-    <div id="spell-learn" class="section-content">
-      <div class="section">
-        <div class="stat-grid">
-          <div class="stat-card" style="border-color:var(--gold);">
-            <div class="stat-label" style="color:var(--gold);">Obligatorios</div>
-            <div class="stat-value">
-              <strong>1. Dispel Magic</strong> (Niv 3) &mdash; El hechizo faltante más importante. Responde rituales hostiles, objetos malditos, control sobre aliados, magia defensiva de jefes, interferencia de Vecna/Melaxir.<br><br>
-              <strong>2. Nondetection</strong> (Niv 3, Abjuración) &mdash; Encaja con la presión de vigilancia oculta de la campaña. Protege libros/secretos peligrosos. Recarga Ward +6.
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Alta Prioridad</div>
-            <div class="stat-value">
-              <strong>3. Arcane Eye</strong> (Niv 4) &mdash; Uno de los hechizos más "Dalkyel": arqueología, infiltración, mapeo de ruinas, preparación de emboscadas.<br><br>
-              <strong>4. Dimension Door</strong> (Niv 4) &mdash; Escape y extracción de aliados. Cubre escenarios que Misty Step no puede.
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Fuertes</div>
-            <div class="stat-value">
-              <strong>5. Suggestion</strong> (Niv 2) &mdash; Excelente en intriga; encaja con el estilo manipulador y pragmático.<br>
-              <strong>6. Tasha's Mind Whip</strong> (Niv 2) &mdash; Control single-target sin concentración.<br>
-              <strong>7. Stone Shape</strong> (Niv 4) &mdash; Tumbas, muros, cámaras ocultas, sellos, creación de pasajes. Infravaloración máxima.
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Considerar Después</div>
-            <div class="stat-value">
-              Fly (Niv 3), Fear (Niv 3), Slow (Niv 3), Feather Fall (Niv 1)
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- COMBAT DOCTRINE -->
-    <div class="section-header" data-toggle="doctrine"><span class="sigil"></span> Doctrina de Combate
-      <span class="dropdown-arrow">&#9660;</span></div>
-    <div id="doctrine" class="section-content">
+    <div id="combat-framework" class="section-content">
       <div class="section">
         <div class="stat-grid">
           <div class="stat-card">
-            <div class="stat-label">Secuencia Correcta</div>
+            <div class="stat-label">Escalera de Prioridades</div>
             <div class="stat-value">
-              <strong>Control &rarr; Presión &rarr; Setup &rarr; Finisher &rarr; Escape</strong><br><br>
-              1. Hechizo de control (Web, Hypnotic Pattern) sobre el nodo más peligroso<br>
-              2. Crossbow con SA mientras el control está activo<br>
-              3. Mind Sliver si el control está a punto de romperse<br>
-              4. Banishment cuando el Ward rompe o el enemigo llega al ~40-50% HP<br>
-              5. Misty Step en el momento que el melee se vuelve la amenaza principal<br><br>
-              <strong style="color:var(--gold);">Regla BA + hechizo con nivel:</strong> Si lanzas un hechizo con nivel como Bonus Action (Misty Step), tu Acción solo puede ser un cantrip. <strong>Misty Step + Web en el mismo turno es ilegal.</strong> Si necesitas escapar Y controlar: Misty Step (BA) &rarr; cantrip desde la nueva posición. Web espera al siguiente turno.
+              1. Neutralizar casters enemigos / nodos de control<br>
+              2. Evitar efectos incapacitantes (especialmente saves de WIS)<br>
+              3. Negar acciones enemigas (control > daño)<br>
+              4. Mantener Arcane Ward como buffer<br>
+              5. Mantener posicionamiento
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Cadenas Primer / Detonador</div>
+            <div class="stat-label">Jerarquía de Reacciones</div>
             <div class="stat-value">
-              Cada turno fuerte de Dalkyel es una secuencia de dos pasos: un <strong>primer</strong> que crea vulnerabilidad, luego un <strong>detonador</strong> que la explota. Las condiciones en D&amp;D no se resetean al detonar &mdash; persisten, permitiendo explotar el mismo primer cada ronda.<br><br>
-              &bull; <strong>Mind Sliver</strong> (&minus;1d4 al próximo save) &rarr; Banishment / Hypnotic Pattern / Web<br>
-              &bull; <strong>Web</strong> (Restrained) &rarr; Crossbow SA / fuego aliado / hechizos de save DEX. <em>Explotable cada ronda, no solo una vez</em><br>
-              &bull; <strong>Hypnotic Pattern</strong> (Incapacitated) &rarr; Crossbow SA cada turno. <strong>No dañar</strong> a los afectados sin propósito<br>
-              &bull; <strong>Putrid Undead</strong> (Poisoned aura) &rarr; Banishment / Phantasmal Killer. Libera concentración de Dalkyel<br>
-              &bull; <strong>Greater Invisibility</strong> &rarr; Ataques repetidos con Advantage. Motor ofensivo sostenido<br>
-              &bull; <strong>Reacción enemiga gastada</strong> &rarr; Hechizo de control decisivo sin riesgo de interrupción
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Errores Confirmados (DCT-001/002/003)</div>
-            <div class="stat-value">
-              &bull; Elegir crossbow en lugar de Banishment cuando el Ward rompe<br>
-              &bull; Quedarse en melee con Misty Step disponible<br>
-              &bull; Tratar el crossbow como el cierre en lugar de como presión entre controles
-            </div>
-          </div>
-          <div class="stat-card" style="border-color:var(--blood);">
-            <div class="stat-label" style="color:#d05050;">⚠ Triggers Críticos &mdash; No Negociables</div>
-            <div class="stat-value">
-              Estas son las señales que dictan la acción inmediata. No hay excepción:<br><br>
-              <strong>WARD ROTO O ENEMIGO AL ~40-50% HP</strong> &rarr; Lanza Banishment. No recargar y seguir aguantando. No esperar un momento mejor.<br>
-              <strong>MELEE AMENAZADO</strong> &rarr; Misty Step (Bonus Action). No disparar la ballesta con Desventaja.<br>
-              <strong>CASTER ENEMIGO VISIBLE</strong> &rarr; Control primero. Counterspell reservado.
-            </div>
-          </div>
-          <div class="stat-card" style="border-color:#7c1f1f;">
-            <div class="stat-label">Ward &mdash; Reclasificación</div>
-            <div class="stat-value">
-              El Ward es una <strong>capa de sustain</strong>, no supervivencia primaria.<br><br>
-              <strong>Protege contra:</strong> daño directo de HP, primeros golpes de attrición<br>
-              <strong>NO protege contra:</strong> pérdida de agencia &mdash; Charm, Stun, Hold Person o Hypnotic Pattern enemigo bypasea el Ward y elimina la capacidad de actuar.<br><br>
-              <em style="color:rgba(200,184,154,0.6);">WIS Save solo <strong>+1</strong>.
-              Una sola falla puede colapsar el encuentro. CON Save solo <strong>+1</strong> &mdash; concentración frágil (55% en DC 10).</em>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Juego Preventivo &mdash; No Reactivo</div>
-            <div class="stat-value">
-              Sin Cunning Action, con CON save <strong>+1</strong> (concentración frágil) y sin estabilización desde
-              incapacitación &mdash; la única estrategia viable es <em>prevenir</em> los estados malos antes de que ocurran.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SOLO OPENER PRIORITY -->
-    <div class="section-header" data-toggle="solo-opener"><span class="sigil"></span> Prioridad de Apertura Solo &mdash; Árbol de Decisión Corregido
-      <span class="dropdown-arrow">&#9660;</span></div>
-    <div id="solo-opener" class="section-content">
-      <div class="section">
-        <p style="color:var(--bone); font-size:0.9rem; margin-bottom:1rem; font-style:italic;">
-          La pregunta central no es &laquo;¿Debería abrir con Web?&raquo; sino:
-          <strong style="color:var(--gold);">&laquo;¿Qué pasa si este enemigo tiene su próximo turno completo sin impedimentos?&raquo;</strong>
-        </p>
-        <div style="overflow-x:auto;">
-          <table class="combat-table">
-            <thead>
-              <tr><th>#</th><th>Abridor</th><th>Usar Cuando</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>1</td><td><strong>Banishment</strong></td><td>Objetivo único, CHA débil, sin Legendary Resistance &mdash; remoción más limpia</td></tr>
-              <tr><td>2</td><td><strong>Hypnotic Pattern</strong></td><td>WIS débil, o múltiples enemigos (mejor que Web para grupos &mdash; sin mecánica de escape). Habilita SA gratis cada turno via Incapacitated = auto-Advantage</td></tr>
-              <tr><td>3</td><td><strong>Web</strong></td><td>Primer contacto melee es catastrófico y un turno negado importa; objetivo tiene STR baja. <strong>Valor solo = tempo, no permanencia</strong></td></tr>
-              <tr><td>4</td><td><strong>Mirror Image</strong></td><td>Presión por tiradas de ataque; Web no va a aguantar; no puedes perder concentración temprano</td></tr>
-              <tr><td>5</td><td><strong>Summon Undead</strong></td><td>Sin emergencia de control inmediata; pelea larga esperada; mejor valor sostenido</td></tr>
-              <tr><td>6</td><td><strong>Kite sin gastar</strong></td><td>Enemigo tiene límite de rango duro o es más lento que Dalkyel</td></tr>
-              <tr><td>7</td><td><strong>Crossbow / Orion</strong></td><td>Tempo ya asegurado; campo favorable; conservando slots</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div style="margin-top:1.5rem;">
-          <div class="section-title" style="font-size:0.72rem; margin-bottom:0.8rem;"><span class="sigil"></span> Framework de Decisión Rápida</div>
-          <div class="combat-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px,1fr));">
-            <div class="combat-card" style="border-color:var(--blood);">
-              <div class="combat-card-title" style="color:#d05050;">&laquo;Puedo perder el control inmediatamente&raquo;</div>
-              <div class="combat-card-body"><strong>Web</strong> o <strong>Banishment</strong></div>
-            </div>
-            <div class="combat-card">
-              <div class="combat-card-title">&laquo;Necesito sobrevivir tiradas de ataque&raquo;</div>
-              <div class="combat-card-body"><strong>Mirror Image</strong></div>
-            </div>
-            <div class="combat-card purple">
-              <div class="combat-card-title">&laquo;Puedo manejar el ritmo y quiero valor duradero&raquo;</div>
-              <div class="combat-card-body"><strong>Summon Undead</strong></div>
-            </div>
-            <div class="combat-card">
-              <div class="combat-card-title">&laquo;Puedo hacer kiting seguro&raquo;</div>
-              <div class="combat-card-body"><strong>No gastes el slot todavía</strong></div>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top:1.5rem;">
-          <div class="section-title" style="font-size:0.72rem; margin-bottom:0.8rem;"><span class="sigil"></span> Web Solo &mdash; Probabilidad de Escape por STR</div>
-          <div style="overflow-x:auto;">
-            <table class="combat-table">
-              <thead>
-                <tr><th>Mod STR enemigo</th><th>Escape por turno (DC 16)</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>+6 o más</td><td>~55%</td></tr>
-                <tr><td>+3 a +5</td><td>~35–45%</td></tr>
-                <tr><td>&minus;1 o menos</td><td>~10–20%</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p style="color:var(--bone); font-size:0.85rem; margin-top:0.6rem; font-style:italic;">
-            Turnos controlados promedio vs melee típico: <strong>~1.8 turnos</strong>. Solo, eso compra 1–2 disparos de ballesta &mdash; Web solo vale el slot cuando el turno negado previene un colapso.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- PREPARATION -->
-    <div class="section-header" data-toggle="prep"><span class="sigil"></span> Antes del Combate &mdash; Preparación
-      Correcta<span class="dropdown-arrow">&#9660;</span></div>
-    <div id="prep" class="section-content">
-      <div class="section">
-        <div class="spell-list">
-          <div class="spell-row lvl1">
-            <div class="spell-slot-badge">Niv 1</div>
-            <div>
-              <div class="spell-name">Mage Armor</div>
-              <div class="spell-desc">Debe estar activo casi siempre. Mantiene tu <strong>CA 16</strong> sin depender de
-                armadura física y te deja listo para usar reacciones defensivas desde el primer round.</div>
-            </div>
-            <span class="spell-tag defense">Base</span>
-          </div>
-          <div class="spell-row utility">
-            <div class="spell-slot-badge">Ritual</div>
-            <div>
-              <div class="spell-name">Find Familiar</div>
-              <div class="spell-desc">Tu pieza táctica más importante fuera de los slots grandes. Usa <em>Help</em> para
-                darte Ventaja en el ataque correcto: <strong>cimitarra</strong> si ya controlaste el campo,
-                <strong>daga</strong> si necesitas flexibilidad o <strong>Light Crossbow +1</strong> si no puedes entrar seguro.
-                Además scoutea antes de entrar y revisa líneas de visión, puertas, cubiertas y ruinas.<br><br>
-                <strong>Dimensión de bolsillo:</strong> Antes de encuentros con AoE pesado (Fireball, aliento de dragón), <em>descarta a Orion</em> (acción mágica). Reconvócalo después (acción mágica, 30 ft). Orion nunca se pierde de verdad.<br>
-                <strong>Entrega de toque:</strong> Orion puede entregar hechizos de rango Touch usando su Reacción desde hasta 100 ft &mdash; mantiene a Dalkyel a distancia segura.</div>
-            </div>
-            <span class="spell-tag utility">Motor</span>
-          </div>
-          <div class="spell-row lvl3">
-            <div class="spell-slot-badge">Niv 3</div>
-            <div>
-              <div class="spell-name">Summon Undead / Animate Dead (si aplica)</div>
-              <div class="spell-desc"><strong>Summon Undead:</strong> Invoca antes de entrar si la pelea será larga y la concentración no la necesitas para Web/Banishment. Ghostly por defecto.<br>
-                <strong>Animate Dead:</strong> Solo entre encuentros (1 min cast). Sin concentración. Ideal antes de días de mazmorra.<br>
-                <em style="color:rgba(200,184,154,0.6); font-size:0.85rem;">Ver detalles completos en Arsenal de Conjuros abajo.</em></div>
-            </div>
-            <span class="spell-tag utility">Invocación</span>
-          </div>
-          <div class="spell-row lvl1">
-            <div class="spell-slot-badge">Niv 1</div>
-            <div>
-              <div class="spell-name">False Life (opcional)</div>
-              <div class="spell-desc">Útil, pero ya no es obligatorio. Tu defensa real ya viene de
-                <strong>Arcane Ward + Shield + Mirror Image</strong>. Úsalo solo cuando anticipes desgaste fuerte.</div>
-            </div>
-            <span class="spell-tag defense">Opcional</span>
-          </div>
-          <div class="spell-row utility">
-            <div class="spell-slot-badge">Nota</div>
-            <div>
-              <div class="spell-name">Disciplina de Información Pre-Combate (OBLIGATORIO)</div>
-              <div class="spell-desc">
-                Antes de cada encuentro, usa <strong>Arcana +12</strong> (Expertise) para identificar: (1) ¿qué save apunta la habilidad más peligrosa del enemigo? (2) ¿tiene resistencia a daño no mágico? (3) ¿cuál es el rango de su habilidad más peligrosa? (4) ¿hay Legendary Resistance?<br><br>
-                <strong>Pregunta al DM:</strong> <em>"¿Puedo hacer un check de Arcana para recordar qué tipo de salvación apunta la habilidad más peligrosa de esta criatura?"</em> Dalkyel casi siempre tendrá éxito. Las respuestas determinan qué hechizo abrir y dónde pararse.
-              </div>
-            </div>
-            <span class="spell-tag control">Intel</span>
-          </div>
-          <div class="spell-row utility">
-            <div class="spell-slot-badge">Nota</div>
-            <div>
-              <div class="spell-name">Arcane Ward: recarga rápida</div>
-              <div class="spell-desc">
-                Lanzar abjuración con slot o gastar slot como BA (sin hechizo) &rarr; Ward recupera <strong>2× nivel del slot</strong>.
-                Ritual Alarm <strong>no</strong> recarga el Ward.
-              </div>
-            </div>
-            <span class="spell-tag control">Regla</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SPELL ARSENAL -->
-    <div class="section-header" data-toggle="spells"><span class="sigil"></span> Arsenal de Conjuros &mdash; Prioridad
-      Real<span class="dropdown-arrow">&#9660;</span></div>
-    <div id="spells" class="section-content">
-      <div class="section">
-
-        <p style="color:var(--bone); font-size:0.9rem; margin-bottom:1rem; font-style:italic;">La prioridad correcta no es
-          "hacer daño con cantrips", sino <strong>decidir el ritmo del combate</strong>, castigar magia enemiga y bajar al
-          modo ejecución con <strong>cimitarra, dagas o ballesta</strong> cuando ya no vale gastar slots.</p>
-
-        <div class="spell-list">
-          <!-- CANTRIPS -->
-          <div class="spell-row cantrip">
-            <div class="spell-slot-badge">Cantrip</div>
-            <div>
-              <div class="spell-name">Mind Sliver &mdash; 1d6 psíquico, 60 ft, INT save</div>
-              <div class="spell-desc"><strong>Cantrip de setup.</strong> Abre la puerta a
-                <strong>Web</strong>, <strong>Hypnotic Pattern</strong> y <strong>Banishment</strong> reduciendo la próxima
-                salvación del objetivo en <strong>1d4</strong>.</div>
-            </div>
-            <span class="spell-tag control">Setup</span>
-          </div>
-          <div class="spell-row cantrip">
-            <div class="spell-slot-badge">Cantrip</div>
-            <div>
-              <div class="spell-name">Toll the Dead &mdash; 2d10 / 2d12 necrótico, 60 ft, WIS save</div>
-              <div class="spell-desc">Tu mejor cantrip puro de daño. <strong>2d12 si el objetivo ya perdió HP</strong> (promedio 13) &mdash;
-                supera a Fire Bolt contra enemigos heridos. Excelente cuando no
-                necesitas Sneak Attack y quieres presionar desde seguridad.</div>
-            </div>
-            <span class="spell-tag damage">Daño</span>
-          </div>
-          <div class="spell-row cantrip">
-            <div class="spell-slot-badge">Cantrip</div>
-            <div>
-              <div class="spell-name">Fire Bolt (2d10 fuego, 120 ft) / Chill Touch (2d10 necrótico, toque)</div>
-              <div class="spell-desc">Fire Bolt: ataque +8 a larga distancia. Chill Touch: ataque +8, <strong>impide curación y regeneración hasta tu próximo turno</strong> &mdash; crítico contra trolls, vampiros y cualquier enemigo que se cure.</div>
-            </div>
-            <span class="spell-tag damage">Rango</span>
-          </div>
-          <div class="spell-row cantrip">
-            <div class="spell-slot-badge">Cantrip</div>
-            <div>
-              <div class="spell-name">Minor Illusion / Shape Water</div>
-              <div class="spell-desc">No son "relleno". Son recursos de cobertura falsa, distracción, navegación,
-                sabotaje, ruinas, puertos y control ambiental. Muy Dalkyel.</div>
-            </div>
-            <span class="spell-tag utility">Utilidad</span>
-          </div>
-
-          <!-- LEVEL 1 -->
-          <div class="spell-row lvl1">
-            <div class="spell-slot-badge">Niv 1</div>
-            <div>
-              <div class="spell-name">Shield</div>
-              <div class="spell-desc">Tu reacción defensiva principal. Protege concentración, mantiene vivo el chasis
-                Rogue/Wizard y además ayuda a sostener el valor del Ward.</div>
-            </div>
-            <span class="spell-tag defense">Reacción</span>
-          </div>
-          <div class="spell-row lvl1">
-            <div class="spell-slot-badge">Niv 1</div>
-            <div>
-              <div class="spell-name">Silvery Barbs</div>
-              <div class="spell-desc">Se guarda para cuando un enemigo <strong>sí pasa</strong> la salvación de
-                <strong>Web</strong>, <strong>Hypnotic Pattern</strong> o <strong>Banishment</strong>, o cuando una tirada
-                rival realmente cambie la escena.</div>
-            </div>
-            <span class="spell-tag control">Reacción</span>
-          </div>
-          <div class="spell-row lvl1">
-            <div class="spell-slot-badge">Niv 1</div>
-            <div>
-              <div class="spell-name">Absorb Elements</div>
-              <div class="spell-desc">Clave en esta campaña: tormentas, dragones, magia elemental, fuego de cubierta y
-                explosiones. Es una reacción que ahorra enormes cantidades de HP reales.</div>
-            </div>
-            <span class="spell-tag defense">Reacción</span>
-          </div>
-          <div class="spell-row lvl1">
-            <div class="spell-slot-badge">Niv 1</div>
-            <div>
-              <div class="spell-name">Magic Missile</div>
-              <div class="spell-desc">No es vistoso, pero es un finalizador seguro, rompe concentración y limpia blancos
-                casi muertos cuando fallar no es aceptable. <strong>Bypasea Uncanny Dodge</strong> (no es ataque,
-                no se puede reducir a la mitad) &mdash; útil contra enemigos con reacciones de reducción de daño.</div>
-            </div>
-            <span class="spell-tag damage">Seguro</span>
-          </div>
-
-          <!-- LEVEL 2 -->
-          <div class="spell-row lvl2">
-            <div class="spell-slot-badge">Niv 2</div>
-            <div>
-              <div class="spell-name">Web</div>
-              <div class="spell-desc"><strong>Tu mejor abridor contra grupos.</strong> Chokepoints, cubiertas de barco,
-                corredores, entradas de ruinas: todo eso convierte Web en un multiplicador brutal para el grupo.<br>
-                <strong>Importante:</strong> en escenarios con civiles, Web debe atrapar a TODOS los atacantes o su valor
-                se degrada &mdash; cada enemigo que pase la salvación = 1 muerte civil potencial por ronda.</div>
-            </div>
-            <span class="spell-tag control">Abridor</span>
-          </div>
-          <div class="spell-row lvl2">
-            <div class="spell-slot-badge">Niv 2</div>
-            <div>
-              <div class="spell-name">Mirror Image</div>
-              <div class="spell-desc">Tu botón de supervivencia cuando crees que van a cerrar contigo. No consume
-                concentración y te deja seguir controlando la pelea.</div>
-            </div>
-            <span class="spell-tag defense">Defensa</span>
-          </div>
-          <div class="spell-row lvl2">
-            <div class="spell-slot-badge">Niv 2</div>
-            <div>
-              <div class="spell-name">Misty Step</div>
-              <div class="spell-desc">Reposicionamiento, escape, altura, salida de grapples y rescate de errores. Debe
-                estar disponible casi siempre.</div>
-            </div>
-            <span class="spell-tag utility">Movilidad</span>
-          </div>
-          <div class="spell-row lvl2">
-            <div class="spell-slot-badge">Niv 2</div>
-            <div>
-              <div class="spell-name">Invisibility</div>
-              <div class="spell-desc">Fuerte en infiltración, scouting y preparación de emboscadas. En pelea abierta es
-                buena, pero <strong>Greater Invisibility</strong> es la versión que realmente define tu plan ofensivo a
-                nivel 4.</div>
-            </div>
-            <span class="spell-tag utility">Sigilo</span>
-          </div>
-
-          <!-- LEVEL 3 -->
-          <div class="spell-row lvl3">
-            <div class="spell-slot-badge">Niv 3</div>
-            <div>
-              <div class="spell-name">Counterspell</div>
-              <div class="spell-desc">Parte central de tu identidad mecánica. Ver sección Reacciones para reglas de
-                stacking y presupuesto de slots.</div>
-            </div>
-            <span class="spell-tag defense">Anti-magia</span>
-          </div>
-          <div class="spell-row lvl3">
-            <div class="spell-slot-badge">Niv 3</div>
-            <div>
-              <div class="spell-name">Hypnotic Pattern <span style="color:var(--gold); font-size:0.8rem;">(✅ DEBE ESTAR PREPARADO &mdash; swap Phantasmal Killer)</span></div>
-              <div class="spell-desc">Tu gran spell de "esta pelea deja de funcionar". Entra cuando Web no resuelve o
-                cuando prefieres apagar múltiples enemigos de golpe. <strong>No dañes a los afectados</strong> &mdash;
-                el daño (incluso de aliados) rompe el efecto. Enfoca fuego en los que NO cayeron.<br>
-                <em style="color:var(--gold); font-size:0.85rem;">⚠ Corrección de preparación: Hypnotic Pattern es S-tier y debe estar en el loadout por defecto. Swap Phantasmal Killer → Hypnotic Pattern en el próximo Long Rest. PK es inferior en cada escenario: para remoción single-target Banishment es mejor, para control sostenido HP es mejor.</em></div>
-            </div>
-            <span class="spell-tag control">Control</span>
-          </div>
-          <div class="spell-row lvl3">
-            <div class="spell-slot-badge">Niv 3</div>
-            <div>
-              <div class="spell-name">Summon Undead</div>
-              <div class="spell-desc">Tu invocación insignia de nigromante. Añade economía de acción, presión constante y un aliado que habilita Sneak Attack por adyacencia.<br><br>
-                <strong>🔵 Ghostly (por defecto):</strong> Vuela 40 ft (hover), pasa a través de criaturas y objetos, resistencia a BPS no mágico, rider de <em>Frightened</em> sin setup. El espíritu que no puede ser bloqueado ni acorralado &mdash; llega a cualquier objetivo sin importar terreno, elevación ni pantallas enemigas. <strong>Tu mejor habilitador de SA.</strong><br>
-                <strong>🟤 Putrid (situacional):</strong> Aura de 5 ft que envenena (DC 16 CON), garras que paralizan al envenenado. Ideal en corredores, bodegas de barco o cuando los enemigos deben pelear en melee agrupados. Menos fiable: necesita que el objetivo empiece turno en el aura.<br>
-                <strong>⬜ Skeletal (raro):</strong> Ataque a distancia 150 ft, seguro desde atrás. Dalkyel ya cubre el rol de atacante a distancia &mdash; úsalo solo cuando el melee es suicida para el espíritu.<br><br>
-                <em style="color:rgba(200,184,154,0.6); font-size:0.85rem;">Slot 3: AC 14, 1 ataque, Ghostly/Putrid 30 HP, Skeletal 20 HP. Slot 4: AC 15, 2 ataques, +10 HP, +1 daño. Upcast vale en peleas largas; si no, guarda el slot para Banishment.</em></div>
-            </div>
-            <span class="spell-tag utility">Invocación</span>
-          </div>
-          <div class="spell-row lvl3">
-            <div class="spell-slot-badge">Niv 3</div>
-            <div>
-              <div class="spell-name">Animate Dead</div>
-              <div class="spell-desc"><strong>Motor de logística nigromántica, no herramienta de combate directo.</strong> Casting de 1 minuto &mdash; imposible en medio de una pelea. Úsalo entre encuentros cuando haya cadáveres humanoides disponibles.<br><br>
-                <strong>Ventaja clave:</strong> sin concentración. Tus esqueletos/zombis persisten mientras usas Web, Banishment o Greater Invisibility libremente. En días de mazmorra con múltiples encuentros, esto es un multiplicador de fuerza gratuito.<br>
-                <strong>Limitación:</strong> comandar cuesta Bonus Action cada turno (compite con Misty Step y recarga de Ward). Si la BA está ocupada, los no-muertos simplemente esquivan.<br>
-                <strong>Sinergia:</strong> Animate Dead + Summon Undead pueden estar activos simultáneamente. Los animados dan cuerpos persistentes entre combates; el espíritu invocado maneja la táctica en combate.<br><br>
-                <em style="color:rgba(200,184,154,0.6); font-size:0.85rem;">Slot 3: 1 no-muerto nuevo, reaserta hasta 4. Slot 4: 3 nuevos, reaserta hasta 6. Los stat blocks no escalan &mdash; se vuelven prescindibles contra CR alto.</em></div>
-            </div>
-            <span class="spell-tag control">Logística</span>
-          </div>
-
-          <!-- ITEM SPELL -->
-          <div class="spell-row lvl2">
-            <div class="spell-slot-badge">Ítem</div>
-            <div>
-              <div class="spell-name">Gust of Wind (Wind Fan) &mdash; Niv 2, STR 13 save, 60 ft línea</div>
-              <div class="spell-desc"><strong>Empuja 15 ft y crea terreno difícil.</strong> Ideal para empujar enemigos de cubiertas, cornisas, puentes o jarcias. Compite por concentración con Web/Banishment/Greater Invisibility &mdash; úsalo solo cuando el empuje/negación de terreno vale más que esas opciones. Muy relevante en combate naval y ruinas elevadas.</div>
-            </div>
-            <span class="spell-tag control">Empuje</span>
-          </div>
-
-          <!-- LEVEL 4 -->
-          <div class="spell-row lvl4">
-            <div class="spell-slot-badge">Niv 4</div>
-            <div>
-              <div class="spell-name">Banishment</div>
-              <div class="spell-desc"><strong>Tu herramienta de jefe.</strong> Idealmente entra después de
-                <strong>Mind Sliver</strong>. Si la pelea se resuelve mientras el blanco está fuera, convertiste un slot en
-                control decisivo. <strong>No lances contra enemigos con 2+ Legendary Resistances</strong> &mdash;
-                será desperdiciado. Quema LR primero con Web o control menor.</div>
-            </div>
-            <span class="spell-tag nuclear">Jefe</span>
-          </div>
-          <div class="spell-row lvl4">
-            <div class="spell-slot-badge">Niv 4</div>
-            <div>
-              <div class="spell-name">Greater Invisibility</div>
-              <div class="spell-desc">Uno de los grandes ganadores del build corregido. Úsalo como <strong>herramienta de
-                conversión de tempo</strong>, no como abridor: lánzalo después de crear una ventana de control
-                (enemigo incapacitado, restringido o sin reacción) para convertir esa ventaja en una postura
-                sostenida más segura. Ventaja en todos los ataques (habilita Sneak Attack), Desventaja contra ti,
-                <strong>no se rompe al atacar ni al lanzar hechizos</strong>.<br><br>
-                <strong>Inmunidad a OA:</strong> criaturas que no pueden verte no pueden hacer ataques de oportunidad. Greater Invisibility te da Advantage en ataques Y movimiento libre a través de espacios amenazados.<br>
-                <strong>Cancelación de Desventaja múltiple:</strong> una fuente de Advantage cancela TODAS las fuentes de Disadvantage (y viceversa). Si Dalkyel está Envenenado, Asustado o a rango largo, Greater Invisibility niega todo de golpe. Es una <strong>herramienta de recuperación</strong> contra estados malos, no solo un buff ofensivo.</div>
-            </div>
-            <span class="spell-tag utility">Pivot</span>
-          </div>
-        </div>
-
-        <!-- Cantrip Rotation -->
-        <div style="margin-top:1.5rem;">
-          <div class="section-title" style="font-size:0.7rem; margin-bottom:0.8rem;"><span class="sigil"></span>
-            Regla Rápida de Turno</div>
-          <div class="combat-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px,1fr));">
-            <div class="combat-card">
-              <div class="combat-card-title" style="color:#d05050;">Quieres conservar slots</div>
-              <div class="combat-card-body"><strong>Nick Mastery en melee:</strong> cimitarra + daga en una Attack Action,
-                Bonus Action libre para comandar animados (BA) o recargar Ward. Si necesitas distancia,
-                <strong>Find Familiar: Help</strong> &rarr; <strong>ballesta</strong> &rarr; Sneak Attack.</div>
-            </div>
-            <div class="combat-card">
-              <div class="combat-card-title" style="color:#a870d0;">Quieres que falle una salvación</div>
-              <div class="combat-card-body"><strong>Mind Sliver primero</strong> &rarr; luego
-                <strong>Web</strong>, <strong>Hypnotic Pattern</strong> o <strong>Banishment</strong>.</div>
-            </div>
-            <div class="combat-card purple">
-              <div class="combat-card-title">Quieres daño sin gastar mucho</div>
-              <div class="combat-card-body"><strong>Cimitarra + Daga via Nick</strong> (dos ataques, una Action).
-                Cantrips solo cuando no haya ruta segura de SA o el objetivo requiera ese efecto específico.</div>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top:1.5rem;">
-          <div class="section-title" style="font-size:0.7rem; margin-bottom:0.8rem;"><span class="sigil"></span>
-            Hechizos a Depriorizar en el Build Actual</div>
-          <div class="stat-grid">
-            <div class="stat-card">
-              <div class="stat-label">Arcane Vigor</div>
-              <div class="stat-value">Demasiado caro para lo que aporta en un personaje que ya tiene Ward, Shield,
-                Mirror Image y Mage Armor.</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">Phantasmal Killer</div>
-              <div class="stat-value">Juega en el mismo espacio de concentración que herramientas mejores como
-                Banishment, Hypnotic Pattern, Web y Greater Invisibility.</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">False Life</div>
-              <div class="stat-value">Sigue siendo útil, pero ya no merece el mismo protagonismo táctico del dossier
-                anterior.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- REACTION PRIORITY -->
-    <div class="section-header" data-toggle="reactions"><span class="sigil"></span> Prioridad de Reacciones &mdash; El
-      Orden Correcto<span class="dropdown-arrow">&#9660;</span></div>
-    <div id="reactions" class="section-content">
-      <div class="section">
-        <p style="color:var(--bone); font-size:0.9rem; margin-bottom:1rem; font-style:italic;">Solo tienes una reacción
-          por round. Si gastas la reacción en cualquier opción, no tienes las demás hasta tu próximo turno. Guárdala para
-          la pieza que más altera la escena.</p>
-        <div class="reaction-list">
-          <div class="reaction-row first">
-            <div class="reaction-priority">I</div>
-            <div>
-              <div class="reaction-name">Shield &mdash; Cuando un golpe amenaza concentración activa o HP reales</div>
-              <div class="reaction-when">Prioridad máxima cuando tienes Web, Hypnotic Pattern, Banishment o Greater Invisibility
-                activos. Cada slot de Niv 1 gastado en Shield también recarga el Ward en +2 HP. No la malgastes
-                si el Ward absorbe cómodo y la concentración no está en riesgo.</div>
-            </div>
-          </div>
-          <div class="reaction-row second">
-            <div class="reaction-priority">II</div>
-            <div>
-              <div class="reaction-name">Counterspell &mdash; Cuando un conjuro enemigo puede cambiar la pelea</div>
-              <div class="reaction-when">Contra magia rival seria, esta es la reacción que más gana encuentros.
-                Reserva al menos un slot de Niv 3 si hay caster enemigo visible. El slot gastado también
-                recarga el Ward en +6 HP.<br><br>
-                <strong>Counterspell stacking:</strong> un enemigo puede usar Counterspell contra tu Counterspell.
-                Si eso pasa, tu reacción ya está gastada &mdash; no puedes re-contrarrestar. Counterspell es más
-                confiable cuando la reacción del enemigo ya fue usada. Contra casters: presupuesta <strong>dos slots
-                Niv 3</strong> (uno ofensivo para proteger tu Banishment, uno defensivo).</div>
-            </div>
-          </div>
-          <div class="reaction-row third">
-            <div class="reaction-priority">III</div>
-            <div>
-              <div class="reaction-name">Silvery Barbs &mdash; Cuando un enemigo supera una salvación crítica</div>
-              <div class="reaction-when">Sobre todo en Web, Hypnotic Pattern y Banishment. También sirve para castigar un
-                crítico enemigo o asegurar Ventaja para un aliado clave. Niv 1, no recarga el Ward (no es abjuración).</div>
-            </div>
-          </div>
-          <div class="reaction-row fourth">
-            <div class="reaction-priority">IV</div>
-            <div>
-              <div class="reaction-name">Absorb Elements &mdash; Para picos de daño elemental</div>
-              <div class="reaction-when">Tormentas, dragones, magia de área, fuego de cubierta. Recarga Ward en +2 HP.
-                Bonus adicional: el siguiente ataque de arma cuerpo a cuerpo añade 1d6 del mismo tipo elemental &mdash;
-                sinergia directa con el turno Nick Mastery siguiente.</div>
-            </div>
-          </div>
-          <div class="reaction-row">
-            <div class="reaction-priority">V</div>
-            <div>
-              <div class="reaction-name">Projected Ward &mdash; Para mantener de pie a un aliado clave</div>
-              <div class="reaction-when">Cuando un aliado visible a 30 ft va a recibir daño que lo tiraría, puedes redirigir
-                ese daño a tu Ward (sin slot, sin concentracion). Nalare, Noah o Veldor siguen aportando más que muchos
-                puntos de Ward si están a un golpe de caer. Advertencia: consume HP de tu propio escudo y bloquea
-                Shield y Counterspell ese round.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- COMBAT FLOW TABLE -->
-    <div class="section-header" data-toggle="combat-flow"><span class="sigil"></span> Flujo de Turno de Combate &mdash;
-      Referencia Rápida<span class="dropdown-arrow">&#9660;</span></div>
-    <div id="combat-flow" class="section-content">
-      <div class="section">
-        <div style="overflow-x:auto;">
-          <table class="combat-table">
-            <thead>
-              <tr>
-                <th>Situación</th>
-                <th>Acción</th>
-                <th>Acción Bonus</th>
-                <th>Reacción a reservar</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Múltiples enemigos / choke point</td>
-                <td><strong>Web</strong> o <strong>Hypnotic Pattern</strong></td>
-                <td>Ward recharge con slot Niv 2 si Ward esta bajo; sino libre</td>
-                <td><strong>Silvery Barbs</strong> o <strong>Counterspell</strong></td>
-              </tr>
-              <tr>
-                <td>Jefe solitario</td>
-                <td><strong>Mind Sliver</strong> &rarr; siguiente turno <strong>Banishment</strong></td>
-                <td>&mdash;</td>
-                <td><strong>Silvery Barbs</strong> si supera la salvación</td>
-              </tr>
-              <tr>
-                <td>Combate controlado / ejecutar melee</td>
-                <td><strong>Cimitarra</strong> (1d6+3) + <strong>Daga via Nick</strong> (1d4+3) &mdash; dos ataques, una Action</td>
-                <td><strong>Libre</strong>: comandar animados (BA) / Ward recharge / nada. Summon Undead se comanda gratis.</td>
-                <td><strong>Shield</strong> si concentración activa</td>
-              </tr>
-              <tr>
-                <td>Combate controlado / ejecutar a distancia</td>
-                <td><strong>Light Crossbow +1</strong> con Help del familiar (1 disparo, Loading)</td>
-                <td>Comandar animados (BA) / Ward recharge. Summon Undead: gratis.</td>
-                <td><strong>Shield</strong> o <strong>Counterspell</strong></td>
-              </tr>
-              <tr>
-                <td>Ward bajo (&lt; 8 HP) y Bonus Action libre</td>
-                <td><strong style="color:#d05050;">⚠ Trigger de Banishment:</strong> si el enemigo tiene salvación débil y no tiene Legendary Resistance, lanza <strong>Banishment</strong> ahora. El Ward roto es la señal de que la attrición no es sostenible. <em>Solo si el encuentro ya está casi resuelto:</em> ataque o hechizo menor.</td>
-                <td><strong>Ward recharge:</strong> gastar slot sin lanzar hechizo (+doble nivel al Ward) — solo si Banishment ya se lanzó o no aplica</td>
-                <td>Segun amenaza presente</td>
-              </tr>
-              <tr>
-                <td>Te están cerrando en melee sin escape</td>
-                <td><strong>Este estado debería no existir</strong> — si Banishment se lanzó en el momento correcto (Ward roto) esto no ocurre. Si ya ocurrió: <strong>Banishment</strong> si aún tienes slot Niv 4, o <strong>Mirror Image</strong> para sobrevivir un round más mientras te reposicionas</td>
-                <td><strong>Misty Step</strong> (slot Niv 2) &mdash; única salida sin Opportunity Attack</td>
-                <td><strong>Shield</strong> &mdash; reservada para el golpe que amenace concentración o HP críticos</td>
-              </tr>
-              <tr>
-                <td>Caster enemigo visible</td>
-                <td><strong>Control primero</strong> (Web, Hypnotic Pattern, Banishment). Ballesta solo si el caster ya está controlado</td>
-                <td>&mdash;</td>
-                <td><strong>Counterspell</strong> guardado</td>
-              </tr>
-              <tr>
-                <td>Necesitas daño limpio y seguro</td>
-                <td><strong>Magic Missile</strong> o ataque de arma</td>
-                <td>&mdash;</td>
-                <td><strong>Absorb Elements</strong> / <strong>Shield</strong></td>
-              </tr>
-              <tr>
-                <td>Modo sigilo / hostigamiento</td>
-                <td><strong>Greater Invisibility</strong> &rarr; cimitarra+daga (Nick) o ballesta según distancia</td>
-                <td>Libre por Nick Mastery en melee</td>
-                <td><strong>Shield</strong> o <strong>Counterspell</strong></td>
-              </tr>
-              <tr>
-                <td>Invocación activa (Summon Undead)</td>
-                <td><strong>Crossbow + SA</strong> (espíritu adyacente al objetivo) o <strong>Nick melee</strong> si estás cerca</td>
-                <td><strong>Comando verbal</strong> al espíritu (gratis, sin acción) &mdash; BA libre para Ward recharge o Misty Step</td>
-                <td><strong>Shield</strong> si concentración amenazada; el espíritu desaparece si pierdes concentración</td>
-              </tr>
-              <tr>
-                <td>No-muertos animados activos (Animate Dead)</td>
-                <td>Acción normal (Web, Banishment, crossbow, cantrip) &mdash; <strong>concentración libre</strong></td>
-                <td><strong>Comando mental</strong> a los animados (BA) &mdash; si BA ocupada (Misty Step, Ward), esquivan automáticamente</td>
-                <td>Normal según amenaza &mdash; los animados no dependen de concentración ni reacción</td>
-              </tr>
-              <tr>
-                <td>Familiar en peligro / gestión de Orion</td>
-                <td>Si AoE inminente: <strong>descartar a Orion</strong> a dimensión de bolsillo (acción mágica). Si ya pasó el peligro: <strong>reconvocar</strong> (acción mágica, 30 ft). Si Orion murió: relanzar ritual después del combate (1h + 10 GP)</td>
-                <td>Libre &mdash; descartar/reconvocar usa la Acción, no la BA</td>
-                <td>Normal según amenaza &mdash; Orion no consume reacción salvo entrega de toque</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p style="color:var(--bone); font-size:0.82rem; margin-top:0.8rem; font-style:italic;">
-          <strong>Cobertura:</strong> Media = +2, Tres Cuartos = +5 a salvaciones de DEX contra AoE.<br>
-          <strong>Ventana de reacción:</strong> lanza control (Hypnotic Pattern, Banishment) cuando el enemigo ya gastó su reacción.<br>
-          <strong>Kiting:</strong> si velocidad enemiga &le; 30 ft y su amenaza tiene rango máximo, mantén distancia. Pregunta siempre al DM el rango.
-        </p>
-      </div>
-    </div>
-
-    <!-- SOLO DAMAGE LOOPS -->
-    <div class="section-header" data-toggle="solo-loops"><span class="sigil"></span> Bucles de Daño Solo &mdash; Cómo Dalkyel Mata
-      <span class="dropdown-arrow">&#9660;</span></div>
-    <div id="solo-loops" class="section-content">
-      <div class="section">
-        <p style="color:var(--bone); font-size:0.9rem; margin-bottom:1rem; font-style:italic;">
-          Dalkyel <strong>no es un personaje de daño</strong>. Gana por <strong>robo de tempo</strong>: hechizos de control compran turnos de ataque gratis que se acumulan en kills. Cantrips solos (4–6 dmg/turno) necesitan 13–20 rondas contra 80–100 HP &mdash; nunca son condición de kill por sí solos.
-        </p>
-
-        <div class="stat-grid">
-          <div class="stat-card" style="border-color:var(--gold);">
-            <div class="stat-label" style="color:var(--gold);">Loop A &mdash; Hypnotic Pattern + Crossbow (Mejor Patrón Solo)</div>
-            <div class="stat-value">
-              <strong>T1:</strong> Hypnotic Pattern (slot 3) &rarr; Incapacitated, speed 0, sin save repetido<br>
-              <strong>T2+:</strong> Crossbow con Advantage (Incapacitated = auto-Advantage) &rarr; SA cada turno &rarr; ~12 dmg/turno<br>
-              <strong>Final:</strong> Romper Pattern &rarr; Toll the Dead 2d12 en herido &rarr; Banishment si quemó LR<br><br>
-              <em style="color:rgba(200,184,154,0.6);">El Pattern es un dispensador de SA gratis cada turno mientras aguante.</em>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Loop B &mdash; Summon Undead + Crossbow (Más Eficiente en Slots)</div>
-            <div class="stat-value">
-              <strong>T1:</strong> Summon Undead (slot 3) &rarr; espíritu ataca independientemente<br>
-              <strong>T2+:</strong> Espíritu = aliado adyacente &rarr; SA sin Advantage &rarr; ~12 dmg/turno + daño del espíritu<br><br>
-              <em style="color:rgba(200,184,154,0.6);">Un slot Niv 3 compra un atacante independiente Y un trigger permanente de SA.</em>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Loop C &mdash; Greater Invisibility + Crossbow (Defensivamente Seguro, Kill Lento)</div>
-            <div class="stat-value">
-              <strong>T1:</strong> Greater Invisibility (slot 4) &rarr; enemigo tiene Disadvantage en ataques<br>
-              <strong>T2+:</strong> Crossbow con Advantage &rarr; SA aplica &rarr; concentración libre para control si es necesario<br><br>
-              <em style="color:rgba(200,184,154,0.6);">Seguro y fiable pero lento. Mejor cuando la supervivencia es la prioridad principal.</em>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top:1.5rem;">
-          <div class="section-title" style="font-size:0.72rem; margin-bottom:0.8rem;"><span class="sigil"></span> Comparación de Daño por Ronda</div>
-          <div style="overflow-x:auto;">
-            <table class="combat-table">
-              <thead>
-                <tr><th>Estrategia</th><th>Dmg/Ronda</th><th>Slot</th><th>Conc.</th><th>Notas</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Solo cantrip</td><td>4–6</td><td>0</td><td>No</td><td>13–20 rondas para matar. No viable solo</td></tr>
-                <tr><td>Crossbow sin Advantage</td><td>~8.5</td><td>0</td><td>No</td><td>Fiable pero sin SA</td></tr>
-                <tr><td>Crossbow + SA</td><td>~12</td><td>0</td><td>No</td><td>Requiere condición de setup</td></tr>
-                <tr><td><strong>Hypnotic Pattern + crossbow SA</strong></td><td><strong>~12 + control</strong></td><td>3</td><td>Sí</td><td><strong>Mejor loop solo</strong></td></tr>
-                <tr><td><strong>Summon Undead + crossbow SA</strong></td><td><strong>~12 + espíritu</strong></td><td>3</td><td>Sí</td><td><strong>Mejor eficiencia de slot</strong></td></tr>
-                <tr><td>Phantasmal Killer</td><td>~22 T1, ~13/turno</td><td>4</td><td>Sí</td><td>Alto daño, depende de WIS</td></tr>
-                <tr><td>Greater Invis + crossbow SA</td><td>~12</td><td>4</td><td>Sí</td><td>Seguro, defensivo</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p style="color:var(--bone); font-size:0.85rem; margin-top:0.6rem; font-style:italic;">
-            <strong>Toll the Dead late-fight:</strong> 2d12 (~13 promedio) cuando el enemigo ya perdió HP. Úsalo después de daño de ballesta o espíritu para activar la versión 2d12 &mdash; no como abridor.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- WEAPON MASTERY -->
-    <div class="section-header open" data-toggle="mastery"><span class="sigil"></span> Weapon Mastery &mdash; Nick y la Bonus Action Libre
-      <span class="dropdown-arrow">&#9660;</span></div>
-    <div id="mastery" class="section-content open">
-      <div class="section">
-        <p style="color:var(--bone); font-size:0.9rem; margin-bottom:1rem; font-style:italic;">
-          Rogue nivel 1 otorga Weapon Mastery para 2 armas con proficiencia, renovable en cada Long Rest.
-          La elección correcta para Dalkyel activa una de las mecánicas más importantes del build.
-        </p>
-        <div class="combat-grid">
-          <div class="combat-card">
-            <div class="combat-card-title">Elección Principal: Cimitarra + Daga (Nick + Nick)</div>
-            <div class="combat-card-body">
-              Ambas armas tienen <strong>Mastery: Nick</strong> (PHB 2024). La propiedad Light normalmente
-              requiere Bonus Action para el segundo ataque. Nick lo convierte en parte de la Attack Action.<br><br>
-              Resultado en turno de ejecución melee:<br>
-              &bull; Attack Action &rarr; <strong>Cimitarra</strong> (1d6+3 Slashing, Finesse)<br>
-              &bull; Incluido en misma Action via Nick &rarr; <strong>Daga</strong> (1d4+3 Piercing, Finesse)<br>
-              &bull; <strong>Bonus Action: completamente libre</strong><br>
-              &bull; Sneak Attack aplica solo en uno de los dos ataques (el primero que impacte con condiciones cumplidas)
-            </div>
-          </div>
-          <div class="combat-card purple">
-            <div class="combat-card-title">Usos de la Bonus Action Liberada</div>
-            <div class="combat-card-body">
-              Con Nick Mastery activo en melee, la Bonus Action queda libre para:<br><br>
-              &bull; <strong>Comando a Animate Dead</strong> (los animados requieren BA para comandar; Summon Undead usa comando verbal gratis)<br>
-              &bull; <strong>Ward recharge</strong> (gastar slot = +doble nivel HP al Ward)<br>
-              &bull; <strong>Misty Step</strong> de emergencia (aunque esto gasta slot Niv 2)<br>
-              &bull; <strong>Nada</strong> (ahorrándola para el siguiente round)
-            </div>
-          </div>
-          <div class="combat-card">
-            <div class="combat-card-title">Elección Alternativa: Light Crossbow (Slow) a Distancia</div>
-            <div class="combat-card-body">
-              Cuando el combate exige distancia, cambiar una de las Mastery a la Light Crossbow añade:<br><br>
-              &bull; <strong>Mastery: Slow</strong> &mdash; si golpeas, reduces velocidad del objetivo 10 ft<br>
-              &bull; Útil para impedir que enemigos alcancen a aliados o te persigan a ti<br>
-              &bull; La crossbow tiene <strong>Loading</strong>: máximo 1 disparo por Action, nunca más<br>
-              &bull; La crossbow es <strong>Two-Handed</strong>: mientras la sostienes no tienes mano libre para foco
-              arcano físico, pero el <em>spellbook</em> puede actuar como foco arcano según las reglas del Wizard
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ARCANE RECOVERY -->
-    <div class="section-header open" data-toggle="recovery"><span class="sigil"></span> Arcane Recovery &mdash; Gestión de Slots en Descanso Corto
-      <span class="dropdown-arrow">&#9660;</span></div>
-    <div id="recovery" class="section-content open">
-      <div class="section">
-        <p style="color:var(--bone); font-size:0.9rem; margin-bottom:1rem; font-style:italic;">
-          Una vez por descanso largo, al terminar un descanso corto puedes recuperar slots cuyo nivel combinado
-          no exceda la mitad de tu nivel de Wizard redondeado hacia arriba. A Wizard nivel 8: máximo <strong>4 niveles</strong> de slots,
-          ninguno de nivel 6 o superior. Solo una vez por Long Rest.
-        </p>
-        <p style="color:var(--bone); font-size:0.88rem; margin-bottom:1rem;">
-          <strong style="color:var(--gold);">Ritmo de gasto por tipo de día:</strong><br>
-          &bull; <strong>Golden Fleece</strong> (viaje, 1 encuentro/día): gasta libremente. Banishment, Greater Invisibility, Counterspell accesibles cada pelea significativa.<br>
-          &bull; <strong>Monster in the House</strong> (mazmorra, salas consecutivas): conserva slots Niv 3+. Apoya con cantrips y ballesta después de establecer control. Prefiere un hechizo de concentración de alto valor sobre ciclar concentración frecuentemente. Arcane Recovery es triaje de medio día, no excusa para abrir con slots caros.
-        </p>
-        <div class="combat-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px,1fr));">
-          <div class="combat-card">
-            <div class="combat-card-title" style="color:#a870d0;">Opción para combate de magia pesada</div>
-            <div class="combat-card-body">Recuperar un <strong>slot Niv 3</strong> + un <strong>slot Niv 1</strong>.
-              Asegura Counterspell y un Shield de respaldo.</div>
-          </div>
-          <div class="combat-card">
-            <div class="combat-card-title" style="color:#d05050;">Opción para exploración / desgaste</div>
-            <div class="combat-card-body">Recuperar <strong>dos slots Niv 2</strong>.
-              Shield + Misty Step de emergencia cubiertos para la siguiente zona.</div>
-          </div>
-          <div class="combat-card purple">
-            <div class="combat-card-title">Opción de control máximo</div>
-            <div class="combat-card-body">Recuperar un <strong>slot Niv 4</strong>.
-              Reserva para Banishment o Greater Invisibility en el siguiente encuentro crítico.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FAMILIAR LOOP -->
-    <div class="section-header" data-toggle="familiar"><span class="sigil"></span> El Bucle Correcto del Familiar
-      <span class="dropdown-arrow">&#9660;</span></div>
-    <div id="familiar" class="section-content">
-      <div class="section">
-        <div class="familiar-loop">
-          <div class="familiar-loop-title">Orion narrativo / Familiar táctico &rarr; Cómo habilitar Sneak Attack</div>
-          <div class="loop-steps">
-            <span class="loop-step">Familiar usa Help sobre el objetivo</span>
-            <span class="loop-arrow">&rarr;</span>
-            <span class="loop-step">o aliado / invocación queda adyacente</span>
-            <span class="loop-arrow">&rarr;</span>
-            <span class="loop-step">Tú atacas con cimitarra, daga o Light Crossbow +1</span>
-            <span class="loop-arrow">&rarr;</span>
-            <span class="loop-step">Impactas</span>
-            <span class="loop-arrow">&rarr;</span>
-            <span class="loop-step">+1d6 Sneak Attack</span>
-          </div>
-          <p style="color:var(--bone); font-size:0.88rem; margin-top:0.8rem; font-style:italic;">
-            <strong>Limitación táctica de Orion:</strong> Orion es un <strong>gato</strong> (CA 12, HP 2, Velocidad 40 ft).
-            No tiene <strong>Flyby</strong> &mdash; provoca ataques de oportunidad al salir del melee. Con solo 2 HP,
-            un golpe lo mata. Help funciona mejor cuando el objetivo ya está restringido.
-            Un <strong>búho</strong> sería más seguro para este rol si se re-invoca.
-            Orion sigue siendo el ancla narrativa; ambos roles pueden coexistir en mesa.
-          </p>
-          <p style="color:var(--bone); font-size:0.88rem; margin-top:0.6rem; font-style:italic;">
-            <strong>Alternativa: Summon Undead (Ghostly).</strong> Cuando el familiar no puede habilitar SA de forma segura
-            (Orion muere en un golpe, objetivo no restringido), el espíritu Ghostly es el habilitador más fiable:
-            vuela al objetivo, se queda adyacente cada ronda sin provocar oportunidad, y además aplica <em>Frightened</em>.
-            Cuesta concentración y un slot Niv 3+, pero en peleas largas es más consistente que depender del familiar.
-          </p>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- COMBAT DOCTRINE ADVANCED -->
-    <div class="section-header" data-toggle="doctrine-adv"><span class="sigil"></span> Doctrina Avanzada &mdash; Modelo de Dos Ejes, Kiting y Civiles
-      <span class="dropdown-arrow">&#9660;</span></div>
-    <div id="doctrine-adv" class="section-content">
-      <div class="section">
-        <div class="stat-grid">
-          <div class="stat-card">
-            <div class="stat-label">Escalado de Negación de Acciones</div>
-            <div class="stat-value">
-              La negación de acciones importa más contra enemigos que obtienen más de sus turnos. <strong>Prioriza control sobre:</strong><br><br>
-              &bull; Criaturas con <strong>Multiattack</strong> &mdash; cada ataque negado multiplica el valor del control<br>
-              &bull; <strong>Casters enemigos</strong> con swings de acción peligrosos<br>
-              &bull; Cualquier cosa que combine acción + BA + reacción eficientemente<br><br>
-              <em style="color:var(--gold);">No preguntes a quién es más fácil dañar primero. Pregunta quién gana más si se le permite un turno completo.</em>
+              1. <strong>Shield</strong> — Hit amenaza concentración o empuja HP real al peligro<br>
+              2. <strong>Counterspell</strong> — Hechizo enemigo cambia estado de combate<br>
+              3. <strong>Silvery Barbs</strong> — Save crítico tiene éxito o crit enemigo amenaza aliado clave<br>
+              4. <strong>Projected Ward</strong> — Aliado frágil bajo fuego concentrado<br>
+              5. <strong>Absorb Elements</strong> — Gran daño elemental entrante
             </div>
           </div>
           <div class="stat-card">
             <div class="stat-label">Escalera de Retirada</div>
             <div class="stat-value">
-              Cuando Dalkyel está en melee, algo ya salió mal. <strong>Dodge es mala idea con CA 16</strong> &mdash; no es suficiente para absorber un ciclo de ataques completo.<br><br>
-              <strong>1. Misty Step</strong> &mdash; primera opción. Teleportación, sin OA, ignora terreno<br>
-              <strong>2. Disengage</strong> &mdash; 2+ enemigos en melee y Misty Step gastado<br>
-              <strong>3. Dash</strong> &mdash; 1 enemigo en alcance, Misty Step gastado, puedes sobrevivir 1 OA<br>
-              <strong>4. Dodge</strong> &mdash; casi nunca. Solo si Ward está lleno y el objetivo es ganar tiempo para un aliado<br><br>
-              <strong>Dash vs. Multiattack:</strong> contra enemigos con Multiattack, Dash es mejor que Dodge &mdash; Dash te saca de su ciclo completo de ataques al costo de máximo 1 OA. Dodge les permite alcanzarte y usar <em>todos</em> sus ataques con Desventaja &mdash; mucho peor.
+              1. <strong>Misty Step</strong> (BA) — sin OA, reposicionamiento completo<br>
+              2. <strong>Disengage</strong> (acción) si 2+ enemigos en melee<br>
+              3. <strong>Dash</strong> (acción) si 1 enemigo, aceptar 1 OA<br>
+              4. <strong>Greater Invisibility</strong> si activo — moverse libremente, sin OA
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Umbrales Mínimos de Objetivos para AoE</div>
+            <div class="stat-label">Reglas de Posicionamiento</div>
             <div class="stat-value">
-              &bull; <strong>Web</strong> (cubo 20 ft): 2+ enemigos agrupados. Web single-target es desperdicio a menos que el objetivo solo justifique el slot de concentración<br>
-              &bull; <strong>Hypnotic Pattern</strong> (cubo 30 ft): 3+ enemigos en el área, O un objetivo de alto valor con WIS débil<br>
-              &bull; <strong>Banishment</strong>: siempre apropiado como remoción single-target
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Modelo de Dos Ejes (Espacial + Temporal)</div>
-            <div class="stat-value">
-              La ventaja en combate requiere control simultáneo de <strong>dos ejes independientes</strong>:<br><br>
-              <strong>Eje Espacial:</strong> Posicionamiento, cobertura, distancia &rarr; Cobertura, Misty Step, movimiento, Escalada 30 ft (escape vertical)<br>
-              <strong>Eje Temporal:</strong> Iniciativa, negación de acciones enemigas &rarr; Web, Hypnotic Pattern, Banishment, Counterspell<br><br>
-              <em style="color:rgba(200,184,154,0.6);">Si solo un eje está asegurado, la derrota sigue siendo probable. DCT-003: distancia correcta (espacial ✅) pero Withering Gaze sin oposición cada ronda (temporal ❌) = derrota por attrición.</em>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Disciplina de Información</div>
-            <div class="stat-value">
-              <strong>Pregunta SIEMPRE al DM el rango máximo de la habilidad más peligrosa del enemigo</strong> antes de comprometer posición. En DCT-003, no saber que Withering Gaze tenía rango duro de 60 ft causó que Dalkyel se quedara en rango letal cuando podía haber hecho kiting indefinidamente.
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Doctrina de Kiting</div>
-            <div class="stat-value">
-              Cuando la velocidad del enemigo &le; 30 ft Y su amenaza principal tiene un límite de rango duro: <strong>mantén distancia más allá de ese rango</strong>. El enemigo nunca puede cerrar la brecha.<br><br>
-              Ejemplo: Bodak (30 ft velocidad, Withering Gaze 60 ft) &mdash; Dalkyel a 70+ ft recibe cero daño a distancia y el Bodak nunca lo alcanza. Siempre verifica si esta opción existe antes de gastar slots.
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Ventana de Reacción</div>
-            <div class="stat-value">
-              Los hechizos de control basados en salvación (Hypnotic Pattern, Banishment) son más fuertes cuando se lanzan <strong>DESPUÉS de que el enemigo ya gastó su reacción</strong>. Si el enemigo usó su reacción en Counterspell, un ataque de oportunidad o cualquier otro trigger &mdash; esa es la ventana para lanzar tu hechizo de control de mayor valor sin riesgo de interrupción.
-            </div>
-          </div>
-          <div class="stat-card" style="border-color:var(--blood);">
-            <div class="stat-label" style="color:#d05050;">Protección de Civiles (DCT-004/005)</div>
-            <div class="stat-value">
-              <strong>Cada atacante libre activo = 1 muerte civil potencial por ronda.</strong><br><br>
-              La condición de victoria cambia: no supervivencia, no daño eficiente &mdash; <strong>cero atacantes libres</strong> lo más rápido posible.<br><br>
-              &bull; <strong>Web con civiles:</strong> si UN enemigo pasa la salvación DEX 16, queda libre = bajas civiles. Web debe atrapar a TODOS o su valor se degrada.<br>
-              &bull; <strong>Conservación de slots:</strong> en escenarios civiles, gastar un slot Niv 4 para garantizar deshabilitación es correcto si salva vidas.<br>
-              &bull; <strong>Tolerancia a varianza:</strong> CERO. Un fallo = muerte civil.<br><br>
-              <em style="color:rgba(200,184,154,0.6);">El tempo perdido en escenarios civiles se convierte directamente en vidas. La diferencia de 1 ronda entre control total y parcial puede significar 0 vs 4 bajas civiles.</em>
+              <strong>Banda operativa por defecto:</strong> 30–60 ft de amenazas principales<br>
+              <strong>Cobertura:</strong> Tres cuartos (+5 AC, +5 DEX saves) en todo momento<br>
+              <strong>Distancia de Projected Ward:</strong> Dentro de 30 ft de aliados clave<br>
+              <strong>Vs casters con Counterspell:</strong> 65+ ft — fuera de su rango de reacción de 60 ft
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- GROWTH PRIORITIES -->
-    <div class="section-header" data-toggle="growth"><span class="sigil"></span> Prioridades de Crecimiento &mdash; Próximos Upgrades<span
-        class="dropdown-arrow">&#9660;</span></div>
-    <div id="growth" class="section-content">
+    <!-- COMBAT QUICK REFERENCE -->
+    <div class="section-header open" data-toggle="combat-quick"><span class="sigil"></span> Referencia Rápida de Combate
+      <span class="dropdown-arrow">&#9660;</span></div>
+    <div id="combat-quick" class="section-content open">
+      <div class="section">
+        <div class="combat-grid">
+          <div class="combat-card" style="border-color:var(--gold);">
+            <div class="combat-card-title" style="color:var(--gold);">⚡ Triggers Críticos</div>
+            <div class="combat-card-body">
+              <strong>WARD ROTO:</strong> Banishment inmediato<br>
+              <strong>MELEE AMENAZADO:</strong> Misty Step (BA)<br>
+              <strong>CASTER VISIBLE:</strong> Control primero<br>
+              <strong>CIVILES EN PELIGRO:</strong> Web/Hypnotic Pattern debe atrapar TODOS
+            </div>
+          </div>
+          <div class="combat-card" style="border-color:var(--blood);">
+            <div class="combat-card-title" style="color:#d05050;">🚫 Nunca Hagas</div>
+            <div class="combat-card-body">
+              • Ballesta en melee (Desventaja)<br>
+              • Quedarte en melee con Misty Step<br>
+              • Dañar enemigos con Hypnotic Pattern<br>
+              • Misty Step + Web mismo turno (ilegal)
+            </div>
+          </div>
+          <div class="combat-card purple">
+            <div class="combat-card-title">🎯 Prioridad de Apertura</div>
+            <div class="combat-card-body">
+              <strong>1.</strong> Banishment (CHA débil, sin LR)<br>
+              <strong>2.</strong> Hypnotic Pattern (múltiples, WIS débil)<br>
+              <strong>3.</strong> Web (melee catastrófico, STR baja)<br>
+              <strong>4.</strong> Mirror Image (tiradas de ataque)
+            </div>
+          </div>
+          <div class="combat-card">
+            <div class="combat-card-title">⚔️ Ejecución</div>
+            <div class="combat-card-body">
+              <strong>Melee:</strong> Cimitarra + Daga (Nick) = 2 ataques, BA libre<br>
+              <strong>Distancia:</strong> Crossbow +1 con Help familiar<br>
+              <strong>SA Trigger:</strong> Aliado adyacente O Advantage
+            </div>
+          </div>
+          <div class="combat-card" style="border-color:var(--blood);">
+            <div class="combat-card-title" style="color:#d05050;">🔇 Hypnotic Pattern — Coordinación OBLIGATORIA</div>
+            <div class="combat-card-body">
+              <strong>CUALQUIER daño de CUALQUIER fuente lo rompe</strong><br>
+              &bull; Ordenar al Skeleton <strong>hold fire</strong> (BA) cada ronda que HP esté activo<br>
+              &bull; Comunicar <strong>"hold fire"</strong> a TODO el grupo inmediatamente<br>
+              &bull; Follow-up: Banishment (siguiente turno) O break intencional por el mejor converter<br>
+              &bull; Incapacitated NO impone Disadvantage en saves — solo quita acciones/reacciones
+            </div>
+          </div>
+          <div class="combat-card" style="border-color:var(--gold);">
+            <div class="combat-card-title" style="color:var(--gold);">🎯 Regla de Finisher</div>
+            <div class="combat-card-body">
+              <strong>HP ≤ 25 y hit incierto →</strong> Magic Missile (auto-hit garantizado)<br>
+              &bull; MM 1st: máx 15 &bull; MM 2nd: máx 20 &bull; MM 3rd: máx 25<br>
+              <strong>HP ≤ 25 y hit probable →</strong> TS Crossbow + SA (avg mayor, ahorra slot)<br>
+              <strong>HP > 25 →</strong> No es turno de finisher, control o presión sostenida
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMBAT INSIGHTS FROM TESTS -->
+    <div class="section-header" data-toggle="combat-insights"><span class="sigil"></span> Insights de Pruebas de Combate
+      <span class="dropdown-arrow">&#9660;</span></div>
+    <div id="combat-insights" class="section-content">
       <div class="section">
         <div class="stat-grid">
           <div class="stat-card" style="border-color:var(--gold);">
-            <div class="stat-label" style="color:var(--gold);">Prioridad #1 &mdash; Feat: Lucky</div>
-            <div class="stat-value">
-              <strong>Impacto: Estructural.</strong> Convierte el problema de concentración CON +1 de 55% → ~88% en DC 10 (mejor de 3 dados). También funciona como botón de pánico para saves de WIS y supresión de críticos entrantes. No es un upgrade de calidad de vida &mdash; es un <strong>fix estructural</strong> a la vulnerabilidad mecánica más crítica del build.
-            </div>
+            <div class="stat-label" style="color:var(--gold);">Fire Bolt como Modificador Táctico</div>
+            <div class="stat-value">Fire Bolt no es solo daño. Flesh Golem tiene Aversión al Fuego → Desventaja en ataques. Siempre verifica vulnerabilidades especiales.</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Prioridad #2 &mdash; Aprender Dispel Magic</div>
-            <div class="stat-value">La respuesta wizard de uso general más importante que falta en el spellbook. A Wizard 10 (Spell Breaker), Dispel Magic se convierte en BA con bonus de proficiencia en el check y sin costo de slot si falla.</div>
+            <div class="stat-label">Spirit vs Resistencia Física</div>
+            <div class="stat-value">Spirit (Summon Undead) hace daño necrótico que bypasea resistencia física no mágica completamente. Fiable contra incorporales.</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Prioridad #3 &mdash; Aprender Nondetection</div>
-            <div class="stat-value">Encaja con la campaña (vigilancia oculta, Vecna, Melaxir), encaja con la subclase (Abjuración &mdash; recarga Ward +6), soporta el perfil de arqueología/ocultismo.</div>
+            <div class="stat-label">Teleportación Rompe Web</div>
+            <div class="stat-value">Teleportación sale del área de Web (cubo 20 ft). Summon Undead más confiable contra enemigos con teleport.</div>
+          </div>
+          <div class="stat-card" style="border-color:var(--blood);">
+            <div class="stat-label" style="color:#d05050;">Life Drain = Muerte</div>
+            <div class="stat-value">Life Drain que reduce HP máximo a 0 = muerte instantánea (no inconsciencia). Usar Projected Ward agresivamente.</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Prioridad #4 &mdash; Aprender Arcane Eye</div>
-            <div class="stat-value">Una de las herramientas más "Dalkyel" posibles: arqueología, infiltración, mapeo de ruinas, preparación de emboscadas. Ganar antes de que se tire iniciativa.</div>
+            <div class="stat-label">Banishment: Umbral Real</div>
+            <div class="stat-value">Banishment funciona hasta CHA +2 (~75% éxito). CHA +3+ requiere enfoque kill-required, no control.</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Prioridad #5 &mdash; Aprender Dimension Door</div>
-            <div class="stat-value">Extracción real (500 ft) y rescate de aliados más allá de lo que Misty Step puede cubrir.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- COMBAT EXAMPLE LESSONS -->
-    <div class="section-header" data-toggle="examples"><span class="sigil"></span> Lecciones de los Ejemplos de Combate &mdash; Aplicadas a Dalkyel<span
-        class="dropdown-arrow">&#9660;</span></div>
-    <div id="examples" class="section-content">
-      <div class="section">
-        <p style="color:var(--bone); font-size:0.9rem; margin-bottom:1rem; font-style:italic;">
-          Principios extraídos de los 4 ejemplos de combate de <em>Live to Tell the Tale</em> (Niveles 1, 5, 9, 15), traducidos al kit específico de Dalkyel.
-        </p>
-        <div class="stat-grid">
-          <div class="stat-card">
-            <div class="stat-label">Nivel 1 (Emboscada Goblin) &mdash; Scoutea Antes de Entrar</div>
-            <div class="stat-value">
-              Dalkyel tiene las mejores herramientas de scouting del grupo: Stealth +11, Darkvision 60 ft, Find Familiar (Orion). Antes de entrar a cualquier encuentro desconocido: <em>¿puedo enviar a Orion adelante para confirmar posiciones?</em> La BA para ver a través de sus sentidos no cuesta nada.<br><br>
-              <strong>Principio de paciencia de George:</strong> George pasó 4 turnos reposicionándose, nunca atacó hasta tener SA garantizado, y luego one-shot al último enemigo. La ballesta de Dalkyel es la daga de George. No dispares hasta que la condición se cumpla.
-            </div>
+            <div class="stat-label">Web vs Incorporales</div>
+            <div class="stat-value">Web funciona contra incorporales con STR negativo pese a resistencia física. El control vale más que el daño.</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Nivel 5 (Gigante de Escarcha) &mdash; Espera a que Todos Estén en Posición</div>
-            <div class="stat-value">
-              Cuando Dalkyel lanza Web y el resto del grupo tiene Advantage contra objetivos Restrained, esperar una ronda para que todos se posicionen antes de abrir fuego es una decisión que vale la pena.<br><br>
-              <strong>Hechizos sin concentración coexisten con los de concentración.</strong> Summon Undead (concentración) y Mirror Image (sin concentración) pueden estar activos simultáneamente. No canceles Mirror Image para lanzar Summon Undead.
-            </div>
+            <div class="stat-label">Check Frightened Immunity</div>
+            <div class="stat-value">Verificar inmunidad a Frightened antes de Spirit. Determina si es daño-solo vs control completo.</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-label">Nivel 9 (Cripta de No-Muertos) &mdash; Tipo de Daño Importa</div>
-            <div class="stat-value">
-              Contra criaturas con resistencia a daño físico no mágico, la ballesta de Dalkyel hace la mitad de daño. Pivotea a hechizos: Web (control), Banishment, Mind Sliver (psíquico &mdash; raramente resistido), Fire Bolt (fuego).<br><br>
-              <strong>Rondas de solo cantrips son correctas cuando el control aguanta.</strong> Si Web está funcionando y el grupo maneja el resto, cantrips + ballesta es la jugada correcta de conservación de recursos.
-            </div>
+          <div class="stat-card" style="border-color:var(--blood);">
+            <div class="stat-label" style="color:#d05050;">Gorgon: Banishment Prioritario</div>
+            <div class="stat-value">Gorgon requiere Banishment inmediato (CHA −2 → ~90% éxito). Petrifying Breath = TPK potencial.</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-label">Nivel 15 (Dragón Negro) &mdash; Inversión Pre-Combate</div>
-            <div class="stat-value">
-              Los hechizos de utilidad lanzados antes del combate son parte de la economía de acción del encuentro, no un costo separado. Mage Armor (gratis), Find Familiar (ritual gratis), Detect Magic (ritual gratis) &mdash; no hay excusa para llegar a un encuentro sin estos activos.<br><br>
-              <strong>Principio de Ambush Master:</strong> Si tienes la opción entre establecer una condición que beneficia a tus aliados (Web, Hypnotic Pattern) y hacer daño directo que solo te beneficia a ti, el beneficio grupal casi siempre gana. Dalkyel es un controlador. Su valor se multiplica a través de la economía de acción de todos en su bando.<br><br>
-              <strong>Decisiones estándar:</strong> No abandones una decisión matemáticamente correcta porque los dados están saliendo mal. Si Web es el abridor correcto contra un encuentro melee-heavy, es correcto incluso cuando el primer enemigo pasa la salvación.
-            </div>
+          <div class="stat-card" style="border-color:var(--gold);">
+            <div class="stat-label" style="color:var(--gold);">Counterspell PHB 2024</div>
+            <div class="stat-value">El objetivo hace <strong>CON save vs DC 16</strong> — no hay umbral de auto-éxito. Si falla: hechizo se disipa pero el <strong>caster enemigo conserva su slot</strong>. Si tiene éxito: su hechizo procede y Dalkyel pierde el slot igual. Con CON +1, Dalkyel falla ~60% de Counterspells enemigos (vs DC 14) — <strong>nunca abrir con hechizo con nivel contra casters con Counterspell</strong>.</div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- READIED CROSSBOW -->
-    <div class="section-header" data-toggle="ready-sa"><span class="sigil"></span> Ballesta Preparada &mdash; SA Fuera de Turno<span
-        class="dropdown-arrow">&#9660;</span></div>
-    <div id="ready-sa" class="section-content">
-      <div class="section">
-        <div class="stat-grid">
-          <div class="stat-card">
-            <div class="stat-label">El Hábito Nuevo</div>
-            <div class="stat-value">
-              Sneak Attack se activa una vez por <strong>turno</strong>, no una vez por ronda en tu propia iniciativa. Un ataque de ballesta Preparado (Ready) que se dispara en el turno de otra criatura aún califica para SA si la condición se cumple (aliado adyacente o Advantage).<br><br>
-              <strong>Cuándo usarlo:</strong> En turnos donde Dalkyel ya lanzó su hechizo de concentración y está en posición segura, Preparar la ballesta para un disparo SA fuera de turno da un ataque extra que de otra forma sería solo un cantrip.<br><br>
-              <strong>Trigger ejemplo:</strong> <em>"Cuando el Ghostly Undead esté adyacente al objetivo y tenga línea de tiro limpia."</em><br><br>
-              <strong style="color:#d05050;">NO Preparar si:</strong> Shield o Counterspell aún pueden ser necesarios esta ronda. Ready consume la reacción.<br>
-              <strong style="color:#d05050;">NO Preparar hechizos con slot:</strong> Si el trigger no se activa antes de tu próximo turno, el slot se pierde. Solo cantrips o ballesta.
-            </div>
+          <div class="stat-card" style="border-color:var(--gold);">
+            <div class="stat-label" style="color:var(--gold);">Anti-Counterspell: Secuencia de 2 Rondas</div>
+            <div class="stat-value"><strong>R1:</strong> Mind Sliver (cantrip, no se puede contrahechizar) → −1d4 al siguiente save<br><strong>R2:</strong> Hechizo con nivel al save debuffado. Mantener Counterspell listo para su turno clave.</div>
           </div>
         </div>
       </div>
