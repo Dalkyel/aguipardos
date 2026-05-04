@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noah &mdash; Dossier del Personaje</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Paleta azul astral. Solo variables de color; todo lo demas lo
+       resuelve .dalkyel-page en styles.css exactamente igual que Dalkyel. */
+    .dalkyel-page {
+      --gold:           #4a88d4;
+      --gold-light:     #6aaae8;
+      --gold-dim:       #2a5a9a;
+      --flame:          #5a3a9a;
+      --bronze:         #5a7a9a;
+      --panel:          #0e1420;
+      --panel2:         #141c2c;
+      --border:         rgba(74, 136, 212, 0.28);
+      --text:           #b8c8dc;
+      --bone:           #b8c8dc;
+      --dark:           #0a0c14;
+      --parchment:      #d8e4f0;
+      --parchment-dark: #0e1420;
+    }
+
+    /* Cuadricula de puntuaciones de habilidad (no existe en dalkyel-page) */
+    .dalkyel-page .ability-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+    .dalkyel-page .ability-card {
+      background: var(--panel2);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--flame);
+      padding: 0.6rem 0.4rem;
+      text-align: center;
+    }
+    .dalkyel-page .ability-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.56rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 0.2rem;
+    }
+    .dalkyel-page .ability-score {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .dalkyel-page .ability-mod {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      color: var(--flame);
+      margin-top: 0.1rem;
+    }
+    .dalkyel-page .ability-save {
+      font-size: 0.7rem;
+      color: var(--bone);
+      margin-top: 0.2rem;
+    }
+
+    /* Caja de contradicciones / notas de canon */
+    .dalkyel-page .nota-contradiccion {
+      background: rgba(139, 26, 26, 0.12);
+      border: 1px solid rgba(139, 26, 26, 0.4);
+      border-left: 3px solid var(--blood);
+      padding: 0.8rem 1rem;
+      margin-top: 0.8rem;
+      font-size: 0.88rem;
+      color: var(--bone);
+    }
+    .dalkyel-page .nota-contradiccion .nota-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #c04040;
+      margin-bottom: 0.4rem;
+    }
+
+    @media (max-width: 650px) {
+      .dalkyel-page .ability-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+
+<body class="dalkyel-page">
+  <div class="wrapper">
+
+    <!-- TITLE -->
+    <div class="title-block">
+      <div class="eyebrow">&#10022; Dossier del Personaje Campaña Los Aguipardos &#10022;</div>
+      <div class="char-name">Noah</div>
+      <div class="char-subtitle">Elfo Astral &mdash; Mago Adivino &mdash; Viajero Lejano
+        <span style="color:var(--gold)">&mdash; Devoto de Mystra &mdash;</span>
+        <span style="color:var(--flame)">Brazo Necrosado Oculto &mdash; Mano Quemada por Vecna &mdash; Ojo Sobrenatural</span>
+      </div>
+      <a class="nav-link" href="index.html" style="margin-top:1rem;">Volver al Dossier</a>
+    </div>
+
+    <!-- IDENTITY -->
+    <div class="section-header open" data-toggle="identity">
+      <span class="sigil"></span> Identidad &amp; Apariencia
+      <span class="dropdown-arrow">&#9660;</span>
+    </div>
+    <div id="identity" class="section-content open">
+      <div class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Trasfondo</div>
+            <div class="stat-value">Viajero Lejano. 350 anos. Elfo Astral criado en el Clan del Golfo Astral, comunidad familiar en el Mar Astral con una pequena flota de Spelljammers. Tripulante del Nautilus desde hace aproximadamente dos siglos (el tiempo no pasa de forma lineal en el Mar Astral). Cazo recompensas para desarrollar sus habilidades magicas.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Apariencia Clave</div>
+            <div class="stat-value">Elfo astral esbelto, 1.80 m. Cabello largo azul que flota levemente. Ojos azules con brillo cosmico. Tunicas arcanas azul-plata con runas de Mystra. <strong style="color:var(--gold)">Tiene un brazo necrosado del que se averguenza</strong> y normalmente mantiene oculto.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">La Mano Quemada &mdash; Vecna</div>
+            <div class="stat-value">En S15, Vecna se manifesto durante el ritual de comunion de Dalkyel y conecto tambien a Noah, <strong style="color:var(--blood)">quemando su mano casi hasta dejarla muerta como castigo</strong> por haberse hecho pasar por el. Encanto de Vecna activo: <strong style="color:var(--flame)">Ojo Sobrenatural</strong> &mdash; puede ver mas alla de la materia. Vision: ciudad sombria. El brazo necrosado y la mano quemada son sus dos secretos fisicos mas visibles.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Situacion Actual (S17)</div>
+            <div class="stat-value">En la isla de Melaxir. Avergonzado tras sucumbir al collar de Anesa frente a todo el grupo. <strong style="color:var(--blood)">Hedwig, su familiar buho, fue asesinada por criaturas no-muertas durante el ataque nocturno.</strong> Reza a Mystra pidiendo fortaleza. El Sombrero de Disfraz le fue confiscado por Drakothar en S15 y no ha sido devuelto.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHILOSOPHY -->
+    <div class="section-header open" data-toggle="philosophy">
+      <span class="sigil"></span> Filosofia &mdash; La Voz Interna de Noah
+      <span class="dropdown-arrow">&#9660;</span>
+    </div>
+    <div id="philosophy" class="section-content open">
+      <div class="section">
+        <div class="philosophy">
+          El cosmos no da mapas para los accidentes. Cai de las estrellas con las manos vacias: sin tripulacion, sin el Nautilus, sin la flauta de mi abuelo. Solo la memoria de lo que Mystra sostiene: que la magia no es poder, es entendimiento. No busco volver; el accidente me trajo aqui con una razon que todavia no se leer. Pero tengo los ojos para verlo. Dos siglos navegando el mar astral me ensenaron que el universo no repite la misma ruta dos veces. Esta es la ruta nueva. Aprendo el idioma de esta oscuridad o me quedo sordo en ella.
+        </div>
+        <p style="color:var(--bone); font-size:0.95rem; margin-top:1rem;">
+          Este es el nucleo interno de Noah. No es fe ciega &mdash; es <strong style="color:var(--gold)">pragmatismo cosmico</strong>. Revere a Mystra no como a un dios que le ordena, sino como a la encarnacion de lo que mas valora: el conocimiento magico como lenguaje universal. En S14, cuando rozo la muerte en el pantano del Feywild, Mystra se comunico directamente con el y le mostro una nueva forma de magia &mdash; un desvanecimiento arcano para escapar del filo final. Esa comunion directa profundizo su fe y su responsabilidad. El error del disfraz de Vecna en S15 y la mano quemada como castigo son el costo de haber jugado con algo que no le pertenecia.
+        </p>
+      </div>
+    </div>
+
+    <!-- BACKSTORY -->
+    <div class="section-header" data-toggle="backstory">
+      <span class="sigil"></span> Historia de Origen &mdash; El Camino de Noah
+      <span class="dropdown-arrow"></span>
+    </div>
+    <div id="backstory" class="section-content">
+      <div class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">El Mar Astral y el Clan</div>
+            <div class="stat-value">Nacido en el Clan del Golfo Astral, comunidad familiar en el Mar Astral con flota propia de Spelljammers. El tiempo no transcurre de forma lineal en ese plano. Su familia y su historia estan flotando en otro plano.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">El Nautilus y la Caza de Recompensas</div>
+            <div class="stat-value">Se unio al Nautilus para convertirse en cazador de recompensas, impulsado por el deseo de aventura y el desarrollo de sus habilidades magicas. La nave atraveso el Mar Astral durante decadas; Noah conoce multiples planos de existencia gracias a esos viajes.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">El Accidente</div>
+            <div class="stat-value">Volviendo de una mision, un objeto contundente desconocido rompio la proteccion del Nautilus y envio a la nave directo hacia un sistema ya conocido. Noah perdio la consciencia y se desperto solo. Reviso algunos companeros, los vio destrozados, no los conto a todos. Solo busco ayuda. Segun el index, <strong style="color:var(--gold)">la tripulacion del Spelljammer fue capturada</strong>, no simplemente desaparecida.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Llegada a Leilon</div>
+            <div class="stat-value">Alguien en una carreta lo encontro herido en el camino y lo llevo a Leilon, donde fue atendido pocos dias antes de conocer al grupo. Llego aturdido, lastimado y sin la mayoria de sus posesiones personales. Entro a la taberna El Anzuelo y la Carnada observando con curiosidad a los clientes peculiares &mdash; primera escena de la campana.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BACKGROUND -->
+    <div class="section-header" data-toggle="background">
+      <span class="sigil"></span> Trasfondo: Viajero Lejano &mdash; Rasgos de Personaje
+      <span class="dropdown-arrow"></span>
+    </div>
+    <div id="background" class="section-content">
+      <div class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Rasgos de Personalidad</div>
+            <div class="stat-value">&#8226; Honro a Mystra haciendo rituales que son poco usuales para las personas de este planeta.<br>
+              &#8226; Al levantarme tengo que tocar la cancion que me enseno mi abuelo en la flauta, o tengo el presentimiento de que algo podria salir mal ese dia.<br>
+              &#8226; Me gusta mirar los atardeceres y me quedo horas atonito.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Ideales</div>
+            <div class="stat-value">&#8226; <strong style="color:var(--parchment)">Crecimiento.</strong> Despues del accidente quede varado; ahora veo la oportunidad de fortalecer mis habilidades como mago.<br>
+              &#8226; <strong style="color:var(--parchment)">Magia como entendimiento.</strong> Mystra no es poder &mdash; es la comprension de lo que conecta todos los planos.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Vinculos</div>
+            <div class="stat-value">&#8226; Mi familia, fotos y documentos, la flauta que me heredo mi abuelo. Estan en algun lugar del mar astral.<br>
+              &#8226; El Clan del Golfo Astral &mdash; pueden estar buscandolo o haberlo dado por muerto.<br>
+              &#8226; La tripulacion del Nautilus fue capturada. No sabe por quien ni donde estan.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Defectos</div>
+            <div class="stat-value">&#8226; Me gusta mirar los atardeceres y me quedo horas atonito.<br>
+              &#8226; Al levantarme tengo que tocar la cancion de mi abuelo o el dia se siente torcido.<br>
+              &#8226; Cargo con la culpa de no haber revisado a todos sus companeros caidos.<br>
+              &#8226; Recurre a la manipulacion cuando siente que alguien es una amenaza &mdash; demostrado con el disfraz de Vecna en S15.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <div class="section-title"><span class="sigil"></span> Fe y Organizaciones</div>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <div class="stat-label">Mystra &mdash; Diosa de la Magia</div>
+              <div class="stat-value">Noah revere a Mystra y realiza rituales no convencionales. En S8 recibio una vision de Mystra sobre la silla Spelljammer en Neverwinter. En S14, cuando rozo la muerte en el pantano, tuvo una comunion directa con Mystra que le mostro una nueva forma de magia arcana. En S15 viajo a Sigil para hablar con Mystra y reflexionar sobre sus errores; entrego el segundo fragmento de obsidiana a Alustriel alli.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Alustriel Silverhand &mdash; Contacto en Sigil</div>
+              <div class="stat-value">Noah es el vinculo principal del grupo con Alustriel. Viajo a Sigil y le entrego el segundo fragmento de obsidiana. Alustriel les ha dejado notas, provisiones y pociones (en S15: dos de Velocidad y una de Invisibilidad). Sus motivaciones siguen sin estar del todo claras.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KEY EVENTS TIMELINE -->
+    <div class="section-header open" data-toggle="timeline">
+      <span class="sigil"></span> Momentos Definitorios &mdash; Lo Que Lo Formo
+      <span class="dropdown-arrow">&#9660;</span>
+    </div>
+    <div id="timeline" class="section-content open">
+      <div class="section">
+        <div class="timeline">
+
+          <div class="tl-event">
+            <div class="tl-session">S1-S2 &mdash; Primeras Acciones en Leilon</div>
+            <div class="tl-desc">En S1, estabilizo a Nalare cuando cayo inconsciente bajo una lluvia de flechas durante la huida del muelle incendiado. En S2, junto a Veldor, negocio provisiones con Mafar logrando tres pociones de curacion y un kit de medicina. Teorizo que el primer dragon de sombras era un dragon verde transformado.</div>
+            <div class="tl-impact">&rarr; Noah llega al grupo como erudito y soporte. Su primer acto notable es salvar una vida, no hacer dano. Eso define su rol antes de que lo defina el.</div>
+          </div>
+
+          <div class="tl-event">
+            <div class="tl-session">S7 &mdash; El Spelljammer Caido</div>
+            <div class="tl-desc">Al examinar los restos del barco Spelljammer caido en el bosque al sur de Neverwinter, Noah dedujo que el objeto era un foco de transporte interplanar con la energia agotandose o perturbada, y percibio que alguien habia extraido el nucleo despues del impacto. Recibio una vision de Mystra sobre la silla Spelljammer. Fue el que propuso a Bastion insertar la obsidiana en el nucleo, desencadenando la teletransportacion del grupo entera.</div>
+            <div class="tl-impact">&rarr; Primera conexion directa entre el Spelljammer caido y su propio origen. Noah sabe mas de esta tecnologia que cualquier otro en el grupo &mdash; y ese conocimiento tiene un costo.</div>
+          </div>
+
+          <div class="tl-event">
+            <div class="tl-session">S8 &mdash; La Batalla del Bosque</div>
+            <div class="tl-desc">Durante el combate contra el dragon de sombras y las entidades de los cadaveres, Noah conjuro destellos de luz cuando Dalkyel y Veldor revelaron que la luz solar debilitaba a la criatura, contribuyendo directamente a la derrota del dragon.</div>
+            <div class="tl-impact">&rarr; Noah actua coordinado con el grupo y usa informacion del combate en tiempo real. Rol de soporte ofensivo con precision.</div>
+          </div>
+
+          <div class="tl-event">
+            <div class="tl-session">S14 &mdash; Comunion con Mystra / Cerca de la Muerte</div>
+            <div class="tl-desc">Durante la batalla contra el dragon sombrio Aghmed en el pantano del Feywild, Noah rozo la muerte: vio en una vision como una de las sombras lo secaba hasta dejarlo sin vida. En ese instante tuvo una comunion directa con Mystra, quien lo guio y le permitio comprender una nueva forma de magia &mdash; un desvanecimiento arcano para escapar del filo final. Sobrevivio.</div>
+            <div class="tl-impact">&rarr; Este es el momento espiritual mas profundo de Noah en la campana. Mystra no es para el una deidad abstracta: le hablo cuando mas lo necesitaba. Ese regalo tiene un peso que no puede ignorar.</div>
+          </div>
+
+          <div class="tl-event">
+            <div class="tl-session">S14 &mdash; Distribucion de Objetos Magicos (Feywild)</div>
+            <div class="tl-desc">Tras liberar las criaturas de la prision de piedra, Noah identifico los objetos magicos recuperados: entrego a Drakothar una espada de llamas, <strong style="color:var(--gold)">se quedo con el anillo que almacena conjuros</strong>, le dio a Veldor la bolsa de trucos y guardo las cuentas de onix en el fondo comun.</div>
+            <div class="tl-impact">&rarr; Noah opera como erudito arcano del grupo: es quien identifica y distribuye artefactos. El Ring of Spell Storing que conservo es el objeto mas impactante de su arsenal actual.</div>
+          </div>
+
+          <div class="tl-event">
+            <div class="tl-session">S15 &mdash; El Disfraz de Vecna y el Castigo</div>
+            <div class="tl-desc">Mientras Dalkyel estudiaba el diario del capitan muerto, Noah uso ilusiones para hacerse pasar por Vecna en un intento por "probar la lealtad" del grupo. Dalkyel cayo en la trampa y, creyendo que habia un traidor, intento capturar a Noah dentro de su domo usando un esqueleto. Drakothar y Nalare irrumpieron y disiparon el domo. Mas tarde, durante el ritual de comunion de Dalkyel, Vecna se manifesto, se burlO de Dalkyel por creerse inteligente y le mostro el engano de Noah. <strong style="color:var(--blood)">Vecna conecto tambien a Noah y le quemo la mano casi hasta dejarla muerta como castigo real</strong>. Dalkyel se marcho sin decir palabra.</div>
+            <div class="tl-impact">&rarr; Este es el error mas grave de Noah en la campana. Jugo con la imagen de Vecna como herramienta y Vecna lo corrigio personalmente. El costo fue doble: la confianza del grupo y una marca fisica permanente.</div>
+          </div>
+
+          <div class="tl-event">
+            <div class="tl-session">S15 &mdash; Sigil, Mystra y el Segundo Fragmento</div>
+            <div class="tl-desc">A la manana siguiente del incidente Vecna, Noah viajo a Sigil para hablar con Mystra, reflexiono y decidio entregar el segundo fragmento de obsidiana obtenido de Briosk para que fuera insertado en el Obelisco. Al colocar la obsidiana fue transportado fuera del mausoleo donde la habian encontrado. Tambien encontro una nota de Alustriel, provisiones y pociones.</div>
+            <div class="tl-impact">&rarr; Noah eligio responsabilidad sobre comodidad: en lugar de quedarse a manejar las consecuencias del escandalo, fue a cumplir la mision que realmente importa. Es accion sin testigos, que es la unica accion que dice algo real sobre el personaje.</div>
+          </div>
+
+          <div class="tl-event">
+            <div class="tl-session">S15 &mdash; Disculpa en los Muelles</div>
+            <div class="tl-desc">El grupo fue a buscar a Dalkyel, que habia aceptado trabajo en un barco mercante. Noah se disculpo, hablaron con franqueza. Drakothar confisco el Sombrero de Disfraz a Noah. Dalkyel acepto volver con dos condiciones. Fue entonces cuando Veldor confeso que habia prometido entregar a Noah a Moscoff a cambio del barco.</div>
+            <div class="tl-impact">&rarr; En la misma escena donde Noah cierra el conflicto con Dalkyel, descubre que Veldor lo ha ofrecido como pago. Dos pesos opuestos en el mismo momento: una grieta que se cierra, otra que se abre.</div>
+          </div>
+
+          <div class="tl-event">
+            <div class="tl-session">S16 &mdash; Hedwig, Robo e Hipnosis</div>
+            <div class="tl-desc">Noah conjuro a <strong style="color:var(--gold)">Hedwig</strong>, un buho familiar, como vigia aereo, e identifico las pociones de Alustriel (dos de Velocidad + una de Invisibilidad). Participo en el robo del barril de fuego alquimista creando una ilusion de Sahuagins. En la emboscada pirata, uso Patron Hipnotico para paralizar al lider encapuchado y la mitad de su sequito, creando caos en el mando del barco atacante. Intento atrapar al lider con una rafaga de viento.</div>
+            <div class="tl-impact">&rarr; Primera vez en la campana donde el control de campo de Noah cambia el resultado de un combate de forma decisiva. Hypnotic Pattern sobre el lider pirata fue el giro que permitio a Veldor y al grupo sobrevivir la emboscada.</div>
+          </div>
+
+          <div class="tl-event">
+            <div class="tl-session">S17 &mdash; El Collar de Anesa</div>
+            <div class="tl-desc">El Dragon Tortuga perseguia el barco. Noah sospecho que Mauiwi tenia el "tesoro" que la criatura exigia. <strong style="color:var(--gold)">Uso Detect Thoughts para leer la mente de Mauiwi</strong> &mdash; confirmo que guardaba un collar que no podia entregar bajo ninguna circunstancia. Luego uso Hold Person para paralizarlo e intento quitarle el collar dorado. Al verlo, escucho una voz susurrar "no me dejes ir" y cayo bajo compulsion magica. Mauiwi se libero y ataco a Noah para recuperarlo. Veldor intento persuadir a Noah de devolver el objeto; Noah bajo influencia se nego. <strong style="color:var(--gold)">Nalare uso Sleep para dejarlo inconsciente</strong>. Mas tarde, cuando el Dragon Tortuga regreso de su destierro (Dalkyel lo habia banished), Nalare lanzo Dispel Magic sobre el collar rompiendo el hechizo sobre Veldor. Drakothar arrojo el collar al mar. Noah desperto avergonzado y rezo a Mystra.</div>
+            <div class="tl-impact">&rarr; El collar demostro que la adivinacion tiene un costo: leer la mente de Mauiwi funciono, pero actuar sin medir las consecuencias lo encadeno al objeto. El mismo error del disfraz de Vecna: la herramienta correcta, el timing equivocado, el precio pagado frente a todo el grupo.</div>
+          </div>
+
+          <div class="tl-event">
+            <div class="tl-session">S17 &mdash; Hedwig Muerta / Conversacion en la Cueva</div>
+            <div class="tl-desc">Durante la tormenta, Noah destruyo una roca en el camino con Chromatic Orb y contribuyo a contener la filtracion del barco con telaranas magicas. Ya en la cueva de Melaxir, Dalkyel pregunto a Noah sobre los obeliscos y los fragmentos de obsidiana ligados a Vecna. <strong style="color:var(--gold)">Noah revelo su origen y menciono un barco Spelljammer cuya tripulacion fue capturada</strong>. Durante el ataque nocturno de no-muertos, <strong style="color:var(--blood)">Hedwig fue asesinada</strong>. Noah necesita invocar un nuevo familiar.</div>
+            <div class="tl-impact">&rarr; Fue Dalkyel quien pregunto primero. Noah no ofrecio voluntariamente la informacion &mdash; respondio. La distincion importa: no es confianza activa, es honestidad reactiva. El resultado es el mismo pero el matiz define quien es Noah en este momento de la campana.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- RELATIONSHIPS -->
+    <div class="section-header" data-toggle="relationships">
+      <span class="sigil"></span> Relaciones del Grupo
+      <span class="dropdown-arrow"></span>
+    </div>
+    <div id="relationships" class="section-content">
+      <div class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Dalkyel &mdash; Tension Activa / Tregua Fragil</div>
+            <div class="stat-value">Noah lo manipulo disfrazandose de Vecna. Dalkyel intento capturarlo con un esqueleto en su domo. Drakothar y Nalare detuvieron la escalada. La disculpa en los muelles cerro el conflicto formal, pero la cicatriz es profunda. En S17, Noah revelo su origen a Dalkyel &mdash; respondiendo a sus preguntas, no por iniciativa propia.<br><br><em style="color:rgba(200,184,154,0.6); font-size:0.88rem;">Roleplay: La tregua es real; la confianza no. Cada acto de Dalkyel como protector del grupo &mdash; el Banishment al Dragon Tortuga, el domo de alarma en la cueva &mdash; es un deposito en esa cuenta. Noah lo nota aunque no lo diga.</em></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Veldor &mdash; Tension Alta / Traicion Confesada</div>
+            <div class="stat-value">En los muelles (S15), Veldor confeso que habia prometido entregar a Noah a Moscoff a cambio del barco. No fue un rumor ni una sospecha: Veldor lo dijo. Esa confesion ocurrio delante del grupo. Es la traicion mas directa que Noah ha recibido de alguien del equipo.<br><br><em style="color:rgba(200,184,154,0.6); font-size:0.88rem;">Roleplay: Veldor te ofrecio y lo admitio. La pregunta no es si lo hara de nuevo &mdash; es si lo consideraria. Que tan desesperado tendria que estar? Eso define cuanto espacio le das.</em></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Nalare &mdash; La que Actua sin Juzgar</div>
+            <div class="stat-value">En S17, Nalare uso Sleep sobre Noah cuando estaba bajo la compulsion del collar &mdash; no lo juzgo, solo lo detuvo. Despues lanzo Dispel Magic sobre el collar para liberar a Veldor. Es la persona que mas directamente le salvo de si mismo en esa sesion. En S15 tambien fue Nalare quien irrumpio en el domo de Dalkyel para detener la escalada.<br><br><em style="color:rgba(200,184,154,0.6); font-size:0.88rem;">Roleplay: Nalare no te pregunto si querias ser detenido. Solo actuo. Eso la convierte en la persona de mayor confianza actual. Cuando el Ojo Sobrenatural o la mano quemada salgan a la luz, ella sera la primera en notarlo.</em></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Drakothar &mdash; Aliado Solido / Juez Silencioso</div>
+            <div class="stat-value">Drakothar hablo con el Dragon Tortuga en draconico en S17. En S15 irrumpio con Nalare para detener a Dalkyel. Tambien le confisco el Sombrero de Disfraz a Noah como consecuencia del escandalo de Vecna &mdash; acto unilateral, sin drama, sin negociacion.<br><br><em style="color:rgba(200,184,154,0.6); font-size:0.88rem;">Roleplay: Drakothar no te grito ni te explico. Solo te quito el sombrero. Esa es su forma de decir "ya fue suficiente." Su fuerza moral no delibera, actua. Eso puede ser incomodo para alguien como Noah, que si delibera.</em></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Grandal &mdash; Distancia / Ausente</div>
+            <div class="stat-value">Grandal se quedo con su clan en Neverwinter en lugar de zarpar. No hay tensiones activas con Noah, pero tampoco hay historia compartida significativa.<br><br><em style="color:rgba(200,184,154,0.6); font-size:0.88rem;">Roleplay: Sin historial, postura neutral. Si el clan Glutonian regresa a la narrativa, Grandal es una variable desconocida para Noah.</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NPCs -->
+    <div class="section-header" data-toggle="npcs">
+      <span class="sigil"></span> NPCs Clave &mdash; Como Noah Deberia Relacionarse
+      <span class="dropdown-arrow"></span>
+    </div>
+    <div id="npcs" class="section-content">
+      <div class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Moscoff &mdash; Amenaza Directa / Deuda Abierta</div>
+            <div class="stat-value">Veldor prometio a Moscoff entregar a Noah a cambio del barco. Arryn (el vigilante asignado) fue eliminado en S16 por Veldor y Drakothar arrojandolo al mar &mdash; pero eso no salda la deuda. Moscoff sigue sin cobrar.<br><br><em style="color:rgba(200,184,154,0.6); font-size:0.88rem;">Roleplay: Noah es mercancia en los libros de Moscoff. Arryn esta muerto pero Moscoff no lo sabe aun &mdash; o si lo sabe, ajustara el precio. Cada regreso a Neverwinter activa ese riesgo.</em></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Anesa &mdash; Entidad Desconocida / Collar Perdido</div>
+            <div class="stat-value">El collar de Anesa encanto a Noah cuando lo tomo, y luego encanto a Veldor cuando intento tomarlo. Drakothar lo arrojo al mar. Quien es Anesa? Mauiwi lo guardaba desesperadamente. La imagen dentro del collar era la de una mujer llamada Anesa &mdash; que puede ser el artefacto mismo, su creadora o algo peor.<br><br><em style="color:rgba(200,184,154,0.6); font-size:0.88rem;">Roleplay: El collar te controlo. Si fue recuperado del mar por el Dragon Tortuga o por Mauiwi (cuyo paradero es desconocido), Noah deberia querer saber de donde vino esa compulsion.</em></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Mauiwi &mdash; Cultista / Paradero Desconocido</div>
+            <div class="stat-value">Noah leyo la mente de Mauiwi con Detect Thoughts en S17 &mdash; fue Noah quien leyo a Mauiwi, no al reves. Mauiwi cayo al mar durante la embestida del Dragon Tortuga y desaparecio. Era el cultista moreno capturado en S16, el lider de los piratas del barco estallado. Sabe cosas del pasado de Dalkyel y de los obeliscos.<br><br><em style="color:rgba(200,184,154,0.6); font-size:0.88rem;">Roleplay: Noah leyo sus pensamientos. Que exactamente vio en esa mente es informacion que el DM puede activar. Mauiwi no esta confirmado muerto.</em></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Alustriel Silverhand &mdash; Aliada / Contacto en Sigil</div>
+            <div class="stat-value">Noah es el vinculo activo del grupo con Alustriel. Le entrego el segundo fragmento en Sigil (S15). Alustriel les ha dejado notas, provisiones y pociones sin aparecer en persona. Sus motivaciones no estan completamente claras.<br><br><em style="color:rgba(200,184,154,0.6); font-size:0.88rem;">Roleplay: Para Noah, alguien que apoya sin aparecer y que tiene mas informacion que el grupo es tanto un recurso como una incognita. El vinculo con Mystra los conecta &mdash; pero eso no significa que Alustriel y Noah tengan los mismos objetivos.</em></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Lord Neverember &mdash; Empleador / Recurso Temporal</div>
+            <div class="stat-value">El grupo recibe 500 gp semanales. Neverember los consideraba poco confiables antes de S15. Los tiene bajo vigilancia y quiere la cabeza de Moscoff a largo plazo.<br><br><em style="color:rgba(200,184,154,0.6); font-size:0.88rem;">Roleplay: Estabilidad economica temporal, no alianza real. El dia que el grupo deje de ser util, el cheque y la proteccion desaparecen.</em></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Melaxir D'haran &mdash; Objetivo Principal / Enemigo</div>
+            <div class="stat-value">Comerciante de Chult con conexiones turbias, responsable de los cultos y las transformaciones de dragones de sombras. El grupo zarpo hacia su isla. Noah sabe que la tecnologia Spelljamming en este planeta esta vinculada a Melaxir. El objetivo inmediato de la campana es internarse en su isla.<br><br><em style="color:rgba(200,184,154,0.6); font-size:0.88rem;">Roleplay: Noah tiene mas contexto sobre Spelljamming que cualquier otro en el grupo. Si hay tecnologia planar en la isla de Melaxir, Noah sera el que la entienda &mdash; y el que cargue con esa responsabilidad.</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPEN HOOKS -->
+    <div class="section-header" data-toggle="hooks">
+      <span class="sigil"></span> Ganchos Narrativos Abiertos
+      <span class="dropdown-arrow"></span>
+    </div>
+    <div id="hooks" class="section-content">
+      <div class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">I. La Mano Quemada por Vecna</div>
+            <div class="stat-value">Vecna quemo la mano de Noah casi hasta dejarla muerta como castigo real por haber usado su imagen como ilusion. Es el gancho abierto principal del index. Que implica fisicamente? Se esta propagando hacia el brazo necrosado? Es permanente? Hay algun rastro de conexion activa con Vecna?</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">II. El Ojo Sobrenatural (Encanto de Vecna)</div>
+            <div class="stat-value">Noah tiene el Encanto de Vecna activo: Ojo Sobrenatural, puede ver mas alla de la materia. Vision recurrente: ciudad sombria. Ni el ni el grupo saben exactamente que significa esto ni que consecuencias puede tener a largo plazo.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">III. La Tripulacion Capturada del Spelljammer</div>
+            <div class="stat-value">Segun el index, Noah "aun no sabe nada sobre la tripulacion capturada del Spelljammer." La tripulacion no desaparecio: fue capturada. Por quien? Por Melaxir? Por los cultos de Vecna? Estan en la isla? Este es el gancho de origen mas urgente de Noah.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">IV. El Sombrero de Disfraz Confiscado</div>
+            <div class="stat-value">Drakothar confisco el Sombrero de Disfraz a Noah en S15 como consecuencia del escandalo de Vecna. Noah no ha pedido su devolucion. Drakothar no lo ha mencionado. El objeto sigue en posesion del Dragonborn. Como y cuando se resuelve eso?</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">V. Hedwig Asesinada &mdash; Nuevo Familiar</div>
+            <div class="stat-value">Hedwig, el buho familiar de Noah, fue asesinada por criaturas no-muertas durante el ataque nocturno en Melaxir. Noah necesita invocar un nuevo familiar. En la isla hay amenaza activa de no-muertos. No tiene reconocimiento aereo.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">VI. Los Obeliscos y el Spelljammer</div>
+            <div class="stat-value">En S17, Dalkyel pregunto a Noah sobre los obeliscos y los fragmentos de obsidiana. Noah respondio con informacion sobre su origen y sobre el Spelljammer capturado. El tercer fragmento esta en la isla. Como se conecta la tecnologia Spelljamming con la red de obeliscos de Vecna?</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">VII. La Flauta del Abuelo</div>
+            <div class="stat-value">La flauta original esta perdida con el Nautilus en el Mar Astral. La flauta en el inventario actual es un reemplazo. Noah toca la cancion de su abuelo cada manana o el dia se siente torcido. Recuperar la flauta original esta vinculado a recuperar el Nautilus y encontrar a la tripulacion capturada.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">VIII. La Deuda con Moscoff</div>
+            <div class="stat-value">Arryn fue eliminado pero Moscoff no olvida. Noah es la moneda de pago prometida por Veldor. La deuda no desaparecio con Arryn. Cada regreso a Neverwinter es un riesgo activo mientras la deuda este abierta.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KEY ITEMS -->
+    <div class="section-header" data-toggle="items">
+      <span class="sigil"></span> Objetos Narrativamente Relevantes
+      <span class="dropdown-arrow"></span>
+    </div>
+    <div id="items" class="section-content">
+      <div class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Ring of Spell Storing (Afinado)</div>
+            <div class="stat-value">Obtenido en el Feywild (S14). Almacena hasta 5 niveles de hechizos. Uso optimo: precargar <strong style="color:var(--gold)">Counterspell</strong> o <strong style="color:var(--gold)">Shield</strong> para reacciones adicionales, o un hechizo de nivel alto para turno de burst.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Gem of Seeing (Afinado)</div>
+            <div class="stat-value">Truesight 120 ft., 3 cargas (1d3 se recargan al amanecer). <strong style="color:var(--blood)">Conservar para situaciones de alta incertidumbre, no gastar en exploracion rutinaria.</strong></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Libro de Hechizos</div>
+            <div class="stat-value">Registro fisico de su conocimiento arcano. Legible para cualquiera con conocimiento adecuado &mdash; a diferencia del diario de Orken. Su perdida seria catastrofica. Contiene tambien observaciones sobre los planos que visito con el Nautilus.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">La Flauta (reemplazo)</div>
+            <div class="stat-value">No es la flauta del abuelo &mdash; esa esta con el Nautilus. En S13, Noah toco una melodia limpia y serena (version imperfecta del Himno a la Alegria) despues de que Dalkyel hiciera su confesion al grupo. El momento fue notable: sus dedos no fallaron. El ritual matutino es sobre la cancion, no el instrumento.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Sin Familiar Activo</div>
+            <div class="stat-value">Hedwig fue asesinada en S17. En S15 Noah habia conjurado una arana familiar en la casa segura, pero en S16 ya tenia a Hedwig como vigia. El familiar activo actual es ninguno. Necesita invocar uno nuevo &mdash; en territorio hostil lleno de no-muertos.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Sin Sombrero de Disfraz</div>
+            <div class="stat-value">Drakothar confisco el Sombrero de Disfraz en S15 como consecuencia del escandalo de Vecna. El objeto no ha sido devuelto. Noah lo habia usado para impersonar a Briosk y evacuar el mausoleo. Su ausencia es tanto practica como simbolica.</div>
+          </div>
+        </div>
+
+        <div class="nota-contradiccion" style="margin-top:1rem;">
+          <div class="nota-title">Nota de Inventario</div>
+          El character sheet lista mapas de sistemas planetarios y una gema espacial en Additional Notes pero no en el inventario principal. Confirmar con DM si estan en posesion fisica de Noah o se perdieron con el Nautilus. La flauta del inventario es un reemplazo &mdash; la original esta perdida.
+        </div>
+      </div>
+    </div>
+
+    <!-- COMBAT DOCTRINE -->
+    <div class="section-header" data-toggle="combat-doctrine">
+      <span class="sigil"></span> Doctrina de Combate &mdash; Portent Primero
+      <span class="dropdown-arrow"></span>
+    </div>
+    <div id="combat-doctrine" class="section-content">
+      <div class="section">
+        <div class="philosophy">
+          <strong style="color:var(--gold)">Portent &rarr; Ver &rarr; Controlar &rarr; Sostener Concentracion &rarr; Cerrar</strong>
+        </div>
+        <p style="color:var(--bone); font-size:0.95rem; margin-top:1rem;">
+          Noah es un <strong>caster de control y adivinacion con economia de slots superior</strong>. Su trabajo es reemplazar tiradas criticas con dados de Portent, mantener la concentracion mejor que cualquier otro gracias a War Caster, y hacer que Expert Divination convierta cada hechizo de adivinacion en un slot gratis de nivel inferior.
+        </p>
+        <div class="stat-grid" style="margin-top:1.5rem;">
+          <div class="stat-card">
+            <div class="stat-label">Identidad de Combate</div>
+            <div class="stat-value">Adivino con slot de nivel 5, tres slots de nivel 4, War Caster en concentracion. No tiene Sneak Attack ni Ward. Su durabilidad viene de no recibir golpes (Mirror Image, Greater Invis, Starlight Step) y de controlar que no golpeen a el ni a sus aliados clave.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Pregunta Principal Cada Turno</div>
+            <div class="stat-value"><em style="color:var(--gold)">"Que tirada puede arruinar el combate si falla?"</em> &rarr; Si tengo un Portent bajo, aplicarlo aqui. Si no: que efecto de control cierra la amenaza mas peligrosa del turno?</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Vulnerabilidades Criticas</div>
+            <div class="stat-value">AC 14 (sin Ward). HP 48. Iniciativa +1 (llega tarde). <strong style="color:var(--blood)">Sin Mirror Image o Greater Invis activo, cualquier enemigo que lo targetee primero lo puede presionar severamente antes de que actue.</strong> Prioridad: posicionamiento antes de iniciativa.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Fortalezas vs Dalkyel</div>
+            <div class="stat-value">DC 17 (vs DC 16). Tres slots de nivel 4 vs dos. Un slot de nivel 5. Portent reemplaza tiradas sin costar slot. War Caster da ventaja en saves de Concentracion. Expert Divination genera economia de slots pasivamente.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMBAT STATS -->
+    <div class="section-header" data-toggle="combat-stats">
+      <span class="sigil"></span> Estadisticas de Combate Actuales
+      <span class="dropdown-arrow"></span>
+    </div>
+    <div id="combat-stats" class="section-content">
+      <div class="section">
+        <div class="stat-label" style="margin-bottom:0.5rem;">Puntajes de Habilidad</div>
+        <div class="ability-grid">
+          <div class="ability-card">
+            <div class="ability-name">FUE</div>
+            <div class="ability-score">11</div>
+            <div class="ability-mod">+0</div>
+            <div class="ability-save">+0</div>
+          </div>
+          <div class="ability-card">
+            <div class="ability-name">DES</div>
+            <div class="ability-score">12</div>
+            <div class="ability-mod">+1</div>
+            <div class="ability-save">+1</div>
+          </div>
+          <div class="ability-card">
+            <div class="ability-name">CON</div>
+            <div class="ability-score">13</div>
+            <div class="ability-mod">+1</div>
+            <div class="ability-save" style="color:var(--gold)">+5 &#10003;</div>
+          </div>
+          <div class="ability-card">
+            <div class="ability-name">INT</div>
+            <div class="ability-score">20</div>
+            <div class="ability-mod" style="color:var(--gold)">+5</div>
+            <div class="ability-save" style="color:var(--gold)">+9 &#10003;</div>
+          </div>
+          <div class="ability-card">
+            <div class="ability-name">SAB</div>
+            <div class="ability-score">12</div>
+            <div class="ability-mod">+1</div>
+            <div class="ability-save" style="color:var(--gold)">+5 &#10003;</div>
+          </div>
+          <div class="ability-card">
+            <div class="ability-name">CAR</div>
+            <div class="ability-score">11</div>
+            <div class="ability-mod">+0</div>
+            <div class="ability-save">+0</div>
+          </div>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="combat-table">
+            <thead>
+              <tr><th>Estadistica</th><th>Valor</th><th>Relevancia de Combate</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>CA</td><td>14 (Mage Armor)</td><td>Sin Ward. Cada hit aterriza sin Mirror Image o Greater Invis activo.</td></tr>
+              <tr><td>HP</td><td>48</td><td>Sin buffer de Ward. Posicionamiento y defensa activa son criticos.</td></tr>
+              <tr><td>Spell Save DC</td><td>17</td><td>Hold Person, Web, Hypnotic Pattern, Suggestion, Faerie Fire</td></tr>
+              <tr><td>Spell Attack</td><td>+9</td><td>Fire Bolt, Ray of Frost, Chromatic Orb, Daggers magicos</td></tr>
+              <tr><td>CON Save</td><td>+5 + Ventaja (War Caster)</td><td style="color:#6abf6a;">Saves de concentracion: muy solidos. Ventaja en todos.</td></tr>
+              <tr><td>INT Save</td><td>+9 (proficiente)</td><td style="color:#6abf6a;">Resistencia a efectos mentales e ilusiones</td></tr>
+              <tr><td>SAB Save</td><td>+5 (proficiente)</td><td style="color:#6abf6a;">Resistencia media-alta a miedo, encantamiento</td></tr>
+              <tr><td>DEX Save</td><td>+1 (no proficiente)</td><td style="color:#d05050;">Vulnerabilidad a AoE sin bonificacion real.</td></tr>
+              <tr><td>Iniciativa</td><td>+1</td><td style="color:#d05050;">Llega tarde. Posicionamiento antes del combate es critico.</td></tr>
+              <tr><td>Portent</td><td>2 dados / Long Rest</td><td>Reemplaza CUALQUIER tirada de ataque, salvacion o verificacion antes de que se haga.</td></tr>
+              <tr><td>Starlight Step</td><td>4 usos / Long Rest</td><td>Accion bonus: teletransporte 30 ft. a espacio visible.</td></tr>
+              <tr><td>Arcane Recovery</td><td>1 / Long Rest (en Short Rest)</td><td>Recupera slots de nivel combinado max 4 en descanso corto.</td></tr>
+              <tr><td>Arcana</td><td>+13 (Expertise)</td><td>La tirada de Arcana mas alta del grupo. Usar en pre-combate para identificar CR, LR, inmunidades.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="stat-grid" style="margin-top:1rem;">
+          <div class="stat-card">
+            <div class="stat-label">Slots de Hechizo (Nivel 9)</div>
+            <div class="stat-value">
+              <strong>1ro:</strong> 4 &mdash; Shield, Silvery Barbs, Absorb Elements, Chromatic Orb, Cure Wounds, Faerie Fire, Sanctuary, Mage Armor<br>
+              <strong>2do:</strong> 3 &mdash; Hold Person, Mirror Image, Web, Suggestion, Invisibility, Detect Thoughts<br>
+              <strong>3ro:</strong> 3 &mdash; Counterspell, Dispel Magic, Hypnotic Pattern, Lightning Bolt<br>
+              <strong>4to:</strong> 3 &mdash; Greater Invisibility<br>
+              <strong>5to:</strong> 1 &mdash; Slot libre para upcast o hechizo de nivel 5
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Ring of Spell Storing &mdash; Carga Optima</div>
+            <div class="stat-value">
+              Almacena hasta 5 niveles. Configuraciones recomendadas:<br>
+              &bull; Counterspell (3ro) + Shield (1ro) = 4 niveles &mdash; defensa reactiva doble<br>
+              &bull; Greater Invis (4to) + Shield (1ro) = 5 niveles &mdash; burst ofensivo pre-cargado<br>
+              &bull; Silvery Barbs x3 (1ro) = 3 niveles &mdash; soporte de tiradas maximo
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPELL ARSENAL -->
+    <div class="section-header" data-toggle="spell-arsenal">
+      <span class="sigil"></span> Arsenal de Hechizos por Rol
+      <span class="dropdown-arrow"></span>
+    </div>
+    <div id="spell-arsenal" class="section-content">
+      <div class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Control (Condiciones de Victoria)</div>
+            <div class="stat-value">
+              <strong>Hold Person</strong> (2do+, Conc) &mdash; Paraliza humanoides; DC 17 SAB. Upcast a 4to = 3 objetivos<br>
+              <strong>Hypnotic Pattern</strong> (3ro, Conc) &mdash; Incapacitacion multi-objetivo; DC 17 SAB. Usado en S16 contra lider pirata<br>
+              <strong>Web</strong> (2do, Conc) &mdash; Control de area; DC 17 FUE<br>
+              <strong>Suggestion</strong> (2do, Conc) &mdash; Redirigir un objetivo. Usado en S16 sobre el marino del barco<br>
+              <strong>Faerie Fire</strong> (1ro, Conc) &mdash; Ventaja del grupo vs objetivos; DC 17 DES
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Defensa (Supervivencia)</div>
+            <div class="stat-value">
+              <strong>Shield</strong> (1ro) &mdash; +5 CA reaccion; protege de Magic Missile<br>
+              <strong>Mirror Image</strong> (2do, sin Conc) &mdash; 3 duplicados; proteccion pasiva<br>
+              <strong>Greater Invisibility</strong> (4to, Conc) &mdash; Ventaja en ataques, desventaja en entrantes, NO se rompe<br>
+              <strong>Sanctuary</strong> (1ro) &mdash; Escudo sobre aliado; DC 17 SAB para atacarlo<br>
+              <strong>Absorb Elements</strong> (1ro) &mdash; Reduccion dano elemental + rider en siguiente hit
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Adivinacion y Utilidad</div>
+            <div class="stat-value">
+              <strong>Detect Thoughts</strong> (2do, Conc) &mdash; Leer superficial o profundo; activa Expert Divination loop. Usado en S17 sobre Mauiwi<br>
+              <strong>Detect Magic</strong> (1ro, Ritual) &mdash; Sin costo de slot<br>
+              <strong>Identify</strong> (1ro, Ritual) &mdash; Sin costo de slot. Identifico multiples artefactos en campana<br>
+              <strong>Portent</strong> &mdash; 2 dados/LR; reemplazar cualquier tirada antes de que se haga<br>
+              <strong>Gem of Seeing</strong> &mdash; 3 cargas/LR; Truesight 120 ft.
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Dano Directo</div>
+            <div class="stat-value">
+              <strong>Lightning Bolt</strong> (3ro) &mdash; 8d6 avg 28 en linea; DC 17 DES mitad. Mejor AoE del arsenal<br>
+              <strong>Chromatic Orb</strong> (1ro) &mdash; 3d8 tipo variable avg 13.5; +9. Usado en S17 para destruir roca<br>
+              <strong>Wither and Bloom</strong> (2do) &mdash; 2d6+5 necrotic en area; cura 1d6+5 a aliado adyacente<br>
+              <strong>Magic Missile</strong> &mdash; Auto-hit, 3 dardos force avg 10.5; infalible
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Soporte y Reacciones</div>
+            <div class="stat-value">
+              <strong>Silvery Barbs</strong> (1ro, reac) &mdash; Aprendido en S15. Reroll de un exito y transferir ventaja a aliado<br>
+              <strong>Counterspell</strong> (3ro, reac) &mdash; Negar hechizo de nivel 3 o menos automaticamente<br>
+              <strong>Dispel Magic</strong> (3ro) &mdash; Terminar efectos magicos<br>
+              <strong>Cure Wounds</strong> (1ro) &mdash; 1d8+5 curacion por toque; emergencia. Usado en S2 para estabilizar a Nalare<br>
+              <strong>Flock of Familiars</strong> (2do, Conc) &mdash; Hasta 3 familiares temporales; util mientras no tenga familiar permanente
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Cantrips de Dano</div>
+            <div class="stat-value">
+              <strong>Fire Bolt</strong> +9, 2d10 Fire, 120 ft. DPR ~8.8/turno. Con Greater Invis (ventaja): DPR ~10.6<br>
+              <strong>Toll the Dead</strong> DC 17 SAB, 2d12 (obj danado) Necrotic, 60 ft. Mejor vs SAB baja y objetivo danado<br>
+              <strong>Ray of Frost</strong> +9, 2d8 Cold, 60 ft. Rider: -10 ft velocidad. Control de movimiento
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTRADICTIONS -->
+    <div class="section-header" data-toggle="contradicciones">
+      <span class="sigil"></span> Contradicciones y Notas de Consistencia
+      <span class="dropdown-arrow"></span>
+    </div>
+    <div id="contradicciones" class="section-content">
+      <div class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Brazo Necrosado &mdash; Sin Mecanica Definida</div>
+            <div class="stat-value">El brazo aparece en index.html y Characters_Descriptions pero no tiene stat block ni mecanica en el character sheet. <strong style="color:var(--gold)">Elemento narrativo establecido por el jugador.</strong> Su implicacion mecanica es decision del DM. La mano quemada por Vecna (mismo brazo o diferente?) es una segunda condicion fisica que tampoco tiene mecanica definida aun.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Dark Bargain &mdash; Feat Sin Resolver</div>
+            <div class="stat-value">El feat Dark Bargain dice "At your GM's discretion." <strong style="color:var(--blood)">No tiene descripcion mecanica estandar en D&D 5e 2024.</strong> Feat personalizado completamente DM-dependiente. Puede activarse en cualquier momento. Posiblemente vinculado al brazo necrosado o a la mano quemada.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Familiar Activo &mdash; Inconsistencia de Estado</div>
+            <div class="stat-value">El character sheet lista un familiar pero en la campana: Noah conjuro una arana en S15, luego en S16 aparece Hedwig (buho) como familiar vigia. Hedwig fue asesinada en S17. <strong style="color:var(--gold)">Estado actual: sin familiar activo.</strong> Flock of Familiars puede suplir esto temporalmente en combate.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Mapas y Gema Espacial &mdash; Ubicacion Incierta</div>
+            <div class="stat-value">Listados en Additional Notes del character sheet pero ausentes del inventario principal. <strong style="color:var(--gold)">Confirmar con DM:</strong> estan en posesion fisica de Noah o se perdieron con el Nautilus? Si los tiene, son evidencia de su origen extraplanar visible para el grupo.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">La Flauta &mdash; Original vs Reemplazo</div>
+            <div class="stat-value">El inventario lista una Flauta. El trasfondo establece que la flauta del abuelo se perdio con el Nautilus. En S13, Noah toco "una melodia limpia y serena" con la flauta que tiene. <strong style="color:var(--gold)">La flauta del inventario es un reemplazo.</strong> La original esta perdida con la tripulacion capturada.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Pechos de Sirena &mdash; No es del Grupo</div>
+            <div class="stat-value">El events.html es explicito: "El Pechos de Sirena sigue siendo propiedad del Capitan Hopper y no de Dalkyel, dado que Hopper no murio." El index lo lista como "Base de Operaciones" pero no como propiedad del grupo. <strong style="color:var(--gold)">Hopper es el capitan y dueno.</strong> El grupo viaja en su barco.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="whisper">&#10022; el cosmos no da mapas para los accidentes &#10022;</div>
+    </footer>
+
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
